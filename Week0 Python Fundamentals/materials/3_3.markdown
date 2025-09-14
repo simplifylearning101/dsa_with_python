@@ -1,0 +1,93 @@
+# Solutions to Hour 3 Homework Problems
+
+Solutions with commented code.
+
+**Problem 1**:
+```python
+# Greeting function
+def greet(name):
+    print(f"Hello, {name}!")
+greet("Alice")  # Output: Hello, Alice!
+```
+
+**Problem 2**:
+```python
+# Square function
+def square(num):
+    return num * num
+print(square(4))  # Output: 16
+```
+
+**Problem 3**:
+```python
+# Check positive
+def is_positive(num):
+    return num > 0
+print(is_positive(5))  # Output: True
+```
+
+**Problem 4**:
+```python
+# Maximum of two numbers
+def max_two(a, b):
+    if a > b:
+        return a
+    return b
+print(max_two(3, 7))  # Output: 7
+```
+
+**Problem 5**:
+```python
+# Default parameter
+def greet_default(name, greeting="Hi"):
+    print(f"{greeting}, {name}!")
+greet_default("Bob")  # Output: Hi, Bob!
+```
+
+**Problem 6**:
+```python
+# Sum 1 to n
+def sum_to_n(n):
+    total = 0
+    for i in range(1, n + 1):
+        total += i
+    return total
+print(sum_to_n(5))  # Output: 15
+```
+
+**Problem 7**:
+```python
+# Divisible by 3
+def divisible_by_three(num):
+    return num % 3 == 0
+print(divisible_by_three(9))  # Output: True
+```
+
+**Problem 8**:
+```python
+# Track function calls
+count = 0
+def call_counter():
+    global count  # Use global
+    count += 1
+    print(count)
+call_counter()  # Output: 1
+call_counter()  # Output: 2
+call_counter()  # Output: 3
+```
+
+**Problem 9**:
+```python
+# Absolute difference
+def abs_diff(a, b):
+    return abs(a - b)
+print(abs_diff(10, 4))  # Output: 6
+```
+
+**Problem 10**:
+```python
+# Repeat string
+def repeat_string(s, n):
+    return s * n
+print(repeat_string("Hi", 3))  # Output: HiHiHi
+```

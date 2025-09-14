@@ -1,0 +1,128 @@
+# Hour 3: Functions in Python
+
+## Agenda
+This hour introduces functions, which are reusable blocks of code that make your programs organized and modular. Functions are crucial for coding interviews, as they help you break down problems and write clean, testable code.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Define and call functions with and without parameters.
+- Understand return statements and their importance.
+- Use default parameters and keyword arguments.
+- Work with variable scope (local vs global).
+- Write functions to solve simple problems.
+- Explain function logic clearly for interviews.
+
+## Topics Covered
+1. Defining and Calling Functions
+2. Parameters and Arguments
+3. Return Statements
+4. Default Parameters and Keyword Arguments
+5. Variable Scope: Local vs Global
+6. Common Function Patterns for Interviews
+
+## Detailed Explanation of Topics
+
+### 1. Defining and Calling Functions
+A function is a block of code that runs only when called. It helps reuse code.
+
+Syntax:
+```python
+# Define function
+def function_name():
+    # Code block
+    print("Function runs!")
+
+# Call function
+function_name()  # Output: Function runs!
+```
+
+Example:
+```python
+# Simple function to say hello
+def greet():
+    print("Hello, welcome to Python!")
+greet()  # Output: Hello, welcome to Python!
+```
+
+### 2. Parameters and Arguments
+Functions can take inputs (parameters) to process data.
+
+Example:
+```python
+# Function with parameters
+def add(a, b):  # Parameters: a, b
+    result = a + b
+    print(result)
+
+add(3, 4)  # Arguments: 3, 4; Output: 7
+```
+
+Parameters are variables in the function definition; arguments are values passed when calling.
+
+### 3. Return Statements
+Functions can return values using `return`. Without it, they return `None`.
+
+Example:
+```python
+# Return sum
+def multiply(x, y):
+    return x * y  # Returns product
+result = multiply(5, 3)  # Store return value
+print(result)  # Output: 15
+```
+
+### 4. Default Parameters and Keyword Arguments
+Default parameters set a default value if no argument is passed. Keyword arguments specify parameter names when calling.
+
+Example:
+```python
+# Default and keyword arguments
+def introduce(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+introduce("Alice")  # Output: Hello, Alice!
+introduce("Bob", greeting="Hi")  # Output: Hi, Bob!
+```
+
+### 5. Variable Scope: Local vs Global
+Variables inside a function are local (only exist there). Global variables are defined outside and accessible everywhere unless shadowed.
+
+Example:
+```python
+# Scope example
+x = 10  # Global
+def scope_test():
+    x = 5  # Local, shadows global
+    print("Inside:", x)  # Output: Inside: 5
+scope_test()
+print("Outside:", x)  # Output: Outside: 10
+```
+
+Use `global` keyword to modify global variables (avoid in interviews unless needed).
+
+### 6. Common Function Patterns for Interviews
+Functions often solve subproblems. Common patterns:
+- Compute something (e.g., factorial).
+- Check conditions (e.g., is even).
+- Transform input (e.g., reverse string).
+
+Example:
+```python
+# Check if number is even
+def is_even(num):
+    return num % 2 == 0
+print(is_even(4))  # Output: True
+print(is_even(7))  # Output: False
+```
+
+## Points to Remember
+- Always use descriptive function names (e.g., `calculate_sum` not `cs`).
+- Return values for reusability; avoid just printing.
+- Be clear about parameter types in interviews (e.g., “expects two integers”).
+- Default parameters save code but clarify defaults in interviews.
+- Avoid global variables in functions—interviewers prefer clean scope.
+- Explain function logic before coding in interviews.
+- Common error: Forgetting `return` leads to `None`.
+- Functions reduce code duplication, a big plus in interviews.
+- Test edge cases (e.g., zero, negative inputs) in function logic.
+- Use comments to explain function purpose and parameters.

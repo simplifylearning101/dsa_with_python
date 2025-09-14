@@ -1,0 +1,66 @@
+# Hour 3 Quiz: 30 Questions
+
+Covers Hour 3 and some Hour 1-2 concepts.
+
+1. What keyword defines a function?  
+2. What does a function return if no return statement?  
+3. Write a function to add 3 numbers. (Code)  
+4. What is a parameter vs argument?  
+5. Output of `def test(): pass; print(test())`?  
+6. True or False: Functions must have parameters.  
+7. How to set default parameter value?  
+8. What is a local variable?  
+9. Write function to check if number < 10. (Code)  
+10. What does `global` keyword do?  
+11. Output of `x = 5; def f(): x = 3; print(x); f(); print(x)`?  
+12. Why use return instead of print?  
+13. Write function to double a number. (Code)  
+14. What are keyword arguments?  
+15. Common error with missing return?  
+16. Write function to return min of 3 numbers. (Code)  
+17. What is scope in Python?  
+18. True or False: Functions can call themselves.  
+19. Output of `5 + 3 * 2`?  
+20. Write function to print even/odd. (Code)  
+21. Why avoid global variables in interviews?  
+22. What does `abs()` do?  
+23. Write function with default greeting "Yo". (Code)  
+24. How to call function with keyword args?  
+25. Output of `bool(0)`?  
+26. Write function to check if number is zero. (Code)  
+27. Why explain function purpose in interviews?  
+28. What is `NoneType`?  
+29. Write function to return sum of evens 1 to n. (Code)  
+30. Why test edge cases in functions?
+
+## Solutions for the Quiz
+1. `def`  
+2. `None`  
+3. `def add(a, b, c): return a + b + c`  
+4. Parameter: variable in definition; argument: value passed.  
+5. `None`  
+6. False  
+7. `def func(param=default)`  
+8. Variable inside function, not accessible outside.  
+9. `def less_than_ten(n): return n < 10`  
+10. Modifies global variable inside function.  
+11. Inside: 3, Outside: 5  
+12. Return allows reuse; print just outputs.  
+13. `def double(n): return n * 2`  
+14. Specify parameter names: `func(name="value")`  
+15. Returns `None`, causes errors.  
+16. `def min_three(a, b, c): return min(a, b, c)`  
+17. Region where variable is accessible.  
+18. True (recursion).  
+19. 11 (precedence: * before +).  
+20. `def check_even(n): print("Even" if n % 2 == 0 else "Odd")`  
+21. Messy, error-prone; interviewers prefer clean scope.  
+22. Returns absolute value.  
+23. `def greet(name, msg="Yo"): print(msg, name)`  
+24. `func(param1=value1, param2=value2)`  
+25. False  
+26. `def is_zero(n): return n == 0`  
+27. Shows problem understanding.  
+28. Type of `None`, default return.  
+29. `def sum_evens(n): return sum(i for i in range(1, n+1) if i % 2 == 0)`  
+30. Ensures robustness, common in interviews.

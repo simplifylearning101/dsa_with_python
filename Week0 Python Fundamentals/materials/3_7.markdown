@@ -1,0 +1,131 @@
+# Solutions to Hour 3 LeetCode Problems
+
+## 1. Factorial Trailing Zeroes
+**Explanation**: Count factors of 5 (since 2s are abundant).
+
+**Brute-Force**:
+```python
+def trailingZeroes(n):
+    fact = 1
+    for i in range(1, n + 1):
+        fact *= i
+    count = 0
+    while fact % 10 == 0:  # Count trailing zeros
+        count += 1
+        fact //= 10
+    return count
+```
+**Time**: O(n + log n), **Space**: O(1). **Pros**: Simple. **Cons**: Overflow for large n.
+
+**Optimized**:
+```python
+def trailingZeroes(n):
+    count = 0
+    while n > 0:  # Count factors of 5
+        n //= 5
+        count += n
+    return count
+```
+**Time**: O(log n), **Space**: O(1). **Pros**: No overflow, fast. **Cons**: Less intuitive.
+
+## 2. Sqrt(x)
+**Explanation**: Find integer square root using binary search.
+
+**Brute-Force**:
+```python
+def mySqrt(x):
+    for i in range(x + 1):
+        if i * i > x:  # First overshoot
+            return i - 1
+        if i * i == x:
+            return i
+    return 0
+```
+**Time**: O(x), **Space**: O(1). **Pros**: Easy. **Cons**: Slow for large x.
+
+**Optimized** (Binary Search):
+```python
+def mySqrt(x):
+    if x == 0: return 0
+    left, right = 1, x
+    while left <= right:
+        mid = (left + right) // 2
+        if mid * mid == x:
+            return mid
+        if mid * mid < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return right
+```
+**Time**: O(log x), **Space**: O(1). **Pros**: Fast. **Cons**: More complex.
+
+## 3. Climbing Stairs
+**Explanation**: Count ways using dynamic programming or recursion.
+
+**Brute-Force** (Recursion):
+```python
+def climbStairs(n):
+    if n <= 2: return n
+    return climbStairs(n-1) + climbStairs(n-2)
+```
+**Time**: O(2^n), **Space**: O(n). **Pros**: Intuitive. **Cons**: Exponential time.
+
+**Optimized** (Iterative):
+```python
+def climbStairs(n):
+    if n <= 2: return n
+    a, b = 1, 2
+    for _ in range(3, n + 1):
+        a, b = b, a + b
+    return b
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Efficient. **Cons**: Less obvious.
+
+## 4. Plus One
+**Explanation**: Increment digit array like a number.
+
+**Brute-Force**:
+```python
+def plusOne(digits):
+    num = 0
+    for d in digits:  # Convert to integer
+        num = num * 10 + d
+    num += 1
+    return [int(c) for c in str(num)]  # Back to list
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: String conversion.
+
+**Optimized**:
+```python
+def plusOne(digits):
+    for i in range(len(digits)-1, -1, -1):
+        if digits[i] < 9:  # No carry
+            digits[i] += 1
+            return digits
+        digits[i] = 0  # Carry
+    return [1] + digits  # Add leading 1
+```
+**Time**: O(n), **Space**: O(1). **Pros**: In-place. **Cons**: Edge case handling.
+
+## 5. Power of Three
+**Explanation**: Check if divisible by 3 repeatedly.
+
+**Brute-Force**:
+```python
+def isPowerOfThree(n):
+    if n <= 0: return False
+    while n > 1:
+        if n % 3 != 0: return False
+        n //= 3
+    return True
+```
+**Time**: O(log n), **Space**: O(1). **Pros**: Clear.
+
+**Optimized** (Math):
+```python
+def isPowerOfThree(n):
+    if n <= 0: return False
+    return (3**19) % n == 0  # Largest power of 3 in int range
+```
+**Time**: O(1), **Space**: O(1). **Pros**: Constant time. **Cons**: Hard-coded limit.

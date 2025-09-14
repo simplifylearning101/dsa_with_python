@@ -1,0 +1,65 @@
+# Hour 3 Deep Dive: Mastering Functions for Interviews
+
+This section dives deeper into functions, focusing on complex patterns and interview scenarios.
+
+## Complex Topics and Programs
+- **Nested Functions**: Functions inside functions for encapsulation.
+
+Example: Calculate Power
+```python
+# Function to compute x^n
+def power(x, n):
+    def multiply(base, times):  # Nested helper
+        result = 1
+        for _ in range(times):
+            result *= base
+        return result
+    return multiply(x, n)
+print(power(2, 3))  # Output: 8
+```
+
+- **Handling Edge Cases**: Functions must handle invalid inputs.
+
+Example: Safe Division
+```python
+# Divide with error handling
+def safe_divide(a, b):
+    if b == 0:  # Check division by zero
+        return "Cannot divide by zero"
+    return a / b
+print(safe_divide(10, 2))  # Output: 5.0
+print(safe_divide(10, 0))  # Output: Cannot divide by zero
+```
+
+## Interview Questions and Answers
+1. **Why use functions in coding interviews?**  
+   **Answer**: Organize code, reduce duplication, make testing easier. **Intent**: Tests modular thinking.
+
+2. **Write a function to compute factorial with edge cases.**  
+   **Answer**:
+   ```python
+   def factorial(n):
+       if n < 0: return "Invalid input"  # Handle negative
+       if n == 0: return 1  # Base case
+       result = 1
+       for i in range(1, n + 1):
+           result *= i
+       return result
+   ```
+   **Intent**: Tests loops, edge cases.
+
+3. **What happens if a function shadows a global variable?**  
+   **Answer**: Local variable takes precedence; global unchanged. e.g., `x=10; def f(): x=5; print(x); f(); print(x)` → 5, 10. **Intent**: Scope understanding.
+
+4. **How to optimize function for large inputs?**  
+   **Answer**: Avoid redundant calculations, use efficient loops. e.g., in factorial, use iteration over recursion for speed. **Intent**: Efficiency awareness.
+
+5. **Explain function with multiple return points.**  
+   **Answer**:
+   ```python
+   def check_number(n):
+       if n < 0: return "Negative"
+       if n == 0: return "Zero"
+       return "Positive"
+   ```
+   **Intent**: Tests clarity in control flow.

@@ -1,0 +1,28 @@
+# Hour 3 LeetCode/NeetCode Problems
+
+Practice these to apply functions.
+
+1. **Factorial Trailing Zeroes** (LeetCode #172)  
+   **Problem**: Count trailing zeros in n!.  
+   **Outcome**: Integer.  
+   **Example**: n=5 → 1 (120 has one zero)
+
+2. **Sqrt(x)** (LeetCode #69)  
+   **Problem**: Compute integer square root of x.  
+   **Outcome**: Integer.  
+   **Example**: x=8 → 2
+
+3. **Climbing Stairs** (LeetCode #70)  
+   **Problem**: Count ways to climb n stairs (1 or 2 steps).  
+   **Outcome**: Integer.  
+   **Example**: n=3 → 3
+
+4. **Plus One** (LeetCode #66)  
+   **Problem**: Increment digit array by 1.  
+   **Outcome**: List.  
+   **Example**: digits=[1,2,3] → [1,2,4]
+
+5. **Power of Three** (LeetCode #326)  
+   **Problem**: Check if number is power of 3.  
+   **Outcome**: Boolean.  
+   **Example**: n=27 → True
