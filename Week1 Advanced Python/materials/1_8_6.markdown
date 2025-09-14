@@ -1,0 +1,28 @@
+# Week 1, Hour 8 LeetCode/NeetCode Problems
+
+Practice these to apply recursion concepts.
+
+1. **Factorial** (Basic Recursion)  
+   **Problem**: Compute factorial of n.  
+   **Outcome**: Integer.  
+   **Example**: n=5 → 120
+
+2. **Fibonacci Number** (LeetCode #509)  
+   **Problem**: Compute nth Fibonacci number.  
+   **Outcome**: Integer.  
+   **Example**: n=6 → 8
+
+3. **Reverse String** (LeetCode #344)  
+   **Problem**: Reverse a string in-place.  
+   **Outcome**: Modified string.  
+   **Example**: Input: ["h","e","l","l","o"] → ["o","l","l","e","h"]
+
+4. **Power of Two** (LeetCode #231)  
+   **Problem**: Check if n is a power of 2.  
+   **Outcome**: Boolean.  
+   **Example**: n=8 → True
+
+5. **Subsets** (LeetCode #78)  
+   **Problem**: Generate all subsets of a set.  
+   **Outcome**: List of lists.  
+   **Example**: nums=[1,2] → [[],[1],[2],[1,2]]

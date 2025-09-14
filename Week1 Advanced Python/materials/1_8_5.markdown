@@ -1,0 +1,96 @@
+# Week 1, Hour 8 Deep Dive: Mastering Recursion for Interviews
+
+This section explores advanced recursion techniques with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Memoized Recursion**: Optimize Fibonacci with memoization.
+
+Example: Memoized Fibonacci
+```python
+# Function to compute Fibonacci with memoization
+def fibonacci_memo(n, memo={}):
+    # Check if result is cached
+    if n in memo:
+        return memo[n]
+    # Base cases: fib(0)=0, fib(1)=1
+    if n <= 1:
+        return n
+    # Recursive case with memoization
+    memo[n] = fibonacci_memo(n - 1, memo) + fibonacci_memo(n - 2, memo)
+    return memo[n]
+
+# Test the function
+print(fibonacci_memo(10))  # Output: 55
+```
+
+- **Backtracking**: Generate all subsets of a set.
+
+Example: Subsets
+```python
+# Function to generate all subsets
+def subsets(nums):
+    # Initialize result list
+    result = []
+    
+    # Helper function for backtracking
+    def backtrack(start, curr):
+        # Add current subset to result
+        result.append(curr[:])
+        # Explore each element from start
+        for i in range(start, len(nums)):
+            # Include current element
+            curr.append(nums[i])
+            # Recurse with next index
+            backtrack(i + 1, curr)
+            # Backtrack by removing element
+            curr.pop()
+    
+    # Start backtracking
+    backtrack(0, [])
+    return result
+
+# Test the function
+print(subsets([1, 2]))  # Output: [[], [1], [2], [1, 2]]
+```
+
+## Interview Questions and Answers
+1. **Why use recursion for tree problems?**  
+   **Answer**: Naturally models tree structure with recursive calls. **Intent**: Problem fit.
+
+2. **Write recursive function to compute power.**  
+   **Answer**:
+   ```python
+   # Function to compute power
+   def power(base, exp):
+       # Base case: exponent 0
+       if exp == 0:
+           return 1
+       # Recursive case: base * power(base, exp-1)
+       return base * power(base, exp - 1)
+   # Test the function
+   print(power(2, 3))  # Output: 8
+   ```
+   **Intent**: Recursive logic.
+
+3. **How to avoid stack overflow?**  
+   **Answer**: Use memoization or iteration for large inputs. **Intent**: Optimization.
+
+4. **Write recursive function for palindrome check.**  
+   **Answer**:
+   ```python
+   # Function to check palindrome
+   def is_palindrome(s):
+       # Base case: empty or single char
+       if len(s) <= 1:
+           return True
+       # Recursive case: check first/last, recurse on rest
+       if s[0] != s[-1]:
+           return False
+       return is_palindrome(s[1:-1])
+   # Test the function
+   print(is_palindrome("racecar"))  # Output: True
+   ```
+   **Intent**: String recursion.
+
+5. **Why test edge cases in recursion?**  
+   **Answer**: Ensures base cases handle empty/negative inputs. **Intent**: Robustness.

@@ -1,0 +1,153 @@
+# Solutions to Week 1, Hour 8 Homework Problems
+
+Solutions with extensively commented code for clarity.
+
+**Problem 1**:
+```python
+# Function to compute factorial
+def factorial(n):
+    # Base case: factorial of 0 or 1 is 1
+    if n <= 1:
+        return 1
+    # Recursive case: n * factorial(n-1)
+    return n * factorial(n - 1)
+
+# Test the function
+print(factorial(5))  # Output: 120
+```
+
+**Problem 2**:
+```python
+# Function to sum first n numbers
+def sum_n(n):
+    # Base case: sum of 0 is 0
+    if n == 0:
+        return 0
+    # Recursive case: n + sum(n-1)
+    return n + sum_n(n - 1)
+
+# Test the function
+print(sum_n(4))  # Output: 10
+```
+
+**Problem 3**:
+```python
+# Function to compute nth Fibonacci number
+def fibonacci(n):
+    # Base cases: fib(0)=0, fib(1)=1
+    if n <= 1:
+        return n
+    # Recursive case: fib(n-1) + fib(n-2)
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Test the function
+print(fibonacci(6))  # Output: 8
+```
+
+**Problem 4**:
+```python
+# Function to reverse a string
+def reverse_string(s):
+    # Base case: empty or single char
+    if len(s) <= 1:
+        return s
+    # Recursive case: last char + reverse(rest)
+    return s[-1] + reverse_string(s[:-1])
+
+# Test the function
+print(reverse_string("hello"))  # Output: olleh
+```
+
+**Problem 5**:
+```python
+# Function to count digits in a number
+def count_digits(n):
+    # Handle negative numbers
+    n = abs(n)
+    # Base case: single digit
+    if n < 10:
+        return 1
+    # Recursive case: 1 + count digits of n//10
+    return 1 + count_digits(n // 10)
+
+# Test the function
+print(count_digits(123))  # Output: 3
+```
+
+**Problem 6**:
+```python
+# Function to compute power
+def power(base, exp):
+    # Base case: exponent 0
+    if exp == 0:
+        return 1
+    # Recursive case: base * power(base, exp-1)
+    return base * power(base, exp - 1)
+
+# Test the function
+print(power(2, 3))  # Output: 8
+```
+
+**Problem 7**:
+```python
+# Function to sum list elements
+def sum_list(lst):
+    # Base case: empty list
+    if not lst:
+        return 0
+    # Recursive case: first element + sum(rest)
+    return lst[0] + sum_list(lst[1:])
+
+# Test the function
+print(sum_list([1, 2, 3]))  # Output: 6
+```
+
+**Problem 8**:
+```python
+# Function to find max in list
+def find_max(lst):
+    # Base case: single element
+    if len(lst) == 1:
+        return lst[0]
+    # Recursive case: max of first and max(rest)
+    return max(lst[0], find_max(lst[1:]))
+
+# Test the function
+print(find_max([4, 2, 7]))  # Output: 7
+```
+
+**Problem 9**:
+```python
+# Function to check palindrome
+def is_palindrome(s):
+    # Base case: empty or single char
+    if len(s) <= 1:
+        return True
+    # Recursive case: check first/last, recurse on rest
+    if s[0] != s[-1]:
+        return False
+    return is_palindrome(s[1:-1])
+
+# Test the function
+print(is_palindrome("racecar"))  # Output: True
+```
+
+**Problem 10**:
+```python
+# Function to generate first n Fibonacci numbers
+def fib_list(n):
+    # Initialize result list
+    result = []
+    # Generate each Fibonacci number
+    for i in range(n):
+        # Helper function for Fibonacci
+        def fib(i):
+            if i <= 1:
+                return i
+            return fib(i - 1) + fib(i - 2)
+        result.append(fib(i))
+    return result
+
+# Test the function
+print(fib_list(5))  # Output: [0, 1, 1, 2, 3]
+```
