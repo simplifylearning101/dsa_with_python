@@ -1,0 +1,157 @@
+# Week 1, Hour 7 Deep Dive: Mastering OOP for Interviews
+
+This section explores advanced OOP concepts with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Custom Data Structure**: Implement a linked list using OOP.
+
+Example: Linked List Implementation
+```python
+# Define Node class for linked list
+class Node:
+    # Constructor to initialize data and next pointer
+    def __init__(self, data):
+        self.data = data  # Store data
+        self.next = None  # Next node pointer
+
+# Define LinkedList class
+class LinkedList:
+    # Constructor to initialize empty list
+    def __init__(self):
+        self.head = None  # Head of list
+    
+    # Method to append node
+    def append(self, data):
+        # Create new node
+        new_node = Node(data)
+        # If list is empty, set as head
+        if not self.head:
+            self.head = new_node
+            return
+        # Traverse to end of list
+        current = self.head
+        while current.next:
+            current = current.next
+        # Append new node
+        current.next = new_node
+    
+    # Method to display list
+    def display(self):
+        # Start at head
+        current = self.head
+        # Initialize result list
+        result = []
+        # Traverse list
+        while current:
+            result.append(current.data)
+            current = current.next
+        return result
+
+# Create and test LinkedList
+ll = LinkedList()
+ll.append(1)
+ll.append(2)
+print(ll.display())  # Output: [1, 2]
+```
+
+- **Polymorphism with Multiple Classes**: Model shapes with shared interface.
+
+Example: Shape Hierarchy
+```python
+# Import math for calculations
+import math
+# Define base Shape class
+class Shape:
+    # Method to calculate area (to be overridden)
+    def area(self):
+        return 0
+
+# Define Circle class
+class Circle(Shape):
+    # Constructor to initialize radius
+    def __init__(self, radius):
+        self.radius = radius  # Store radius
+    
+    # Override area method
+    def area(self):
+        return math.pi * self.radius ** 2  # Calculate circle area
+
+# Define Rectangle class
+class Rectangle(Shape):
+    # Constructor to initialize width and height
+    def __init__(self, width, height):
+        self.width = width  # Store width
+        self.height = height  # Store height
+    
+    # Override area method
+    def area(self):
+        return self.width * self.height  # Calculate rectangle area
+
+# Test polymorphism
+shapes = [Circle(3), Rectangle(4, 5)]
+for shape in shapes:
+    print(shape.area())  # Output: 28.274333882308138, 20
+```
+
+## Interview Questions and Answers
+1. **Why use OOP for data structures?**  
+   **Answer**: Encapsulates data and operations, improves modularity. **Intent**: Design clarity.
+
+2. **Write a `Stack` class with push/pop.**  
+   **Answer**:
+   ```python
+   # Define Stack class
+   class Stack:
+       # Constructor to initialize empty list
+       def __init__(self):
+           self.items = []  # Store items
+       
+       # Method to push item
+       def push(self, item):
+           self.items.append(item)  # Add item to end
+       
+       # Method to pop item
+       def pop(self):
+           if self.items:  # Check if not empty
+               return self.items.pop()  # Remove and return last item
+           return None  # Return None if empty
+   # Test the class
+   stack = Stack()
+   stack.push(1)
+   stack.push(2)
+   print(stack.pop())  # Output: 2
+   ```
+   **Intent**: Data structure implementation.
+
+3. **How to implement private attributes?**  
+   **Answer**: Use `__` prefix (e.g., `__balance`). **Intent**: Encapsulation.
+
+4. **Write a class to model a bank account.**  
+   **Answer**:
+   ```python
+   # Define BankAccount class
+   class BankAccount:
+       # Constructor to initialize owner and balance
+       def __init__(self, owner, balance=0):
+           self.owner = owner  # Store owner
+           self.__balance = balance  # Private balance
+       
+       # Method to deposit
+       def deposit(self, amount):
+           if amount > 0:  # Check positive amount
+               self.__balance += amount  # Add to balance
+               return True
+           return False
+       
+       # Method to get balance
+       def get_balance(self):
+           return self.__balance  # Return private balance
+   # Test the class
+   account = BankAccount("Alice", 100)
+   account.deposit(50)
+   print(account.get_balance())  # Output: 150
+   ```
+   **Intent**: Encapsulation, state management.
+
+5. **Why use inheritance?**  
+   **Answer**: Reuses code, models hierarchies. **Intent**: Code efficiency.

@@ -1,0 +1,66 @@
+# Week 1, Hour 7 Quiz: 30 Questions
+
+Covers Hour 7 and some Week 0/Hour 1-6 concepts.
+
+1. What is a class in Python?  
+2. Purpose of `__init__` method?  
+3. Create `Person` class with name. (Code)  
+4. Output of `Student("Alice", 20).name`?  
+5. What is inheritance?  
+6. True or False: Objects can access private attributes directly.  
+7. Add method to increment age. (Code)  
+8. What is polymorphism?  
+9. Create `Rectangle` with area method. (Code)  
+10. Why use OOP in interviews?  
+11. Output of `Dog("Buddy").speak()` if Dog inherits from Animal?  
+12. Common error in class definition?  
+13. Create `BankAccount` with private balance. (Code)  
+14. What is `self` in methods?  
+15. True or False: `__balance` is private.  
+16. Implement `Stack` push. (Code)  
+17. Why explain class design?  
+18. Create `Circle` with radius 2. (Code)  
+19. Output of `Queue().dequeue()` (empty)?  
+20. Why use encapsulation?  
+21. Inherit `Student` from `Person`. (Code)  
+22. What is `super()`?  
+23. Implement withdraw method. (Code)  
+24. Why avoid overusing OOP?  
+25. Output of `Rectangle(3, 4).area()`?  
+26. Create `Dog` with custom sound. (Code)  
+27. Why handle invalid inputs in classes?  
+28. Implement `Queue` enqueue. (Code)  
+29. Output of `Student("Bob", 30, "B").display()`?  
+30. When to use OOP vs procedural?
+
+## Solutions for the Quiz
+1. Blueprint for objects.  
+2. Initializes instance variables.  
+3. `class Person: def __init__(self, name): self.name = name`  
+4. Alice  
+5. Class inheriting from another.  
+6. False  
+7. `def increment_age(self): self.age += 1`  
+8. Different behavior for same method.  
+9. `class Rectangle: def __init__(self, w, h): self.w, self.h = w, h; def area(self): return self.w * self.h`  
+10. Shows modular design.  
+11. Buddy says Woof!  
+12. Forgetting `self` in methods.  
+13. `class BankAccount: def __init__(self, owner, balance): self.owner, self.__balance = owner, balance`  
+14. Refers to current object.  
+15. True  
+16. `def push(self, item): self.items.append(item)`  
+17. Shows clarity, design skills.  
+18. `class Circle: def __init__(self, radius): self.radius = radius`  
+19. None  
+20. Protects data, improves maintainability.  
+21. `class Student(Person): def __init__(self, name, age, grade): super().__init__(name, age); self.grade = grade`  
+22. Calls parent class method.  
+23. `def withdraw(self, amount): if amount <= self.__balance: self.__balance -= amount; return True; return False`  
+24. Overcomplicates simple problems.  
+25. 12  
+26. `class Dog(Animal): def speak(self): return f"{self.name} says Woof!"`  
+27. Ensures robustness.  
+28. `def enqueue(self, item): self.items.append(item)`  
+29. Name: Bob, Age: 30, Grade: B  
+30. OOP for stateful/modular problems; procedural for simple tasks.

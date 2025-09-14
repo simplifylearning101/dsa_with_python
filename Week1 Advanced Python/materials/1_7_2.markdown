@@ -1,0 +1,43 @@
+# Week 1, Hour 7 Homework: Practice Problems
+
+Practice these 10 programs to master OOP. Write each as a .py file and verify outputs.
+
+1. **Problem**: Create a `Person` class with name and age.  
+   **Outcome**: Print person details.  
+   **Example**: Input: "Alice", 25 → Output: Name: Alice, Age: 25
+
+2. **Problem**: Add method to `Person` to increment age.  
+   **Outcome**: Print updated age.  
+   **Example**: Input: "Bob", 30 → Output: 31
+
+3. **Problem**: Create `Rectangle` class with area method.  
+   **Outcome**: Print area.  
+   **Example**: Input: width=4, height=5 → Output: 20
+
+4. **Problem**: Inherit `Dog` from `Animal` with custom sound.  
+   **Outcome**: Print sound.  
+   **Example**: Input: "Buddy" → Output: Buddy says Woof!
+
+5. **Problem**: Create `BankAccount` with private balance and deposit method.  
+   **Outcome**: Print balance after deposit.  
+   **Example**: Input: 100, deposit 50 → Output: 150
+
+6. **Problem**: Add withdraw method to `BankAccount` with validation.  
+   **Outcome**: Print success/failure.  
+   **Example**: Input: 100, withdraw 150 → Output: False
+
+7. **Problem**: Create `Stack` class with push/pop.  
+   **Outcome**: Print popped item.  
+   **Example**: Push 1, 2, pop → Output: 2
+
+8. **Problem**: Create `Circle` class with radius and circumference method.  
+   **Outcome**: Print circumference.  
+   **Example**: Input: radius=3 → Output: 18.84955592153876
+
+9. **Problem**: Inherit `Student` from `Person` with grade attribute.  
+   **Outcome**: Print student details.  
+   **Example**: Input: "Alice", 20, "A" → Output: Name: Alice, Age: 20, Grade: A
+
+10. **Problem**: Create `Queue` class with enqueue/dequeue.  
+    **Outcome**: Print dequeued item.  
+    **Example**: Enqueue 1, 2, dequeue → Output: 1

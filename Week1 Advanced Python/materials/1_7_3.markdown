@@ -1,0 +1,232 @@
+# Solutions to Week 1, Hour 7 Homework Problems
+
+Solutions with extensively commented code for clarity.
+
+**Problem 1**:
+```python
+# Define Person class
+class Person:
+    # Constructor to initialize name and age
+    def __init__(self, name, age):
+        self.name = name  # Store name
+        self.age = age  # Store age
+    
+    # Method to display details
+    def display(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+# Create Person object
+person = Person("Alice", 25)
+# Print details
+print(person.display())  # Output: Name: Alice, Age: 25
+```
+
+**Problem 2**:
+```python
+# Define Person class
+class Person:
+    # Constructor to initialize name and age
+    def __init__(self, name, age):
+        self.name = name  # Store name
+        self.age = age  # Store age
+    
+    # Method to increment age
+    def increment_age(self):
+        self.age += 1  # Increase age by 1
+        return self.age  # Return new age
+
+# Create Person object
+person = Person("Bob", 30)
+# Increment and print age
+print(person.increment_age())  # Output: 31
+```
+
+**Problem 3**:
+```python
+# Define Rectangle class
+class Rectangle:
+    # Constructor to initialize width and height
+    def __init__(self, width, height):
+        self.width = width  # Store width
+        self.height = height  # Store height
+    
+    # Method to calculate area
+    def area(self):
+        return self.width * self.height  # Return width * height
+
+# Create Rectangle object
+rect = Rectangle(4, 5)
+# Print area
+print(rect.area())  # Output: 20
+```
+
+**Problem 4**:
+```python
+# Define base Animal class
+class Animal:
+    # Constructor to initialize name
+    def __init__(self, name):
+        self.name = name  # Store name
+    
+    # Method for generic sound
+    def sound(self):
+        return "Generic sound"
+
+# Define Dog class inheriting from Animal
+class Dog(Animal):
+    # Override sound method
+    def sound(self):
+        return f"{self.name} says Woof!"
+
+# Create Dog object
+dog = Dog("Buddy")
+# Print sound
+print(dog.sound())  # Output: Buddy says Woof!
+```
+
+**Problem 5**:
+```python
+# Define BankAccount class
+class BankAccount:
+    # Constructor to initialize owner and balance
+    def __init__(self, owner, balance):
+        self.owner = owner  # Store owner
+        self.__balance = balance  # Private balance
+    
+    # Method to deposit amount
+    def deposit(self, amount):
+        if amount > 0:  # Check if amount is positive
+            self.__balance += amount  # Add to balance
+        return self.__balance  # Return new balance
+
+# Create BankAccount object
+account = BankAccount("Alice", 100)
+# Deposit and print balance
+print(account.deposit(50))  # Output: 150
+```
+
+**Problem 6**:
+```python
+# Define BankAccount class
+class BankAccount:
+    # Constructor to initialize owner and balance
+    def __init__(self, owner, balance):
+        self.owner = owner  # Store owner
+        self.__balance = balance  # Private balance
+    
+    # Method to withdraw amount
+    def withdraw(self, amount):
+        if amount <= self.__balance:  # Check sufficient funds
+            self.__balance -= amount  # Subtract amount
+            return True  # Success
+        return False  # Failure
+
+# Create BankAccount object
+account = BankAccount("Alice", 100)
+# Withdraw and print result
+print(account.withdraw(150))  # Output: False
+```
+
+**Problem 7**:
+```python
+# Define Stack class
+class Stack:
+    # Constructor to initialize empty list
+    def __init__(self):
+        self.items = []  # Store items
+    
+    # Method to push item
+    def push(self, item):
+        self.items.append(item)  # Add item to end
+    
+    # Method to pop item
+    def pop(self):
+        if self.items:  # Check if not empty
+            return self.items.pop()  # Remove and return last item
+        return None  # Return None if empty
+
+# Create Stack object
+stack = Stack()
+# Push items
+stack.push(1)
+stack.push(2)
+# Pop and print
+print(stack.pop())  # Output: 2
+```
+
+**Problem 8**:
+```python
+# Import math for pi
+import math
+# Define Circle class
+class Circle:
+    # Constructor to initialize radius
+    def __init__(self, radius):
+        self.radius = radius  # Store radius
+    
+    # Method to calculate circumference
+    def circumference(self):
+        return 2 * math.pi * self.radius  # Return 2 * pi * radius
+
+# Create Circle object
+circle = Circle(3)
+# Print circumference
+print(circle.circumference())  # Output: 18.84955592153876
+```
+
+**Problem 9**:
+```python
+# Define base Person class
+class Person:
+    # Constructor to initialize name and age
+    def __init__(self, name, age):
+        self.name = name  # Store name
+        self.age = age  # Store age
+    
+    # Method to display details
+    def display(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+# Define Student class inheriting from Person
+class Student(Person):
+    # Constructor to initialize name, age, grade
+    def __init__(self, name, age, grade):
+        super().__init__(name, age)  # Call parent constructor
+        self.grade = grade  # Store grade
+    
+    # Override display method
+    def display(self):
+        return f"{super().display()}, Grade: {self.grade}"
+
+# Create Student object
+student = Student("Alice", 20, "A")
+# Print details
+print(student.display())  # Output: Name: Alice, Age: 20, Grade: A
+```
+
+**Problem 10**:
+```python
+# Define Queue class
+class Queue:
+    # Constructor to initialize empty list
+    def __init__(self):
+        self.items = []  # Store items
+    
+    # Method to enqueue item
+    def enqueue(self, item):
+        self.items.append(item)  # Add item to end
+    
+    # Method to dequeue item
+    def dequeue(self):
+        if self.items:  # Check if not empty
+            return self.items.pop(0)  # Remove and return first item
+        return None  # Return None if empty
+
+# Create Queue object
+queue = Queue()
+# Enqueue items
+queue.enqueue(1)
+queue.enqueue(2)
+# Dequeue and print
+print(queue.dequeue())  # Output: 1
+```

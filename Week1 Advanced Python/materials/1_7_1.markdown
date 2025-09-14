@@ -1,0 +1,193 @@
+# Week 1, Hour 7: Introduction to Object-Oriented Programming (OOP)
+
+## Agenda
+This hour introduces Object-Oriented Programming (OOP) in Python, covering classes, objects, methods, inheritance, and encapsulation. OOP is crucial for structuring code in interviews, especially for problems requiring custom data structures or modular design.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Define and use classes and objects.
+- Implement methods and instance variables.
+- Apply inheritance and polymorphism.
+- Use encapsulation to protect data.
+- Solve interview problems using OOP.
+- Explain OOP concepts clearly to interviewers.
+
+## Topics Covered
+1. Classes and Objects
+2. Methods and Instance Variables
+3. Inheritance and Polymorphism
+4. Encapsulation and Access Control
+5. OOP in Interview Problems
+6. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. Classes and Objects
+A **class** is a blueprint for creating **objects** (instances). Classes define attributes (data) and methods (functions).
+
+Example:
+```python
+# Define a simple class
+class Student:
+    # Constructor to initialize object
+    def __init__(self, name, age):
+        # Instance variables
+        self.name = name
+        self.age = age
+    
+    # Method to display info
+    def display(self):
+        return f"Name: {self.name}, Age: {self.age}"
+
+# Create an object
+student = Student("Alice", 20)
+# Call method
+print(student.display())  # Output: Name: Alice, Age: 20
+```
+
+### 2. Methods and Instance Variables
+Methods are functions defined in a class. Instance variables store object-specific data.
+
+Example:
+```python
+# Class with method to update data
+class Book:
+    # Constructor
+    def __init__(self, title, price):
+        self.title = title
+        self.price = price
+    
+    # Method to apply discount
+    def apply_discount(self, discount):
+        self.price -= self.price * discount / 100
+        return self.price
+
+# Create object and use method
+book = Book("Python 101", 50)
+print(book.apply_discount(10))  # Output: 45.0 (10% discount)
+```
+
+### 3. Inheritance and Polymorphism
+**Inheritance** allows a class to inherit attributes/methods from another. **Polymorphism** allows methods to behave differently based on the object.
+
+Example:
+```python
+# Base class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    # Method to be overridden
+    def speak(self):
+        return "Generic sound"
+
+# Derived class
+class Dog(Animal):
+    # Override speak method
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+# Create objects
+animal = Animal("Generic")
+dog = Dog("Buddy")
+print(animal.speak())  # Output: Generic sound
+print(dog.speak())  # Output: Buddy says Woof!
+```
+
+### 4. Encapsulation and Access Control
+Encapsulation hides data using private attributes (denoted by `_` or `__`).
+
+Example:
+```python
+# Class with private attributes
+class Account:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance  # Private variable
+    
+    # Method to access private balance
+    def get_balance(self):
+        return self.__balance
+    
+    # Method to deposit
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            return True
+        return False
+
+# Create object
+account = Account("Alice", 100)
+print(account.get_balance())  # Output: 100
+account.deposit(50)
+print(account.get_balance())  # Output: 150
+```
+
+### 5. OOP in Interview Problems
+OOP is used in interviews for:
+- Designing custom data structures (e.g., LRU Cache).
+- Modeling real-world entities (e.g., bank accounts).
+- Organizing complex logic.
+
+Example:
+```python
+# Simple queue implementation
+class Queue:
+    def __init__(self):
+        self.items = []
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        if self.items:
+            return self.items.pop(0)
+        return None
+
+# Use queue
+queue = Queue()
+queue.enqueue(1)
+queue.enqueue(2)
+print(queue.dequeue())  # Output: 1
+```
+
+### 6. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Use OOP for problems requiring state management or modular design.
+  - Explain class design (e.g., “This class tracks user data”).
+  - Use clear method names (e.g., `get_balance` vs `get`).
+- **Pitfalls**:
+  - Overcomplicating simple problems with OOP.
+  - Forgetting to initialize instance variables in `__init__`.
+  - Misusing private attributes (e.g., accessing `__balance` directly).
+
+Example:
+```python
+# Safe class with error handling
+class SafeAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance
+    
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            return True
+        return False
+
+# Test with error handling
+account = SafeAccount("Bob")
+print(account.withdraw(50))  # Output: False (insufficient funds)
+```
+
+## Points to Remember
+- Classes define blueprints; objects are instances.
+- Use `__init__` to initialize instance variables.
+- Inheritance allows code reuse; polymorphism enables flexibility.
+- Use `_` or `__` for private attributes.
+- Explain OOP design in interviews to show clarity.
+- Common error: Forgetting `self` in method definitions.
+- Test edge cases: empty objects, invalid inputs.
+- Use encapsulation to protect sensitive data.
+- Keep classes simple for interview problems.
+- Practice verbalizing class/method logic.

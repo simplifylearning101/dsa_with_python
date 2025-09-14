@@ -1,0 +1,315 @@
+# Solutions to Week 1, Hour 7 LeetCode Problems
+
+## 1. Design Linked List
+**Explanation**: Implement a singly linked list with add/delete.
+
+**Solution**:
+```python
+# Define Node class
+class Node:
+    # Constructor to initialize data and next
+    def __init__(self, val):
+        self.val = val  # Store value
+        self.next = None  # Next pointer
+
+# Define MyLinkedList class
+class MyLinkedList:
+    # Constructor to initialize empty list
+    def __init__(self):
+        self.head = None  # Head of list
+    
+    # Get value at index
+    def get(self, index):
+        # Start at head
+        current = self.head
+        # Traverse to index
+        for _ in range(index):
+            if not current:
+                return -1  # Index out of bounds
+            current = current.next
+        # Return value or -1 if None
+        return current.val if current else -1
+    
+    # Add at head
+    def addAtHead(self, val):
+        # Create new node
+        new_node = Node(val)
+        # Point to current head
+        new_node.next = self.head
+        # Update head
+        self.head = new_node
+    
+    # Add at tail
+    def addAtTail(self, val):
+        # Create new node
+        new_node = Node(val)
+        # If list empty, set as head
+        if not self.head:
+            self.head = new_node
+            return
+        # Traverse to end
+        current = self.head
+        while current.next:
+            current = current.next
+        # Append node
+        current.next = new_node
+    
+    # Delete at index
+    def deleteAtIndex(self, index):
+        # If list empty
+        if not self.head:
+            return
+        # If deleting head
+        if index == 0:
+            self.head = self.head.next
+            return
+        # Traverse to index-1
+        current = self.head
+        for _ in range(index - 1):
+            if not current:
+                return
+            current = current.next
+        # If next node exists, skip it
+        if current and current.next:
+            current.next = current.next.next
+
+# Test the class
+ll = MyLinkedList()
+ll.addAtHead(1)
+ll.addAtTail(2)
+print(ll.get(0))  # Output: 1
+```
+
+**Time**: O(1) for addAtHead, O(n) for others. **Space**: O(n). **Pros**: Clear structure. **Cons**: Index traversal.
+
+## 2. LRU Cache
+**Explanation**: Implement Least Recently Used cache.
+
+**Solution**:
+```python
+# Define Node class for doubly linked list
+class Node:
+    # Constructor to initialize key, value, pointers
+    def __init__(self, key, value):
+        self.key = key  # Store key
+        self.value = value  # Store value
+        self.prev = None  # Previous pointer
+        self.next = None  # Next pointer
+
+# Define LRUCache class
+class LRUCache:
+    # Constructor to initialize capacity
+    def __init__(self, capacity):
+        self.capacity = capacity  # Store capacity
+        self.cache = {}  # Hash map for key-node pairs
+        # Dummy head and tail for linked list
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+    
+    # Method to remove node from list
+    def _remove(self, node):
+        node.prev.next = node.next  # Skip node
+        node.next.prev = node.prev  # Skip node
+    
+    # Method to add node after head
+    def _add(self, node):
+        node.prev = self.head  # Link to head
+        node.next = self.head.next  # Link to next
+        self.head.next.prev = node  # Update prev
+        self.head.next = node  # Update head's next
+    
+    # Get value by key
+    def get(self, key):
+        if key in self.cache:
+            node = self.cache[key]  # Get node
+            self._remove(node)  # Remove from current position
+            self._add(node)  # Add to front (recently used)
+            return node.value  # Return value
+        return -1  # Key not found
+    
+    # Put key-value pair
+    def put(self, key, value):
+        if key in self.cache:
+            self._remove(self.cache[key])  # Remove old node
+        node = Node(key, value)  # Create new node
+        self._add(node)  # Add to front
+        self.cache[key] = node  # Update cache
+        if len(self.cache) > self.capacity:
+            # Remove least recently used
+            lru = self.tail.prev
+            self._remove(lru)
+            del self.cache[lru.key]
+
+# Test the class
+cache = LRUCache(2)
+cache.put(1, 1)
+cache.put(2, 2)
+print(cache.get(1))  # Output: 1
+```
+
+**Time**: O(1) for get/put. **Space**: O(capacity). **Pros**: Efficient. **Cons**: Complex structure.
+
+## 3. Min Stack
+**Explanation**: Stack that tracks minimum element.
+
+**Solution**:
+```python
+# Define MinStack class
+class MinStack:
+    # Constructor to initialize stacks
+    def __init__(self):
+        self.stack = []  # Store values
+        self.min_stack = []  # Track minimums
+    
+    # Push value onto stack
+    def push(self, val):
+        self.stack.append(val)  # Add to main stack
+        # Update min stack
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+    
+    # Pop value from stack
+    def pop(self):
+        if self.stack:  # Check if not empty
+            val = self.stack.pop()  # Remove top
+            # If popped value is current min
+            if val == self.min_stack[-1]:
+                self.min_stack.pop()  # Remove from min stack
+    
+    # Get top value
+    def top(self):
+        return self.stack[-1] if self.stack else None  # Return top or None
+    
+    # Get minimum value
+    def getMin(self):
+        return self.min_stack[-1] if self.min_stack else None  # Return min or None
+
+# Test the class
+stack = MinStack()
+stack.push(-2)
+stack.push(0)
+print(stack.getMin())  # Output: -2
+```
+
+**Time**: O(1) for all operations. **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+## 4. Design HashMap
+**Explanation**: Implement hash map with put/get/remove.
+
+**Solution**:
+```python
+# Define MyHashMap class
+class MyHashMap:
+    # Constructor to initialize array
+    def __init__(self):
+        self.size = 1000  # Fixed size for simplicity
+        self.buckets = [[] for _ in range(self.size)]  # Array of lists
+    
+    # Method to get bucket index
+    def _hash(self, key):
+        return key % self.size  # Simple modulo hash
+    
+    # Put key-value pair
+    def put(self, key, value):
+        index = self._hash(key)  # Get bucket
+        # Update if key exists
+        for i, (k, v) in enumerate(self.buckets[index]):
+            if k == key:
+                self.buckets[index][i] = (key, value)
+                return
+        # Add new key-value pair
+        self.buckets[index].append((key, value))
+    
+    # Get value by key
+    def get(self, key):
+        index = self._hash(key)  # Get bucket
+        # Search for key
+        for k, v in self.buckets[index]:
+            if k == key:
+                return v
+        return -1  # Key not found
+    
+    # Remove key
+    def remove(self, key):
+        index = self._hash(key)  # Get bucket
+        # Remove key if found
+        for i, (k, v) in enumerate(self.buckets[index]):
+            if k == key:
+                self.buckets[index].pop(i)
+                return
+
+# Test the class
+hashMap = MyHashMap()
+hashMap.put(1, 1)
+print(hashMap.get(1))  # Output: 1
+```
+
+**Time**: O(1) average, O(n) worst. **Space**: O(n). **Pros**: Simple. **Cons**: Collision handling.
+
+## 5. Design Circular Queue
+**Explanation**: Implement circular queue with enqueue/dequeue.
+
+**Solution**:
+```python
+# Define MyCircularQueue class
+class MyCircularQueue:
+    # Constructor to initialize queue
+    def __init__(self, k):
+        self.size = k  # Queue capacity
+        self.queue = [None] * k  # Fixed-size array
+        self.front = -1  # Index of front element
+        self.rear = -1  # Index of last element
+        self.count = 0  # Number of elements
+    
+    # Enqueue item
+    def enQueue(self, value):
+        if self.isFull():  # Check if queue full
+            return False
+        if self.isEmpty():  # If empty, set front
+            self.front = 0
+        # Move rear and add value
+        self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = value
+        self.count += 1
+        return True
+    
+    # Dequeue item
+    def deQueue(self):
+        if self.isEmpty():  # Check if empty
+            return False
+        # Move front
+        self.front = (self.front + 1) % self.size
+        self.count -= 1
+        # Reset if empty
+        if self.isEmpty():
+            self.front = -1
+            self.rear = -1
+        return True
+    
+    # Get front item
+    def Front(self):
+        return self.queue[self.front] if not self.isEmpty() else -1
+    
+    # Get rear item
+    def Rear(self):
+        return self.queue[self.rear] if not self.isEmpty() else -1
+    
+    # Check if empty
+    def isEmpty(self):
+        return self.count == 0
+    
+    # Check if full
+    def isFull(self):
+        return self.count == self.size
+
+# Test the class
+queue = MyCircularQueue(3)
+queue.enQueue(1)
+queue.enQueue(2)
+print(queue.deQueue())  # Output: True
+print(queue.Front())  # Output: 2
+```
+
+**Time**: O(1) for all operations. **Space**: O(k). **Pros**: Efficient. **Cons**: Fixed size.
