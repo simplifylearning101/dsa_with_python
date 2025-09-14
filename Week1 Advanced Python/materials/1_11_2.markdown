@@ -1,0 +1,170 @@
+# Student Management System: Deep Dive
+
+This deep dive provides advanced examples to enhance the Student Management System, focusing on complex data structures and interview-relevant scenarios. It uses `OrderedDict` for an LRU cache to store recent student queries and a custom `Trie` for efficient student name search, integrating Week 1 topics (Hours 9-10).
+
+## Advanced Topics and Programs
+
+### 1. LRU Cache for Student Queries (Hour 9: OrderedDict, Hour 10: OOP)
+Implements an LRU cache to store recently accessed student records.
+
+```python
+from collections import OrderedDict
+
+# LRU Cache for student queries
+class StudentLRUCache:
+    # Constructor with capacity
+    def __init__(self, capacity):
+        # Initialize OrderedDict (Hour 9)
+        self.cache = OrderedDict()
+        # Store capacity
+        self.capacity = capacity
+    
+    # Get student by ID
+    def get(self, student_id):
+        # Check if ID exists
+        if student_id not in self.cache:
+            return None
+        # Move to end (recent)
+        student = self.cache.pop(student_id)
+        self.cache[student_id] = student
+        return student
+    
+    # Add student to cache
+    def put(self, student_id, student):
+        # If exists, update
+        if student_id in self.cache:
+            self.cache.pop(student_id)
+        # Add new
+        self.cache[student_id] = student
+        # Evict oldest if over capacity
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
+
+# Test the cache
+cache = StudentLRUCache(2)
+cache.put(123, "Alice")
+cache.put(456, "Bob")
+print(cache.get(123))  # Output: Alice
+cache.put(789, "Charlie")
+print(cache.get(456))  # Output: None
+```
+
+**Time Complexity**: O(1) for get/put.  
+**Space Complexity**: O(capacity).  
+**Pros**: Efficient caching.  
+**Cons**: Limited by capacity.
+
+### 2. Trie for Student Name Search (Hour 9: Custom Data Structures)
+Implements a Trie for prefix-based student name search.
+
+```python
+# TrieNode class
+class TrieNode:
+    # Constructor
+    def __init__(self):
+        # Dictionary for children (Hour 2)
+        self.children = {}
+        # Flag for word end
+        self.is_end = False
+        # Store student data
+        self.student = None
+
+# Trie class for name search
+class StudentTrie:
+    # Constructor
+    def __init__(self):
+        # Initialize root
+        self.root = TrieNode()
+    
+    # Insert student
+    def insert(self, name, student):
+        # Start at root
+        curr = self.root
+        # Add each character
+        for char in name.lower():
+            if char not in curr.children:
+                curr.children[char] = TrieNode()
+            curr = curr.children[char]
+        # Mark end and store student
+        curr.is_end = True
+        curr.student = student
+    
+    # Search student by name
+    def search(self, name):
+        # Start at root
+        curr = self.root
+        # Traverse characters
+        for char in name.lower():
+            if char not in curr.children:
+                return None
+            curr = curr.children[char]
+        # Return student if end
+        return curr.student if curr.is_end else None
+
+# Test the trie
+trie = StudentTrie()
+student = Student("Alice", 22, "alice@email.com", "90,85,88", "123")
+trie.insert("Alice", student)
+print(trie.search("Alice").name)  # Output: Alice
+print(trie.search("Alic"))  # Output: None
+```
+
+**Time Complexity**: O(m) for insert/search (m = name length).  
+**Space Complexity**: O(ALPHABET_SIZE * N * M) for N names.  
+**Pros**: Fast prefix search.  
+**Cons**: High memory usage.
+
+## Interview Questions and Answers
+1. **Why use `OrderedDict` for caching?**  
+   **Answer**: Maintains insertion order for LRU eviction in O(1). **Intent**: Efficiency.
+
+2. **Implement a decorator for timing queries.**  
+   **Answer**:
+   ```python
+   import time
+   # Decorator to time method (Hour 10)
+   def timer(func):
+       # Wrapper
+       def wrapper(*args, **kwargs):
+           start = time.time()
+           result = func(*args, **kwargs)
+           print(f"{func.__name__} took {time.time() - start:.2f} seconds")
+           return result
+       return wrapper
+   # Apply to search
+   @timer
+   def query_student(trie, name):
+       return trie.search(name)
+   # Test
+   print(query_student(trie, "Alice"))  # Output: Alice, time
+   ```
+   **Intent**: Performance monitoring.
+
+3. **Why use a Trie for name search?**  
+   **Answer**: Enables fast prefix-based lookup. **Intent**: Scalability.
+
+4. **Write a context manager for caching.**  
+   **Answer**:
+   ```python
+   from contextlib import contextmanager
+   # Cache context manager (Hour 10)
+   @contextmanager
+   def student_cache(capacity):
+       cache = StudentLRUCache(capacity)
+       yield cache
+       print("Cache cleared")
+   # Test
+   with student_cache(2) as cache:
+       cache.put(123, "Alice")
+       print(cache.get(123))  # Output: Alice
+   ```
+   **Intent**: Resource management.
+
+5. **Why use `defaultdict` in StudentManager?**  
+   **Answer**: Simplifies grouping without key checks. **Intent**: Code simplicity.
+
+## Integration with Week 1
+- **Hour 9**: `OrderedDict` for LRU cache, Trie as custom structure.
+- **Hour 10**: Decorators for timing, context managers for caching.
+- **Hour 2**: `defaultdict` in Trie for children nodes.
+- **Hour 7**: OOP for `StudentLRUCache` and `StudentTrie`.

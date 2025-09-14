@@ -1,0 +1,238 @@
+# Student Management System Project
+
+This mini-project integrates all Week 1 topics (Hours 1-10) to build a Student Management System in Python. It processes student data from a CSV file, validates inputs, performs operations like filtering and sorting, and uses advanced Python features for efficiency and robustness. The system demonstrates:
+- **Hour 1 (Lists)**: List comprehensions for filtering students.
+- **Hour 2 (Dictionaries/Sets)**: `defaultdict` for grouping students by age.
+- **Hour 3 (Strings/Regex)**: Regex for email and ID validation.
+- **Hour 4 (Libraries)**: `math` for standard deviation, `re` for regex.
+- **Hour 5 (Two-Pointer)**: Sorting grades with two-pointer technique.
+- **Hour 6 (File I/O)**: Reading/writing CSV files with context managers.
+- **Hour 7 (OOP)**: `Student` and `GraduateStudent` classes with inheritance.
+- **Hour 8 (Functional)**: `map`, `reduce` for grade calculations.
+- **Hour 9 (Collections)**: `Counter`, `deque`, `defaultdict` for data operations.
+- **Hour 10 (Metaprogramming)**: Decorators for logging, context managers for file handling.
+
+## Project Overview
+The system:
+- Reads student data (name, age, email, grades, ID) from a CSV file.
+- Validates emails and IDs using regex.
+- Groups students by age, tracks recent additions, and computes grade statistics.
+- Saves data back to a CSV file.
+- Uses a decorator to log operations and dynamic attributes for flexibility.
+
+## Required CSV Format
+Input file (`students.csv`):
+```
+name,age,email,grades,id
+Alice,22,alice@email.com,90,85,88,123
+Bob,19,bob@email.com,80,75,85,456
+```
+
+## Complete Code
+```python
+# Import required modules (Hour 4: Libraries)
+import re
+import math
+from collections import Counter, deque, defaultdict
+from functools import reduce
+from contextlib import contextmanager
+import time
+
+# Decorator to log method calls (Hour 10: Metaprogramming)
+def log_add(func):
+    # Wrapper to log student addition
+    def wrapper(self, student):
+        print(f"Adding student: {student.name} (ID: {student.id})")
+        return func(self, student)
+    return wrapper
+
+# Student class using OOP (Hour 7)
+class Student:
+    # Constructor with validation (Hour 3: Regex)
+    def __init__(self, name, age, email, grades_str, id_str):
+        # Store name
+        self.name = name
+        # Validate and store age
+        self.age = int(age)
+        # Validate email with regex
+        if not re.match(r"^\w+@\w+\.\w+$", email):
+            raise ValueError("Invalid email format")
+        self.email = email
+        # Validate ID with regex
+        if not re.match(r"^\d+$", id_str):
+            raise ValueError("Invalid ID: must be numeric")
+        self.id = id_str
+        # Parse grades using list comprehension (Hour 1)
+        self.grades = [int(g) for g in grades_str.split(',') if g.strip().isdigit()]
+    
+    # Compute average grade using reduce (Hour 8)
+    def average_grade(self):
+        # Handle empty grades
+        if not self.grades:
+            return 0
+        # Sum grades with reduce
+        total = reduce(lambda x, y: x + y, self.grades)
+        # Return floored average (Hour 4: math)
+        return math.floor(total / len(self.grades))
+    
+    # Compute standard deviation of grades (Hour 4)
+    def std_dev_grades(self):
+        # Compute mean
+        mean = self.average_grade()
+        # Compute variance
+        var = sum((g - mean) ** 2 for g in self.grades) / len(self.grades) if self.grades else 0
+        # Return standard deviation
+        return math.sqrt(var) if var > 0 else 0
+    
+    # Sort grades using two-pointer merge (Hour 5)
+    def sort_grades_two_pointer(self):
+        # Simple sort for demonstration; assumes unsorted grades
+        def merge(left, right):
+            result = []
+            i = j = 0
+            # Merge two sorted lists
+            while i < len(left) and j < len(right):
+                if left[i] <= right[j]:
+                    result.append(left[i])
+                    i += 1
+                else:
+                    result.append(right[j])
+                    j += 1
+            result.extend(left[i:])
+            result.extend(right[j:])
+            return result
+        # Split and merge
+        mid = len(self.grades) // 2
+        left = sorted(self.grades[:mid])
+        right = sorted(self.grades[mid:])
+        self.grades = merge(left, right)
+        return self.grades
+
+# GraduateStudent subclass (Hour 7: OOP)
+class GraduateStudent(Student):
+    # Constructor with thesis
+    def __init__(self, name, age, email, grades_str, id_str, thesis):
+        super().__init__(name, age, email, grades_str, id_str)
+        self.thesis = thesis
+
+# StudentManager class
+class StudentManager:
+    # Constructor
+    def __init__(self):
+        # Group students by age (Hour 9: defaultdict)
+        self.students_by_age = defaultdict(list)
+        # Track recent students (Hour 9: deque)
+        self.recent_students = deque(maxlen=5)
+    
+    # Add student with logging (Hour 10: Decorators)
+    @log_add
+    def add_student(self, student):
+        # Add to age group
+        self.students_by_age[student.age].append(student)
+        # Add to recent students
+        self.recent_students.append(student.name)
+    
+    # Load students from file (Hour 6: File I/O, Hour 10: Context Managers)
+    @contextmanager
+    def load_from_file(self, filename):
+        try:
+            # Open file
+            with open(filename, 'r') as f:
+                # Skip header
+                lines = f.readlines()[1:]
+                for line in lines:
+                    # Parse CSV line (Hour 3: Strings)
+                    parts = line.strip().split(',')
+                    if len(parts) < 5:
+                        continue  # Skip invalid lines
+                    # Create Student or GraduateStudent
+                    if len(parts) == 6:
+                        student = GraduateStudent(*parts)
+                    else:
+                        student = Student(*parts)
+                    self.add_student(student)
+                yield
+        finally:
+            print("File loading completed")
+    
+    # Save students to file (Hour 6, Hour 10)
+    @contextmanager
+    def save_to_file(self, filename):
+        try:
+            # Open file
+            with open(filename, 'w') as f:
+                # Write header
+                f.write("name,age,email,grades,id,thesis\n")
+                # Write students
+                for students in self.students_by_age.values():
+                    for student in students:
+                        thesis = getattr(student, 'thesis', '')
+                        f.write(f"{student.name},{student.age},{student.email},"
+                                f"{','.join(map(str, student.grades))},{student.id},{thesis}\n")
+                yield
+        finally:
+            print("File saving completed")
+    
+    # Filter students older than 20 (Hour 1: List Comprehension)
+    def filter_older_than_20(self):
+        # Use list comprehension
+        return [student.name for students in self.students_by_age.values() for student in students if student.age > 20]
+    
+    # Compute grade frequency (Hour 9: Counter)
+    def grade_frequency(self):
+        # Flatten grades
+        all_grades = [g for students in self.students_by_age.values() for student in students for g in student.grades]
+        # Return frequency
+        return dict(Counter(all_grades))
+    
+    # Compute average grades (Hour 8: Functional Programming)
+    def average_grades(self):
+        # Use map
+        return list(map(lambda s: s.average_grade(), [s for students in self.students_by_age.values() for s in students]))
+    
+    # Rotate recent students (Hour 9: deque)
+    def rotate_recent(self, n):
+        # Rotate deque
+        self.recent_students.rotate(n)
+        return list(self.recent_students)
+
+# Example usage
+if __name__ == "__main__":
+    # Create manager
+    manager = StudentManager()
+    # Create sample CSV
+    with open('students.csv', 'w') as f:
+        f.write("name,age,email,grades,id,thesis\n")
+        f.write("Alice,22,alice@email.com,90,85,88,123,\n")
+        f.write("Bob,19,bob@email.com,80,75,85,456,\n")
+        f.write("Charlie,25,charlie@email.com,95,90,92,789,Thesis\n")
+    
+    # Load students
+    with manager.load_from_file('students.csv'):
+        pass
+    
+    # Test operations
+    print("Students older than 20:", manager.filter_older_than_20())  # Output: ['Alice', 'Charlie']
+    print("Grade frequency:", manager.grade_frequency())  # Output: e.g., {90: 2, 85: 2, 80: 1, ...}
+    print("Average grades:", manager.average_grades())  # Output: e.g., [87, 80, 92]
+    print("Recent students:", manager.rotate_recent(1))  # Output: Rotated names
+    print("Sorted grades (Alice):", manager.students_by_age[22][0].sort_grades_two_pointer())  # Output: [85, 88, 90]
+    print("Std dev (Alice):", manager.students_by_age[22][0].std_dev_grades())  # Output: ~2.16
+    with manager.save_to_file('output.csv'):
+        pass
+```
+
+## How to Run
+1. Save the above code as `student_management.py`.
+2. Create a `students.csv` file with the format shown.
+3. Run the script to test all operations.
+4. Check `output.csv` for saved data.
+
+## Project Features
+- **Input Validation**: Email and ID validation with regex (Hour 3).
+- **Data Grouping**: Students grouped by age using `defaultdict` (Hour 2, Hour 9).
+- **Efficient Operations**: Two-pointer sorting (Hour 5), `deque` for recent students (Hour 9).
+- **Functional Programming**: `map` and `reduce` for grade calculations (Hour 8).
+- **File I/O**: Context managers for reading/writing CSV (Hour 6, Hour 10).
+- **OOP**: Inheritance for `GraduateStudent` (Hour 7).
+- **Logging**: Decorator for `add_student` (Hour 10).
