@@ -59,8 +59,6 @@ The course is structured as follows: Week 0 covers Python fundamentals to ensure
 
 By following this roadmap, you'll gain the skills to ace coding interviews. Practice consistently, review your mistakes, and reach out if you need help—let's make you an expert!
 
-Visit the concerned folder README file for that perticular week content.
-
 <div align="center">
   <img src="static/banner.png" alt="Banner Image">
 </div>
