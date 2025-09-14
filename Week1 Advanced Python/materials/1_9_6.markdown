@@ -1,0 +1,28 @@
+# Week 1, Hour 9 LeetCode/NeetCode Problems
+
+Practice these to apply dynamic programming concepts.
+
+1. **Climbing Stairs** (LeetCode #70)  
+   **Problem**: Count ways to climb n stairs (1 or 2 steps).  
+   **Outcome**: Integer.  
+   **Example**: n=3 → 3
+
+2. **Min Cost Climbing Stairs** (LeetCode #746)  
+   **Problem**: Find minimum cost to reach top.  
+   **Outcome**: Integer.  
+   **Example**: cost=[10, 15, 20] → 15
+
+3. **Fibonacci Number** (LeetCode #509)  
+   **Problem**: Compute nth Fibonacci number.  
+   **Outcome**: Integer.  
+   **Example**: n=6 → 8
+
+4. **House Robber** (LeetCode #198)  
+   **Problem**: Find max sum of non-adjacent houses.  
+   **Outcome**: Integer.  
+   **Example**: nums=[2, 7, 9, 3, 1] → 12
+
+5. **Longest Increasing Subsequence** (LeetCode #300)  
+   **Problem**: Find length of longest increasing subsequence.  
+   **Outcome**: Integer.  
+   **Example**: nums=[10, 9, 2, 5, 3, 7, 101, 18] → 4

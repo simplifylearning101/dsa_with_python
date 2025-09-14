@@ -1,0 +1,113 @@
+# Solutions to Week 1, Hour 9 LeetCode Problems
+
+## 1. Climbing Stairs
+**Explanation**: Count ways to climb n stairs.
+
+**Solution**:
+```python
+# Function to count ways to climb stairs
+def climbStairs(n):
+    # Handle base cases
+    if n <= 1:
+        return 1
+    # Initialize variables
+    prev, curr = 1, 1
+    # Compute ways
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr
+
+# Test the function
+print(climbStairs(3))  # Output: 3
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Space-efficient. **Cons**: None.
+
+## 2. Min Cost Climbing Stairs
+**Explanation**: Find minimum cost to reach top.
+
+**Solution**:
+```python
+# Function to compute minimum cost
+def minCostClimbingStairs(cost):
+    # Initialize dp array
+    dp = [0] * (len(cost) + 1)
+    # Fill dp table
+    for i in range(2, len(cost) + 1):
+        # Min cost from i-1 or i-2
+        dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
+    return dp[len(cost)]
+
+# Test the function
+print(minCostClimbingStairs([10, 15, 20]))  # Output: 15
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Clear. **Cons**: Can optimize space.
+
+## 3. Fibonacci Number
+**Explanation**: Compute nth Fibonacci number.
+
+**Solution**:
+```python
+# Tabulated Fibonacci
+def fib(n):
+    # Handle base cases
+    if n <= 1:
+        return n
+    # Initialize variables
+    prev, curr = 0, 1
+    # Compute Fibonacci
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr
+
+# Test the function
+print(fib(6))  # Output: 8
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Efficient. **Cons**: None.
+
+## 4. House Robber
+**Explanation**: Max sum of non-adjacent elements.
+
+**Solution**:
+```python
+# Function to compute max sum
+def rob(nums):
+    # Handle base cases
+    if not nums:
+        return 0
+    if len(nums) == 1:
+        return nums[0]
+    # Initialize dp
+    dp = [0] * len(nums)
+    dp[0] = nums[0]
+    dp[1] = max(nums[0], nums[1])
+    # Fill dp
+    for i in range(2, len(nums)):
+        dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
+    return dp[-1]
+
+# Test the function
+print(rob([2, 7, 9, 3, 1]))  # Output: 12
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Can optimize space.
+
+## 5. Longest Increasing Subsequence
+**Explanation**: Find length of longest increasing subsequence.
+
+**Solution**:
+```python
+# Function to compute LIS length
+def lengthOfLIS(nums):
+    # Initialize dp array
+    dp = [1] * len(nums)
+    # Compute LIS for each index
+    for i in range(1, len(nums)):
+        for j in range(i):
+            # If nums[i] extends subsequence
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return max(dp) if dp else 0
+
+# Test the function
+print(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))  # Output: 4
+```
+**Time**: O(n^2), **Space**: O(n). **Pros**: Clear. **Cons**: Can be optimized to O(n log n).

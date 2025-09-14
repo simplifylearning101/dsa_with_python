@@ -1,0 +1,103 @@
+# Week 1, Hour 9 Deep Dive: Mastering Dynamic Programming for Interviews
+
+This section explores advanced DP techniques with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **2D DP**: Longest common subsequence.
+
+Example: Longest Common Subsequence
+```python
+# Function to find longest common subsequence length
+def longestCommonSubsequence(text1, text2):
+    # Get lengths
+    m, n = len(text1), len(text2)
+    # Initialize dp table
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    # Fill dp table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            # If characters match
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            # Else take maximum of previous states
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+    return dp[m][n]
+
+# Test the function
+print(longestCommonSubsequence("ABCD", "ACFD"))  # Output: 3
+```
+
+- **Space-Optimized DP**: Knapsack problem.
+
+Example: 0/1 Knapsack
+```python
+# Function to solve 0/1 knapsack
+def knapsack(values, weights, capacity):
+    # Initialize previous row
+    prev = [0] * (capacity + 1)
+    # Iterate over items
+    for i in range(len(values)):
+        # Create current row
+        curr = [0] * (capacity + 1)
+        # Fill current row
+        for w in range(capacity + 1):
+            # Don't take item
+            curr[w] = prev[w]
+            # Take item if possible
+            if w >= weights[i]:
+                curr[w] = max(curr[w], prev[w - weights[i]] + values[i])
+        prev = curr
+    return prev[capacity]
+
+# Test the function
+print(knapsack([60, 100, 120], [10, 20, 30], 50))  # Output: 220
+```
+
+## Interview Questions and Answers
+1. **Why use DP for optimization problems?**  
+   **Answer**: Avoids redundant computations, ensures optimal solutions. **Intent**: Efficiency.
+
+2. **Write DP solution for climbing stairs.**  
+   **Answer**:
+   ```python
+   # Function to count ways to climb stairs
+   def climb_stairs(n):
+       # Handle base cases
+       if n <= 1:
+           return 1
+       # Initialize variables
+       prev, curr = 1, 1
+       # Compute ways
+       for _ in range(2, n + 1):
+           prev, curr = curr, prev + curr
+       return curr
+   # Test the function
+   print(climb_stairs(3))  # Output: 3
+   ```
+   **Intent**: Tabulation.
+
+3. **How to optimize space in DP?**  
+   **Answer**: Use variables or smaller arrays instead of full table. **Intent**: Space efficiency.
+
+4. **Write DP solution for coin change.**  
+   **Answer**:
+   ```python
+   # Function to count ways to make change
+   def coin_change(amount, coins):
+       # Initialize dp array
+       dp = [0] * (amount + 1)
+       # Base case
+       dp[0] = 1
+       # Fill dp for each coin
+       for coin in coins:
+           for i in range(coin, amount + 1):
+               dp[i] += dp[i - coin]
+       return dp[amount]
+   # Test the function
+   print(coin_change(5, [1, 2, 5]))  # Output: 4
+   ```
+   **Intent**: Counting problem.
+
+5. **Why initialize base cases in DP?**  
+   **Answer**: Ensures correct computation for smallest subproblems. **Intent**: Robustness.

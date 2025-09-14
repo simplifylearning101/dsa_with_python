@@ -1,0 +1,179 @@
+# Week 1, Hour 9: Introduction to Dynamic Programming
+
+## Agenda
+This hour introduces dynamic programming (DP) in Python, a technique to optimize problems with overlapping subproblems and optimal substructure. DP is critical for coding interviews, especially for optimization and combinatorial problems.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Understand DP concepts: memoization and tabulation.
+- Identify problems suitable for DP.
+- Implement DP solutions using top-down and bottom-up approaches.
+- Analyze time and space complexity of DP solutions.
+- Solve common DP problems (e.g., Fibonacci, knapsack).
+- Explain DP logic clearly in interviews.
+
+## Topics Covered
+1. What is Dynamic Programming?
+2. Memoization (Top-Down DP)
+3. Tabulation (Bottom-Up DP)
+4. Identifying DP Problems
+5. Time and Space Complexity
+6. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. What is Dynamic Programming?
+Dynamic programming solves problems by breaking them into smaller subproblems, storing results to avoid redundant computations. It applies to problems with:
+- **Overlapping Subproblems**: Subproblems recur multiple times.
+- **Optimal Substructure**: Solution can be built from optimal solutions of subproblems.
+
+Example (Fibonacci):
+```python
+# Naive recursive Fibonacci (not DP)
+def fib_naive(n):
+    # Base cases
+    if n <= 1:
+        return n
+    # Recursive calls
+    return fib_naive(n - 1) + fib_naive(n - 2)
+
+# Test the function
+print(fib_naive(6))  # Output: 8 (but slow due to redundant calls)
+```
+
+### 2. Memoization (Top-Down DP)
+Memoization stores results of subproblems in a cache (e.g., dictionary) to avoid recomputation.
+
+Example (Memoized Fibonacci):
+```python
+# Memoized Fibonacci
+def fib_memo(n, memo={}):
+    # Check if result is cached
+    if n in memo:
+        return memo[n]
+    # Base cases
+    if n <= 1:
+        return n
+    # Recursive case with memoization
+    memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
+    return memo[n]
+
+# Test the function
+print(fib_memo(6))  # Output: 8
+```
+
+### 3. Tabulation (Bottom-Up DP)
+Tabulation builds a table iteratively, solving subproblems from smallest to largest.
+
+Example (Tabulated Fibonacci):
+```python
+# Tabulated Fibonacci
+def fib_tab(n):
+    # Initialize table
+    dp = [0] * (n + 1)
+    # Base case
+    if n >= 1:
+        dp[1] = 1
+    # Fill table iteratively
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    return dp[n]
+
+# Test the function
+print(fib_tab(6))  # Output: 8
+```
+
+### 4. Identifying DP Problems
+DP is suitable for:
+- Optimization problems (e.g., minimum cost, maximum profit).
+- Counting problems (e.g., number of ways to achieve a goal).
+- Problems with recursive structure (e.g., paths in a grid).
+
+Example (Climbing Stairs):
+```python
+# Number of ways to climb n stairs (1 or 2 steps)
+def climb_stairs(n):
+    # Initialize table
+    dp = [0] * (n + 1)
+    # Base cases
+    dp[0] = 1  # One way to climb 0 stairs
+    if n >= 1:
+        dp[1] = 1  # One way to climb 1 stair
+    # Fill table
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]  # Ways to climb i stairs
+    return dp[n]
+
+# Test the function
+print(climb_stairs(3))  # Output: 3 (ways: 1+1+1, 1+2, 2+1)
+```
+
+### 5. Time and Space Complexity
+- **Time Complexity**: Typically O(n) or O(n*m) for DP, compared to O(2^n) for naive recursion.
+- **Space Complexity**: O(n) for 1D DP, O(n*m) for 2D DP. Can optimize to O(1) or O(m) in some cases.
+- **Memoization**: Trades memory for speed.
+- **Tabulation**: Often more space-efficient with iterative approach.
+
+Example (Space-Optimized Climbing Stairs):
+```python
+# Space-optimized climbing stairs
+def climb_stairs_opt(n):
+    # Handle base cases
+    if n <= 1:
+        return 1
+    # Use two variables instead of array
+    prev, curr = 1, 1
+    # Iterate to compute result
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr
+
+# Test the function
+print(climb_stairs_opt(3))  # Output: 3
+```
+
+### 6. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Identify overlapping subproblems to justify DP.
+  - Explain state transitions (e.g., “dp[i] is sum of dp[i-1] and dp[i-2]”).
+  - Prefer tabulation for interviews to avoid stack overhead.
+- **Pitfalls**:
+  - Not initializing base cases correctly.
+  - Overcomplicating state definitions.
+  - Ignoring space optimization opportunities.
+
+Example (Safe DP):
+```python
+# Safe climbing stairs with error handling
+def climb_stairs_safe(n):
+    # Check for invalid input
+    if n < 0:
+        raise ValueError("Input must be non-negative")
+    # Initialize variables
+    if n <= 1:
+        return 1
+    prev, curr = 1, 1
+    # Compute result
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
+    return curr
+
+# Test with try-except
+try:
+    print(climb_stairs_safe(3))  # Output: 3
+    print(climb_stairs_safe(-1))  # Raises ValueError
+except ValueError as e:
+    print(e)  # Output: Input must be non-negative
+```
+
+## Points to Remember
+- DP optimizes problems with overlapping subproblems and optimal substructure.
+- Memoization uses recursion with caching; tabulation uses iteration.
+- Always initialize base cases correctly.
+- Explain DP table and transitions clearly in interviews.
+- Common error: Incorrect state transitions or missing base cases.
+- Test edge cases: n=0, n=1, negative inputs.
+- Optimize space by using variables instead of arrays when possible.
+- Visualize DP table for clarity (e.g., Fibonacci: [0, 1, 1, 2, 3]).
+- Use tabulation for large inputs to avoid stack overflow.
+- Practice verbalizing DP logic for interviews.
