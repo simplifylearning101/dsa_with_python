@@ -1,0 +1,43 @@
+# Week 1, Hour 1 Homework: Practice Problems
+
+Practice these 10 programs to master advanced list operations and comprehensions. Write each as a .py file and verify outputs.
+
+1. **Problem**: Sort a list of numbers in descending order.  
+   **Outcome**: Print sorted list.  
+   **Example**: Input: [3, 1, 4] → Output: [4, 3, 1]
+
+2. **Problem**: Use comprehension to get odd numbers from list.  
+   **Outcome**: Print list of odds.  
+   **Example**: Input: [1, 2, 3, 4] → Output: [1, 3]
+
+3. **Problem**: Reverse a list using slicing.  
+   **Outcome**: Print reversed list.  
+   **Example**: Input: [1, 2, 3] → Output: [3, 2, 1]
+
+4. **Problem**: Extend one list with another.  
+   **Outcome**: Print extended list.  
+   **Example**: [1, 2] + [3, 4] → Output: [1, 2, 3, 4]
+
+5. **Problem**: Create list of squares using comprehension.  
+   **Outcome**: Print squared list.  
+   **Example**: Input: [1, 2, 3] → Output: [1, 4, 9]
+
+6. **Problem**: Flatten a 2D list using comprehension.  
+   **Outcome**: Print flat list.  
+   **Example**: Input: [[1, 2], [3, 4]] → Output: [1, 2, 3, 4]
+
+7. **Problem**: Get every second element using slicing.  
+   **Outcome**: Print sliced list.  
+   **Example**: Input: [0, 1, 2, 3, 4] → Output: [0, 2, 4]
+
+8. **Problem**: Remove duplicates using comprehension and set.  
+   **Outcome**: Print unique list.  
+   **Example**: Input: [1, 2, 2, 3] → Output: [1, 2, 3]
+
+9. **Problem**: Sort list of strings by length.  
+   **Outcome**: Print sorted list.  
+   **Example**: Input: ["cat", "a", "dog"] → Output: ["a", "cat", "dog"]
+
+10. **Problem**: Filter numbers greater than 5 using comprehension.  
+    **Outcome**: Print filtered list.  
+    **Example**: Input: [3, 6, 8, 2] → Output: [6, 8]

@@ -1,0 +1,55 @@
+# Week 1, Hour 1 Deep Dive: Mastering List Operations for Interviews
+
+This section explores advanced list operations and comprehensions in depth, with complex programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Complex Comprehensions**: Combine conditions and transformations.
+
+Example: Filter and Transform
+```python
+# Get squares of numbers divisible by 3
+nums = [1, 3, 6, 8, 9]
+result = [x**2 for x in nums if x % 3 == 0]
+print(result)  # Output: [9, 36, 81]
+```
+
+- **Matrix Operations**: Process 2D lists.
+
+Example: Transpose Matrix
+```python
+# Transpose matrix using comprehension
+matrix = [[1, 2, 3], [4, 5, 6]]
+transposed = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+print(transposed)  # Output: [[1, 4], [2, 5], [3, 6]]
+```
+
+## Interview Questions and Answers
+1. **When to use list comprehensions?**  
+   **Answer**: For simple transformations/filtering; avoid for complex logic. **Intent**: Tests Pythonic coding.
+
+2. **Write function to remove duplicates without set.**  
+   **Answer**:
+   ```python
+   def remove_duplicates(nums):
+       result = []
+       seen = {}
+       for num in nums:
+           if num not in seen:
+               seen[num] = True
+               result.append(num)
+       return result
+   ```
+   **Intent**: Tests manual deduplication.
+
+3. **Why use `sorted()` over `sort()`?**  
+   **Answer**: Non-destructive, preserves original list. **Intent**: Clarity in interviews.
+
+4. **Handle empty list in comprehension.**  
+   **Answer**: Returns empty list; check `if lst` first. **Intent**: Edge cases.
+
+5. **Write comprehension for even indices.**  
+   **Answer**:
+   ```python
+   [nums[i] for i in range(0, len(nums), 2)]
+   ```
+   **Intent**: Tests slicing logic.
