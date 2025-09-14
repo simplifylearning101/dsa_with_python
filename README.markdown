@@ -1,3 +1,5 @@
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=simplifylearning101.dsa_with_python)
+
 # 10-Week Coding Interview Preparation Course: Mastering Data Structures and Algorithms with Python
 
 Welcome to this 10-week course designed to prepare you for coding interviews and help you master data structures and algorithms (DSA) using Python. We don't assume you have any prior knowledge — we'll start from the basics and build up gradually.
