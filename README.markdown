@@ -31,7 +31,7 @@ Each day, you'll get detailed lessons with code examples, and to build your skil
 If you need help, reachout to tech coodinator.
 
 ## Coordinators
-Once you join the cohort, you will be invited to cohort WhatsApp group where you can seek help from our coordinators 
+To join the course, please reach out to our coordinators 
 <div align="center">
   <img src="static/support1.png" alt="Support Image">
 </div>
