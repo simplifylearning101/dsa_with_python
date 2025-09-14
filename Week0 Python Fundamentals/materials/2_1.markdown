@@ -1,0 +1,142 @@
+# Hour 2: Control Structures and Basic Operations in Python
+
+## Agenda
+This hour introduces control structures and basic operations in Python, which are essential for controlling program flow and performing calculations. These concepts are fundamental for solving coding interview problems, as they allow you to make decisions and repeat tasks efficiently.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Use if-else statements to make decisions based on conditions.
+- Implement for and while loops to repeat tasks.
+- Use break and continue to control loop behavior.
+- Perform basic arithmetic and comparison operations.
+- Understand logical operators and their use in conditions.
+- Write simple programs combining these concepts to solve problems.
+
+## Topics Covered
+1. Arithmetic Operations
+2. Comparison and Logical Operators
+3. If-Else Statements
+4. For Loops
+5. While Loops
+6. Break and Continue Statements
+
+## Detailed Explanation of Topics
+
+### 1. Arithmetic Operations
+Arithmetic operations let you perform calculations. Python supports:
+
+| Operator | Description       | Example         |
+|----------|-------------------|-----------------|
+| +        | Addition          | 5 + 3 = 8      |
+| -        | Subtraction       | 5 - 3 = 2      |
+| *        | Multiplication    | 5 * 3 = 15     |
+| /        | Division (float)  | 5 / 2 = 2.5    |
+| //       | Floor division    | 5 // 2 = 2     |
+| %        | Modulus           | 5 % 2 = 1      |
+| **       | Exponentiation    | 2 ** 3 = 8     |
+
+Example:
+```python
+# Arithmetic operations
+a = 10
+b = 3
+print(a + b)  # Output: 13
+print(a * b)  # Output: 30
+print(a / b)  # Output: 3.333...
+print(a // b)  # Output: 3 (integer)
+print(a % b)  # Output: 1 (remainder)
+print(a ** 2)  # Output: 100 (10 squared)
+```
+
+### 2. Comparison and Logical Operators
+Comparison operators check relationships, returning True/False. Logical operators combine conditions.
+
+| Comparison | Description       | Logical | Description       |
+|------------|-------------------|---------|-------------------|
+| ==         | Equal             | and     | Both True         |
+| !=         | Not equal         | or      | Either True       |
+| >          | Greater than      | not     | Negates condition |
+| <          | Less than         |         |                   |
+| >=         | Greater or equal  |         |                   |
+| <=         | Less or equal     |         |                   |
+
+Example:
+```python
+# Comparison and logical
+x = 5
+y = 10
+print(x > y)  # Output: False
+print(x != y)  # Output: True
+print(x > 0 and y < 20)  # Output: True
+print(not x == 5)  # Output: False
+```
+
+### 3. If-Else Statements
+If-else controls program flow based on conditions. Syntax uses indentation.
+
+Example:
+```python
+# Check if number is positive, negative, or zero
+num = 7
+if num > 0:  # Condition
+    print("Positive")  # Runs if True
+elif num < 0:  # Else if
+    print("Negative")
+else:  # If all above false
+    print("Zero")
+# Output: Positive
+```
+
+### 4. For Loops
+For loops iterate over sequences (e.g., range, lists).
+
+Example:
+```python
+# Print numbers 1 to 5
+for i in range(1, 6):  # range(1,6) gives 1,2,3,4,5
+    print(i)  # Prints each number
+# Output: 1 2 3 4 5 (on separate lines)
+```
+
+`range(start, stop, step)`:
+- Start (inclusive), stop (exclusive), step (increment).
+
+### 5. While Loops
+While loops repeat as long as a condition is True.
+
+Example:
+```python
+# Print numbers 1 to 5
+i = 1  # Initialize
+while i <= 5:  # Condition
+    print(i)  # Print current
+    i += 1  # Increment
+# Output: 1 2 3 4 5
+```
+
+### 6. Break and Continue Statements
+- `break`: Exits the loop.
+- `continue`: Skips to next iteration.
+
+Example:
+```python
+# Break and continue
+for i in range(1, 10):
+    if i == 5:  # Stop at 5
+        break
+    if i % 2 == 0:  # Skip evens
+        continue
+    print(i)  # Prints odds: 1 3
+```
+
+## Points to Remember
+- Use `//` for integer division in interview problems to avoid floats.
+- Logical operators (`and`, `or`) short-circuit: `and` stops at False, `or` at True.
+- Indentation is critical—4 spaces standard. Wrong indentation = errors.
+- Avoid infinite loops in while (e.g., forgetting to increment).
+- In interviews, explain condition logic clearly before coding.
+- Comparison pitfalls: `==` checks value, not type (e.g., 5 == "5" is False).
+- Use `range()` efficiently; know start/stop/step.
+- Break/continue can simplify code but overusing confuses interviewers.
+- Practice verbalizing loop logic—interviewers test clarity.
+- Common error: Using `=` (assignment) instead of `==` in conditions.

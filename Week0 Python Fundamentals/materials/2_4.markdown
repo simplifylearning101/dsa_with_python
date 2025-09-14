@@ -1,0 +1,66 @@
+# Hour 2 Quiz: 30 Questions
+
+Covers Hour 2 and some Hour 1 concepts.
+
+1. What does `//` operator do?  
+2. Output of `5 % 2`?  
+3. What is `and` in Python?  
+4. Write code to check if a number is negative.  
+5. Difference between for and while loops.  
+6. What does `break` do in a loop?  
+7. Output of `print(10 > 5 and 5 < 3)`?  
+8. What is `range(1, 5)`?  
+9. True or False: Indentation is optional.  
+10. Common error in while loops?  
+11. Print 1 to 3 using for loop. (Code)  
+12. What does `continue` do?  
+13. Output of `2 ** 3`?  
+14. Write if-else to check if number > 10.  
+15. What is short-circuiting in logical operators?  
+16. Print evens from 2 to 8. (Code)  
+17. What does `!=` mean?  
+18. Why use 4 spaces for indentation?  
+19. Output of `print(5 == 5.0)`?  
+20. Write while loop to print 5 to 1.  
+21. What is floor division?  
+22. Combine `or` and `and` in a condition. (Code)  
+23. Why avoid infinite loops?  
+24. Output of `range(5)`?  
+25. Check if variable is string using type(). (Code)  
+26. What is `elif` used for?  
+27. Print odds from 1 to 9 using continue. (Code)  
+28. Why explain loops in interviews?  
+29. Convert 7.5 to int.  
+30. What does `%` operator return?
+
+## Solutions for the Quiz
+1. Floor division (integer result).  
+2. 1 (remainder).  
+3. Logical operator, both True.  
+4. `if num < 0: print("Negative")`  
+5. For: known iterations; while: condition-based.  
+6. Exits loop.  
+7. False (5<3 is False).  
+8. 1,2,3,4 (excludes 5).  
+9. False, required.  
+10. Infinite loop (no increment).  
+11. `for i in range(1, 4): print(i)`  
+12. Skips to next iteration.  
+13. 8.  
+14. `if num > 10: print("Greater"); else: print("Not greater")`  
+15. Stops evaluating at first False (and) or True (or).  
+16. `for i in range(2, 9, 2): print(i)`  
+17. Not equal.  
+18. Standard, readable.  
+19. True (value equality).  
+20. `i = 5; while i >= 1: print(i); i -= 1`  
+21. Division rounding down to integer.  
+22. `if x > 0 and x < 10 or x == 20: print("Valid")`  
+23. Crashes program, bad in interviews.  
+24. 0,1,2,3,4.  
+25. `if type(var) == str: print("String")`  
+26. Multiple conditions after if.  
+27. `for i in range(1, 10): if i % 2 == 0: continue; print(i)`  
+28. Shows logical clarity.  
+29. `int(7.5)` → 7  
+30. Remainder of division.

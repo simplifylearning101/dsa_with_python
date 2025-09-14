@@ -1,0 +1,64 @@
+# Hour 2 Deep Dive: Mastering Control Structures for Interviews
+
+This section explores control structures in depth, with complex programs and interview questions.
+
+## Complex Topics and Programs
+- **Nested Conditions and Loops**: Combining if-else with loops for complex logic.
+
+Complex Program: Number Classifier
+```python
+# Classify numbers 1 to 10 as even/odd, positive, and <5 or >=5
+for num in range(1, 11):
+    status = ""  # Build string
+    if num % 2 == 0:  # Even check
+        status += "Even, "
+    else:
+        status += "Odd, "
+    if num < 5:  # Range check
+        status += "Less than 5"
+    else:
+        status += "5 or more"
+    print(f"{num}: {status}")  # Output: e.g., 1: Odd, Less than 5
+```
+This tests nested logic and string formatting.
+
+- **Loop Optimization**: Avoid redundant checks to save time.
+
+Complex Program: Prime Number Check
+```python
+# Check if number is prime
+def is_prime(n):
+    if n < 2:  # Not prime
+        return False
+    for i in range(2, int(n ** 0.5) + 1):  # Check up to sqrt(n)
+        if n % i == 0:  # Divisible? Not prime
+            return False
+    return True
+print(is_prime(17))  # Output: True
+```
+Optimizes by checking only up to square root.
+
+## Interview Questions and Answers
+1. **How does Python evaluate `and` and `or`?**  
+   Answer: Short-circuits: `and` stops at False, `or` at True. e.g., `False and X` skips X. **Intent**: Tests efficiency knowledge.
+
+2. **Write a loop to reverse a number (e.g., 123 → 321).**  
+   Answer:
+   ```python
+   num = 123
+   rev = 0
+   while num > 0:
+       rev = rev * 10 + num % 10
+       num //= 10
+   print(rev)  # 321
+   ```
+   **Intent**: Tests loop and arithmetic logic.
+
+3. **Explain break vs continue with example.**  
+   Answer: Break exits, continue skips. e.g., `for i in range(5): if i == 3: break` stops at 3; `continue` skips 3. **Intent**: Control flow clarity.
+
+4. **Why avoid nested loops in interviews?**  
+   Answer: Increases time complexity (O(n²)). Optimize with single loop or other structures. **Intent**: Efficiency awareness.
+
+5. **Handle edge cases in a loop (e.g., negative numbers).**  
+   Answer: Check conditions first. e.g., `if num < 0: return` before loop. **Intent**: Robustness.

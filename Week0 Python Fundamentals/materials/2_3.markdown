@@ -1,0 +1,97 @@
+# Solutions to Hour 2 Homework Problems
+
+Solutions with commented code for clarity.
+
+**Problem 1**:
+```python
+# Sum of two numbers
+a = 3
+b = 4
+print(a + b)  # Output: 7
+```
+
+**Problem 2**:
+```python
+# Even or odd
+num = 6
+if num % 2 == 0:  # Check remainder
+    print("Even")  # Output: Even
+else:
+    print("Odd")
+```
+
+**Problem 3**:
+```python
+# First 10 natural numbers
+for i in range(1, 11):  # 1 to 10
+    print(i, end=" ")  # Output: 1 2 3 4 5 6 7 8 9 10
+```
+
+**Problem 4**:
+```python
+# Divisible by 3
+for i in range(1, 16):  # 1 to 15
+    if i % 3 == 0:  # Check divisibility
+        print(i, end=" ")  # Output: 3 6 9 12 15
+```
+
+**Problem 5**:
+```python
+# Factorial
+n = 5
+fact = 1
+while n > 0:  # Multiply until n=0
+    fact *= n
+    n -= 1
+print(fact)  # Output: 120
+```
+
+**Problem 6**:
+```python
+# Positive and even
+num = 4
+if num > 0 and num % 2 == 0:  # Check both
+    print("Yes")  # Output: Yes
+else:
+    print("No")
+```
+
+**Problem 7**:
+```python
+# First 5 evens
+count = 0
+num = 2
+while count < 5:  # Until 5 numbers
+    print(num, end=" ")  # Output: 2 4 6 8 10
+    num += 2
+    count += 1
+```
+
+**Problem 8**:
+```python
+# Skip multiples of 4
+for i in range(1, 21):
+    if i % 4 == 0:  # Skip if divisible
+        continue
+    print(i, end=" ")  # Output: 1 2 3 5 6 7 9 ...
+```
+
+**Problem 9**:
+```python
+# Stop at multiple of 7
+for i in range(1, 21):
+    print(i, end=" ")  # Print current
+    if i % 7 == 0:  # Stop at first multiple
+        break
+# Output: 1 2 3 4 5 6
+```
+
+**Problem 10**:
+```python
+# Check range
+num = 15
+if 10 <= num <= 20:  # Inclusive check
+    print("In range")  # Output: In range
+else:
+    print("Out of range")
+```

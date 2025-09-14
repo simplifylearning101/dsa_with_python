@@ -1,0 +1,28 @@
+# Hour 2 LeetCode/NeetCode Problems
+
+Practice these to apply control structures.
+
+1. **Reverse Integer** (LeetCode #7)  
+   **Problem**: Reverse digits of an integer, handle overflow.  
+   **Outcome**: Integer.  
+   **Example**: x=123 → 321
+
+2. **Number of 1 Bits** (LeetCode #191)  
+   **Problem**: Count 1s in binary representation of number.  
+   **Outcome**: Integer.  
+   **Example**: n=11 (1011) → 4
+
+3. **Power of Two** (LeetCode #231)  
+   **Problem**: Check if number is power of 2.  
+   **Outcome**: Boolean.  
+   **Example**: n=16 → True
+
+4. **Valid Parentheses** (LeetCode #20)  
+   **Problem**: Check if string of brackets is valid.  
+   **Outcome**: Boolean.  
+   **Example**: s="()" → True
+
+5. **Count Primes** (LeetCode #204)  
+   **Problem**: Count primes less than n.  
+   **Outcome**: Integer.  
+   **Example**: n=10 → 4 (2,3,5,7)

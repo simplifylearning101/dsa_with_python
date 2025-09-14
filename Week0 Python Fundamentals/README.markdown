@@ -4,3 +4,4 @@
 | Part | Read | Practice | Attempt | Master the topic | Samples from Leetcode |
 |---|---|---|---|---|---|
 | 1 | [Introduction to Python Basics](materials/1_1.markdown) | [home work](materials/1_2.markdown) -> [solutions](materials/1_3.markdown)|[quiz](materials/1_4.markdown)|[Deepdive](materials/1_5.markdown)| [Example](materials/1_6.markdown), [Additional](materials/1_7.markdown) |
+| 2 | [Control Structures and Basic Operations in Python](materials/2_1.markdown) | [home work](materials/2_2.markdown) -> [solutions](materials/2_3.markdown)|[quiz](materials/2_4.markdown)|[Deepdive](materials/2_5.markdown)| [Example](materials/2_6.markdown), [Additional](materials/2_7.markdown) |

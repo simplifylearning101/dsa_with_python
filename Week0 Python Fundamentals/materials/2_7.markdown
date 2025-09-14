@@ -1,0 +1,124 @@
+# Solutions to Hour 2 LeetCode Problems
+
+## 1. Reverse Integer
+**Explanation**: Reverse digits using modulo and division, check overflow.
+
+**Brute-Force**:
+```python
+def reverse(x):
+    sign = 1 if x >= 0 else -1
+    x = abs(x)  # Handle negative
+    rev = 0
+    while x > 0:  # Extract digits
+        rev = rev * 10 + x % 10
+        x //= 10
+    rev *= sign  # Apply sign
+    if rev > 2**31 - 1 or rev < -2**31:  # Overflow
+        return 0
+    return rev
+```
+Time: O(log x), Space: O(1). **Pros**: Simple. **Cons**: Overflow handling.
+
+**Optimized**: Same, as modulo is efficient.
+
+## 2. Number of 1 Bits
+**Explanation**: Count 1s in binary.
+
+**Brute-Force**:
+```python
+def hammingWeight(n):
+    count = 0
+    while n > 0:  # Check each bit
+        if n % 2 == 1:  # If 1
+            count += 1
+        n //= 2  # Right shift
+    return count
+```
+Time: O(log n), Space: O(1). **Pros**: Clear. **Cons**: Slower.
+
+**Optimized** (Bit manipulation):
+```python
+def hammingWeight(n):
+    count = 0
+    while n:  # Until 0
+        n &= (n - 1)  # Clear least significant 1
+        count += 1
+    return count
+```
+Time: O(k) where k is 1s, Space: O(1). **Pros**: Faster for sparse 1s.
+
+## 3. Power of Two
+**Explanation**: Check if only one 1 in binary.
+
+**Brute-Force**:
+```python
+def isPowerOfTwo(n):
+    if n <= 0: return False
+    while n > 1:  # Divide by 2
+        if n % 2 != 0: return False
+        n //= 2
+    return True
+```
+Time: O(log n), Space: O(1).
+
+**Optimized** (Bit):
+```python
+def isPowerOfTwo(n):
+    if n <= 0: return False
+    return (n & (n - 1)) == 0  # Only one 1
+```
+Time: O(1), Space: O(1). **Pros**: Instant. **Cons**: Less intuitive.
+
+## 4. Valid Parentheses
+**Explanation**: Use stack-like logic (we'll use list).
+
+**Brute-Force**: Not applicable (stack is optimal).
+
+**Optimized**:
+```python
+def isValid(s):
+    stack = []
+    pairs = {')': '(', '}': '{', ']': '['}
+    for char in s:
+        if char in pairs.values():  # Open bracket
+            stack.append(char)
+        elif char in pairs:  # Close bracket
+            if not stack or stack.pop() != pairs[char]:
+                return False
+    return len(stack) == 0
+```
+Time: O(n), Space: O(n). **Pros**: Clear. **Cons**: Needs stack space.
+
+## 5. Count Primes
+**Explanation**: Count primes using Sieve of Eratosthenes.
+
+**Brute-Force**:
+```python
+def countPrimes(n):
+    count = 0
+    for i in range(2, n):
+        if is_prime(i):  # Check each
+            count += 1
+    return count
+
+def is_prime(n):
+    if n < 2: return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0: return False
+    return True
+```
+Time: O(n * sqrt(n)), Space: O(1). **Cons**: Slow.
+
+**Optimized** (Sieve):
+```python
+def countPrimes(n):
+    if n < 2: return 0
+    sieve = [True] * n
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n, i):  # Mark multiples
+                sieve[j] = False
+    return sum(sieve)
+```
+Time: O(n log log n), Space: O(n). **Pros**: Fast. **Cons**: More space.

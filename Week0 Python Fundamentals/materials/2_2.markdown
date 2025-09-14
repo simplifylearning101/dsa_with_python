@@ -1,0 +1,43 @@
+# Hour 2 Homework: Practice Problems
+
+Practice these 10 programs to reinforce control structures and operations. Write each as a .py file, run, and verify outputs.
+
+1. **Problem**: Calculate sum of two numbers.  
+   **Outcome**: Print sum.  
+   **Example**: a=3, b=4 → Output: 7
+
+2. **Problem**: Check if a number is even or odd.  
+   **Outcome**: Print "Even" or "Odd".  
+   **Example**: num=6 → Output: "Even"
+
+3. **Problem**: Print first 10 natural numbers using for loop.  
+   **Outcome**: Print 1 to 10.  
+   **Example**: Output: 1 2 3 ... 10
+
+4. **Problem**: Print numbers divisible by 3 from 1 to 15 using for loop.  
+   **Outcome**: Print 3, 6, 9, 12, 15.  
+   **Example**: Output: 3 6 9 12 15
+
+5. **Problem**: Find factorial of a number using while loop.  
+   **Outcome**: Print factorial.  
+   **Example**: n=5 → Output: 120
+
+6. **Problem**: Check if a number is positive and even.  
+   **Outcome**: Print "Yes" or "No".  
+   **Example**: num=4 → Output: "Yes"
+
+7. **Problem**: Print first 5 even numbers using while loop.  
+   **Outcome**: Print 2, 4, 6, 8, 10.  
+   **Example**: Output: 2 4 6 8 10
+
+8. **Problem**: Skip multiples of 4 in range 1 to 20 using continue.  
+   **Outcome**: Print numbers not divisible by 4.  
+   **Example**: Output: 1 2 3 5 6 7 9 ...
+
+9. **Problem**: Stop loop at first number divisible by 7 (1 to 20) using break.  
+   **Outcome**: Print numbers up to first multiple of 7.  
+   **Example**: Output: 1 2 3 4 5 6
+
+10. **Problem**: Check if a number is in range 10 to 20 (inclusive).  
+    **Outcome**: Print "In range" or "Out of range".  
+    **Example**: num=15 → Output: "In range"
