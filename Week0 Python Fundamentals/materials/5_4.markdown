@@ -1,0 +1,66 @@
+# Hour 5 Quiz: 30 Questions
+
+Covers Hour 5 and some Hour 1-4 concepts.
+
+1. What does `input()` return?  
+2. How to write to a file?  
+3. What is `try-except` used for?  
+4. Reverse string "cat". (Code)  
+5. What does `str.strip()` do?  
+6. Output of `f"{2} + {3} = {2+3}"`?  
+7. Handle division by zero. (Code)  
+8. What does `split()` return?  
+9. True or False: Strings are mutable.  
+10. Read file content. (Code)  
+11. What is f-string?  
+12. Common error with `input()`?  
+13. Join list ["a", "b"] with "-". (Code)  
+14. Why handle errors in interviews?  
+15. Output of `"hello"[1:4]`?  
+16. Check if input is number. (Code)  
+17. What does `upper()` do?  
+18. Why use `with` for files?  
+19. Output of `"a" + "b"`?  
+20. Count chars in string. (Code)  
+21. What is `ValueError`?  
+22. Format name and score. (Code)  
+23. Why test empty input?  
+24. Output of `"hello".split("l")`?  
+25. Write to file with newline. (Code)  
+26. What does `in` do for strings?  
+27. True or False: `input()` can return int.  
+28. Handle invalid dict key access. (Code)  
+29. Why explain string logic in interviews?  
+30. Convert string to list of chars. (Code)
+
+## Solutions for the Quiz
+1. String  
+2. `with open("file.txt", "w") as f: f.write("text")`  
+3. Handle errors gracefully.  
+4. `"cat"[::-1]` → "tac"  
+5. Removes leading/trailing whitespace.  
+6. 2 + 3 = 5  
+7. `try: print(10/num); except ZeroDivisionError: print("Error")`  
+8. List of substrings.  
+9. False  
+10. `with open("file.txt", "r") as f: print(f.read())`  
+11. String formatting with `f"..."`.  
+12. Forgetting to convert to number.  
+13. `"-".join(["a", "b"])` → "a-b"  
+14. Shows robustness.  
+15. ell  
+16. `try: int(input()); print("Number"); except ValueError: print("Not number")`  
+17. Converts to uppercase.  
+18. Auto-closes file.  
+19. ab  
+20. `len("hello")`  
+21. Error for invalid type conversion.  
+22. `f"{name}: {score}"`  
+23. Common edge case.  
+24. ['he', '', 'o']  
+25. `with open("file.txt", "w") as f: f.write("text\n")`  
+26. Checks substring membership.  
+27. False  
+28. `dict.get("key", "default")`  
+29. Shows problem-solving clarity.  
+30. `list("hello")`

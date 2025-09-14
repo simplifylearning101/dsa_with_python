@@ -1,0 +1,43 @@
+# Hour 5 Homework: Practice Problems
+
+Practice these 10 programs to master input/output, error handling, and strings. Write each as a .py file and verify outputs.
+
+1. **Problem**: Read name from input and print greeting.  
+   **Outcome**: Print "Hi, [name]!".  
+   **Example**: Input: Alice → Output: Hi, Alice!
+
+2. **Problem**: Read number and print its square.  
+   **Outcome**: Print square.  
+   **Example**: Input: 4 → Output: 16
+
+3. **Problem**: Write string to file.  
+   **Outcome**: Create file with text.  
+   **Example**: Write "Test" to file.txt
+
+4. **Problem**: Read file content and print it.  
+   **Outcome**: Print file content.  
+   **Example**: File contains "Hello" → Output: Hello
+
+5. **Problem**: Handle invalid number input.  
+   **Outcome**: Print error or number + 1.  
+   **Example**: Input: abc → Output: Invalid input
+
+6. **Problem**: Reverse a string using slicing.  
+   **Outcome**: Print reversed string.  
+   **Example**: Input: hello → Output: olleh
+
+7. **Problem**: Convert string to uppercase and split.  
+   **Outcome**: Print list of words.  
+   **Example**: Input: hello world → Output: ['HELLO', 'WORLD']
+
+8. **Problem**: Check if string is palindrome.  
+   **Outcome**: Print True/False.  
+   **Example**: Input: racecar → Output: True
+
+9. **Problem**: Format string with name and age.  
+   **Outcome**: Print formatted string.  
+   **Example**: name=Bob, age=25 → Output: Bob is 25 years old.
+
+10. **Problem**: Count vowels in a string.  
+    **Outcome**: Print vowel count.  
+    **Example**: Input: hello → Output: 2

@@ -1,0 +1,129 @@
+# Solutions to Hour 5 LeetCode Problems
+
+## 1. Reverse String
+**Explanation**: Reverse character array in-place.
+
+**Brute-Force**:
+```python
+def reverseString(s):
+    result = s[::-1]  # New list
+    for i in range(len(s)):
+        s[i] = result[i]
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+**Optimized** (Two-pointer):
+```python
+def reverseString(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        s[left], s[right] = s[right], s[left]
+        left += 1
+        right -= 1
+```
+**Time**: O(n), **Space**: O(1). **Pros**: In-place. **Cons**: More logic.
+
+## 2. Longest Common Prefix
+**Explanation**: Compare characters across strings.
+
+**Brute-Force**:
+```python
+def longestCommonPrefix(strs):
+    if not strs: return ""
+    prefix = strs[0]
+    for s in strs[1:]:
+        while s[:len(prefix)] != prefix:
+            prefix = prefix[:-1]
+            if not prefix: return ""
+    return prefix
+```
+**Time**: O(n * m), **Space**: O(1). **Pros**: Intuitive. **Cons**: Slow.
+
+**Optimized**:
+```python
+def longestCommonPrefix(strs):
+    if not strs: return ""
+    for i, char in enumerate(strs[0]):
+        for s in strs[1:]:
+            if i >= len(s) or s[i] != char:
+                return strs[0][:i]
+    return strs[0]
+```
+**Time**: O(n * m), **Space**: O(1). **Pros**: Cleaner. **Cons**: Still linear.
+
+## 3. Valid Palindrome
+**Explanation**: Check palindrome ignoring non-alphanumeric.
+
+**Brute-Force**:
+```python
+def isPalindrome(s):
+    clean = "".join(c.lower() for c in s if c.isalnum())
+    return clean == clean[::-1]
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+**Optimized** (Two-pointer):
+```python
+def isPalindrome(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        if s[left].lower() != s[right].lower():
+            return False
+        left += 1
+        right -= 1
+    return True
+```
+**Time**: O(n), **Space**: O(1). **Pros**: In-place. **Cons**: More complex.
+
+## 4. String to Integer (atoi)
+**Explanation**: Parse string to int with edge cases.
+
+**Brute-Force**:
+```python
+def myAtoi(s):
+    s = s.strip()
+    if not s: return 0
+    sign = 1
+    if s[0] in "+-":
+        sign = -1 if s[0] == "-" else 1
+        s = s[1:]
+    result = 0
+    for c in s:
+        if not c.isdigit(): break
+        result = result * 10 + int(c)
+    result *= sign
+    if result < -2**31: return -2**31
+    if result > 2**31 - 1: return 2**31 - 1
+    return result
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Handles edge cases. **Cons**: Complex.
+
+**Optimized**: Same, as parsing is linear.
+
+## 5. Length of Last Word
+**Explanation**: Find length of last word.
+
+**Brute-Force**:
+```python
+def lengthOfLastWord(s):
+    words = s.split()
+    return len(words[-1]) if words else 0
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+**Optimized**:
+```python
+def lengthOfLastWord(s):
+    s = s.rstrip()
+    if not s: return 0
+    count = 0
+    for c in s[::-1]:
+        if c == " ": break
+        count += 1
+    return count
+```
+**Time**: O(n), **Space**: O(1). **Pros**: No split. **Cons**: Manual loop.

@@ -1,0 +1,84 @@
+# Solutions to Hour 5 Homework Problems
+
+Solutions with commented code.
+
+**Problem 1**:
+```python
+# Read and greet
+name = input("Enter your name: ")
+print(f"Hi, {name}!")  # Output: Hi, Alice!
+```
+
+**Problem 2**:
+```python
+# Square input
+try:
+    num = int(input("Enter number: "))
+    print(num * num)  # Output: 16
+except ValueError:
+    print("Invalid input")
+```
+
+**Problem 3**:
+```python
+# Write to file
+with open("file.txt", "w") as file:
+    file.write("Test")  # Creates file.txt with "Test"
+```
+
+**Problem 4**:
+```python
+# Read file
+with open("file.txt", "r") as file:
+    content = file.read()
+print(content)  # Output: Test
+```
+
+**Problem 5**:
+```python
+# Handle invalid input
+try:
+    num = int(input("Enter number: "))
+    print(num + 1)
+except ValueError:
+    print("Invalid input")  # Output for "abc"
+```
+
+**Problem 6**:
+```python
+# Reverse string
+s = input("Enter text: ")
+print(s[::-1])  # Output: olleh
+```
+
+**Problem 7**:
+```python
+# Uppercase and split
+s = input("Enter text: ")
+words = s.upper().split()
+print(words)  # Output: ['HELLO', 'WORLD']
+```
+
+**Problem 8**:
+```python
+# Palindrome check
+s = input("Enter text: ")
+print(s == s[::-1])  # Output: True
+```
+
+**Problem 9**:
+```python
+# Format string
+name = "Bob"
+age = 25
+print(f"{name} is {age} years old.")  # Output: Bob is 25 years old.
+```
+
+**Problem 10**:
+```python
+# Count vowels
+s = input("Enter text: ")
+vowels = "aeiouAEIOU"
+count = sum(1 for c in s if c in vowels)
+print(count)  # Output: 2
+```

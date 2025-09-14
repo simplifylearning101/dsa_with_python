@@ -1,0 +1,134 @@
+# Hour 5: Input/Output, Error Handling, and String Manipulation in Python
+
+## Agenda
+This hour introduces how to handle input/output, manage errors, and manipulate strings in Python. These skills are crucial for coding interviews, as they allow you to interact with users, handle edge cases, and process text efficiently.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Read input from the console and write output.
+- Write to and read from files.
+- Handle basic errors using try-except.
+- Perform common string operations like slicing, concatenation, and formatting.
+- Solve problems involving text processing.
+- Explain input/output and error handling logic clearly in interviews.
+
+## Topics Covered
+1. Console Input/Output
+2. File Input/Output
+3. Basic Error Handling with Try-Except
+4. String Manipulation: Slicing, Concatenation, and Formatting
+5. String Methods and Operations
+6. Interview Tips for I/O and Strings
+
+## Detailed Explanation of Topics
+
+### 1. Console Input/Output
+Python uses `input()` to read from the console and `print()` for output.
+
+Example:
+```python
+# Read and print name
+name = input("Enter your name: ")  # Prompts user
+print("Hello, " + name + "!")  # Output: Hello, [name]!
+```
+
+Note: `input()` returns a string, so convert for numbers:
+```python
+# Convert input to integer
+age = int(input("Enter age: "))  # Convert string to int
+print(age + 1)  # Output: age + 1
+```
+
+### 2. File Input/Output
+You can read from and write to files using `open()`.
+
+Example:
+```python
+# Write to file
+with open("output.txt", "w") as file:  # 'w' for write
+    file.write("Hello, file!\n")  # Write line
+
+# Read from file
+with open("output.txt", "r") as file:  # 'r' for read
+    content = file.read()  # Read all
+print(content)  # Output: Hello, file!
+```
+
+`with` ensures the file closes automatically.
+
+### 3. Basic Error Handling with Try-Except
+Use `try-except` to handle errors gracefully.
+
+Example:
+```python
+# Handle division by zero
+try:
+    num = int(input("Enter number: "))
+    result = 10 / num
+    print(result)
+except ZeroDivisionError:  # Catch specific error
+    print("Cannot divide by zero!")
+except ValueError:  # Catch invalid input
+    print("Please enter a valid number!")
+```
+
+### 4. String Manipulation: Slicing, Concatenation, and Formatting
+Strings are sequences of characters, immutable.
+
+- **Slicing**: Access parts using `str[start:end:step]`.
+- **Concatenation**: Join with `+`.
+- **Formatting**: Use f-strings or `format()`.
+
+Example:
+```python
+# String operations
+text = "Python"
+print(text[0:3])  # Output: Pyt (slice)
+print(text + " rocks!")  # Output: Python rocks!
+print(f"Learn {text}")  # Output: Learn Python
+```
+
+### 5. String Methods and Operations
+Common methods:
+- `upper()`, `lower()`: Change case.
+- `strip()`: Remove whitespace.
+- `split()`: Split into list.
+- `join()`: Join list into string.
+
+Example:
+```python
+# String methods
+s = "  hello world  "
+print(s.upper())  # Output: HELLO WORLD
+print(s.strip())  # Output: hello world
+words = s.split()  # Output: ['hello', 'world']
+print("-".join(words))  # Output: hello-world
+```
+
+### 6. Interview Tips for I/O and Strings
+- Validate inputs in interviews (e.g., check for empty strings).
+- Use f-strings for readable output.
+- Handle errors explicitly to show robustness.
+- Strings are common in interviews (e.g., reversing, palindromes).
+
+Example:
+```python
+# Check if string is empty
+s = input("Enter text: ")
+if not s:  # Check empty
+    print("Empty input!")
+else:
+    print(s)
+```
+
+## Points to Remember
+- `input()` returns strings; convert for numbers (`int()`, `float()`).
+- Use `with` for file operations to avoid forgetting to close.
+- Catch specific exceptions (e.g., `ValueError`) rather than general.
+- F-strings (`f"..."`) are modern and readable for formatting.
+- Strings are immutable—operations create new strings.
+- In interviews, explain error handling to show robustness.
+- Common error: Forgetting to convert input types.
+- Use `strip()` to clean user input.
+- Test edge cases: empty inputs, invalid formats.
+- Practice verbalizing string manipulation steps.

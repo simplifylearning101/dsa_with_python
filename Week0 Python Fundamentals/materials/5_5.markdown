@@ -1,0 +1,69 @@
+# Hour 5 Deep Dive: Mastering I/O and String Manipulation for Interviews
+
+This section explores input/output, error handling, and strings in depth with complex programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Advanced String Processing**: Parse and transform complex strings.
+
+Example: Word Frequency
+```python
+# Count word frequency in text
+def word_frequency(text):
+    words = text.lower().split()
+    counts = {}
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+    return counts
+print(word_frequency("hello world hello"))  # Output: {'hello': 2, 'world': 1}
+```
+
+- **Robust Error Handling**: Handle multiple error types.
+
+Example: Safe File Reader
+```python
+# Read file with error handling
+def read_file_safe(filename):
+    try:
+        with open(filename, "r") as file:
+            return file.read()
+    except FileNotFoundError:
+        return "File not found"
+    except PermissionError:
+        return "Permission denied"
+print(read_file_safe("nonexistent.txt"))  # Output: File not found
+```
+
+## Interview Questions and Answers
+1. **How to validate user input?**  
+   **Answer**: Use `try-except` for type conversion, check for empty strings.  
+   ```python
+   s = input("Enter number: ")
+   if not s: return "Empty"
+   try: return int(s)
+   except ValueError: return "Invalid"
+   ```
+   **Intent**: Tests robustness.
+
+2. **Write function to reverse words in string.**  
+   **Answer**:
+   ```python
+   def reverse_words(s):
+       words = s.split()
+       return " ".join(words[::-1])
+   print(reverse_words("hello world"))  # Output: world hello
+   ```
+   **Intent**: Tests string manipulation.
+
+3. **Why use f-strings over `+`?**  
+   **Answer**: F-strings are readable, less error-prone. **Intent**: Modern Python knowledge.
+
+4. **Handle file errors in interviews.**  
+   **Answer**: Use `try-except` for `FileNotFoundError`, `PermissionError`. **Intent**: Error handling skills.
+
+5. **Write function to check valid email (basic).**  
+   **Answer**:
+   ```python
+   def is_valid_email(email):
+       return "@" in email and "." in email
+   ```
+   **Intent**: String parsing logic.
