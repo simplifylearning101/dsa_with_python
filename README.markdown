@@ -1,10 +1,16 @@
 # 10-Week Coding Interview Preparation Course: Mastering Data Structures and Algorithms with Python
 
-Welcome to this 10-week cohort designed to prepare you for coding interviews and help you master data structures and algorithms (DSA) using Python. As your mentor with over two decades of teaching experience in computer science, I focus on simplifying complex ideas with clear, simple English explanations. We'll break down every concept step by step, using example programs filled with comments to show exactly what each line of code does. I don't assume you have any prior knowledge—we'll start from the basics and build up gradually.
+Welcome to this 10-week course designed to prepare you for coding interviews and help you master data structures and algorithms (DSA) using Python. We don't assume you have any prior knowledge — we'll start from the basics and build up gradually.
 
 Each day, you'll get detailed lessons with code examples, and to build your skills through practice, you'll receive 10-15 homework programs of increasing complexity on the topics covered. These will reinforce what you've learned and help you apply it. Additionally, I'll guide you to practice problems on platforms like LeetCode or NeetCode, selecting relevant ones to match the week's focus. By the end of this course, you'll be confident in solving interview-level problems and explaining your thought process clearly.
 
+## Roadmap of the course
 The course is structured as follows: Week 0 covers Python fundamentals to ensure a strong foundation. Week 1 dives into advanced Python concepts to make you efficient with the language. Weeks 2 through 9 focus on core DSA topics, building from simpler structures to more advanced algorithms, with plenty of interview-style practice.
+
+| Week | Theme | Link |
+|---|---|---|
+| 1 | [Python Fundamentals](Week0%20Python%20Fundamentals/README.markdown) |
+
 
 ## Week 0: Python Fundamentals
 This week sets the base for everything. If you're new to programming or need a refresher, you'll start here to get comfortable with Python's basics. You'll learn how to think like a programmer, write simple scripts, and debug code.
