@@ -1,0 +1,160 @@
+# Hour 1: Introduction to Python Basics
+
+## Agenda
+This hour introduces you to the world of Python programming. We'll start from scratch, assuming no prior knowledge, and get you set up to write and run your first code.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Understand what Python is and why it's useful for coding interviews and DSA.
+- Install Python on your computer.
+- Use the Python interpreter to run simple commands.
+- Write and execute your first Python program.
+- Declare variables and work with basic data types like integers, floats, strings, and booleans.
+
+## Topics Covered
+1. What is Python?
+2. Installing Python.
+3. Using the Python Interpreter and Basic IDEs.
+4. Writing Your First Program: Hello, World!
+5. Variables in Python.
+6. Basic Data Types: Integers, Floats, Strings, Booleans.
+
+## Detailed Explanation of Topics
+
+### 1. What is Python?
+Python is a high-level, interpreted programming language known for its simplicity and readability. It's like English, making it easy to learn and write code quickly. Created by Guido van Rossum in 1991, Python is widely used in web development, data science, automation, and especially in coding interviews because of its clean syntax that lets you focus on logic rather than boilerplate code.
+
+Why Python for DSA and interviews?
+- Easy to implement complex algorithms without worrying about low-level details.
+- Built-in data structures like lists and dictionaries are powerful for solving problems.
+- Companies like Google, Amazon, and Meta often allow Python in interviews.
+
+No example code here—just concepts!
+
+### 2. Installing Python
+To start coding, you need Python installed on your machine.
+
+Steps:
+- Go to the official Python website: python.org.
+- Download the latest version (as of now, Python 3.12 or later).
+- For Windows: Run the installer, check "Add Python to PATH".
+- For Mac: Use the installer or Homebrew (brew install python).
+- For Linux: Use package manager like apt install python3.
+
+Verify installation:
+Open a terminal/command prompt and type `python --version`. It should show the version number.
+
+If you face issues, search for "install Python on [your OS]"—but we'll assume it's straightforward.
+
+### 3. Using the Python Interpreter and Basic IDEs
+The interpreter lets you run Python code line by line—great for testing ideas.
+
+- Open terminal and type `python` or `python3` to enter the interpreter (>>> prompt).
+- Type commands and press Enter to see results.
+- Exit with `exit()`.
+
+For writing full programs, use an IDE like VS Code (free, with Python extension), PyCharm, or even IDLE (comes with Python).
+
+Example in interpreter:
+Type: `print("Hello")` and hit Enter. It prints "Hello".
+
+### 4. Writing Your First Program: Hello, World!
+Let's write a simple program.
+
+Create a file named `hello.py` using a text editor or IDE.
+
+Code:
+```python
+# This is a comment - ignored by Python, used for explanations
+print("Hello, World!")  # The print function displays text on the screen
+# Run this file by typing 'python hello.py' in terminal
+```
+
+Explanation:
+- `#` starts a comment—use them to explain code.
+- `print()` is a built-in function to output text.
+- Strings are enclosed in quotes.
+
+Run it: Open terminal, navigate to the file, type `python hello.py`. Output: Hello, World!
+
+### 5. Variables in Python
+Variables are like boxes to store data. You don't need to declare types—Python figures it out (dynamic typing).
+
+Example:
+```python
+# Creating a variable named 'age' and assigning value 25
+age = 25  # No need for 'int age =' like in other languages
+
+# Printing the variable
+print(age)  # Output: 25
+
+# Reassigning the variable
+age = 30  # Now age is 30
+print(age)  # Output: 30
+
+# Variables can hold different types over time
+age = "Thirty"  # Now it's a string
+print(age)  # Output: Thirty
+```
+
+Rules:
+- Variable names: Start with letter or underscore, no spaces, case-sensitive (age != Age).
+- Good practice: Use descriptive names like user_age.
+
+### 6. Basic Data Types: Integers, Floats, Strings, Booleans
+Python has built-in types for data.
+
+- **Integers (int)**: Whole numbers, no decimal.
+```python
+# Integer example
+num = 10  # Assign 10 to num
+print(num)  # Output: 10
+print(type(num))  # Output: <class 'int'> - shows the type
+```
+
+- **Floats (float)**: Numbers with decimals.
+```python
+# Float example
+pi = 3.14  # Assign 3.14
+print(pi)  # Output: 3.14
+print(type(pi))  # Output: <class 'float'>
+```
+
+- **Strings (str)**: Text, in single or double quotes.
+```python
+# String example
+name = "Alice"  # Or 'Alice'
+print(name)  # Output: Alice
+print(type(name))  # Output: <class 'str'>
+```
+
+- **Booleans (bool)**: True or False (capitalized).
+```python
+# Boolean example
+is_adult = True  # Or False
+print(is_adult)  # Output: True
+print(type(is_adult))  # Output: <class 'bool'>
+```
+
+You can convert types using int(), float(), str(), bool().
+
+Example table for quick reference:
+
+| Type    | Example     | Description                  |
+|---------|-------------|------------------------------|
+| int     | 42          | Whole numbers                |
+| float   | 3.14159     | Decimal numbers              |
+| str     | "Hello"     | Text                         |
+| bool    | True        | Logical values               |
+
+## Points to Remember
+- Python is case-sensitive: `Print` != `print`.
+- Use meaningful variable names for readability—interviewers love clean code.
+- Dynamic typing means no type declarations, but be careful with type errors (e.g., adding string and int).
+- Comments with # are crucial for explaining code in interviews.
+- Use `type()` to check data types—helpful for debugging.
+- In interviews, explain your code verbally; practice saying what each line does.
+- Common pitfall: Forgetting quotes around strings causes NameError.
+- Python uses indentation (spaces/tabs) for code blocks—no braces {}.
+- For DSA, understanding types helps with operations like addition (int + int) vs concatenation (str + str).
+- Remember: Booleans are used in conditions; 0 is False, non-zero is True.

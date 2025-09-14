@@ -1,0 +1,43 @@
+# Hour 1 Homework: Practice Problems
+
+Practice these 10 programs to reinforce introduction, variables, and data types. Start simple and build complexity. Write each as a .py file, run them, and check outputs.
+
+Problem 1:  
+Outcome: Print a welcome message using print().  
+Example: Output: "Welcome to Python!"
+
+Problem 2:  
+Outcome: Create a variable for your name (string) and print it.  
+Example: name = "Bob" → Output: "Bob"
+
+Problem 3:  
+Outcome: Create an integer variable for age and print "I am [age] years old."  
+Example: age = 25 → Output: "I am 25 years old."
+
+Problem 4:  
+Outcome: Create a float for height in meters and print it with two decimals.  
+Example: height = 1.75 → Output: 1.75
+
+Problem 5:  
+Outcome: Create a boolean is_student and print if you are a student.  
+Example: is_student = True → Output: True
+
+Problem 6:  
+Outcome: Reassign a variable from int to string and print both times.  
+Example: var = 10 → "10" (print twice)
+
+Problem 7:  
+Outcome: Use type() to print types of an int, float, str, bool.  
+Example: Output: <class 'int'>, etc.
+
+Problem 8:  
+Outcome: Create variables for name, age, height; print in one sentence.  
+Example: "Alice is 30 years old and 1.65m tall."
+
+Problem 9:  
+Outcome: Convert a string "100" to int and add 50, print result.  
+Example: Output: 150
+
+Problem 10:  
+Outcome: Create a boolean from comparison (e.g., 5 > 3) and print it.  
+Example: Output: True

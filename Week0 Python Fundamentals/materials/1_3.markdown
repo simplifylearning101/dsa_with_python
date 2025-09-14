@@ -1,0 +1,80 @@
+# Solutions to Hour 1 Homework Problems
+
+Here are the solutions with commented code.
+
+Problem 1:
+```python
+# Simple print statement
+print("Welcome to Python!")  # Output: Welcome to Python!
+```
+
+Problem 2:
+```python
+# String variable
+name = "Bob"  # Assign name
+print(name)  # Output: Bob
+```
+
+Problem 3:
+```python
+# Integer variable in sentence
+age = 25  # Assign age
+print("I am " + str(age) + " years old.")  # Output: I am 25 years old. (Note: str() to concatenate)
+```
+
+Problem 4:
+```python
+# Float with print
+height = 1.75  # Assign height
+print(height)  # Output: 1.75 (Python prints floats as is)
+```
+
+Problem 5:
+```python
+# Boolean
+is_student = True  # Assign boolean
+print(is_student)  # Output: True
+```
+
+Problem 6:
+```python
+# Reassign type
+var = 10  # Int
+print(var)  # Output: 10
+var = "10"  # Now str
+print(var)  # Output: 10 (but as string)
+```
+
+Problem 7:
+```python
+# Types
+print(type(42))  # <class 'int'>
+print(type(3.14))  # <class 'float'>
+print(type("Hi"))  # <class 'str'>
+print(type(True))  # <class 'bool'>
+```
+
+Problem 8:
+```python
+# Multiple variables
+name = "Alice"
+age = 30
+height = 1.65
+print(name + " is " + str(age) + " years old and " + str(height) + "m tall.")  # Output: Alice is 30 years old and 1.65m tall.
+```
+
+Problem 9:
+```python
+# Conversion
+num_str = "100"  # String
+num_int = int(num_str)  # Convert to int
+result = num_int + 50  # Add
+print(result)  # Output: 150
+```
+
+Problem 10:
+```python
+# Boolean from comparison
+comparison = 5 > 3  # True
+print(comparison)  # Output: True
+```

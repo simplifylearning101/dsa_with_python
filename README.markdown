@@ -279,3 +279,6 @@ def is_power_of_two(n):
 **Homework**: 10-15 programs, e.g., generate subsets. Practice 20+ LeetCode problems across topics, plus 5-10 mock interview sessions on NeetCode.
 
 By following this roadmap, you'll gain the skills to ace coding interviews. Practice consistently, review your mistakes, and reach out if you need help—let's make you an expert!
+
+Visit the concerned folder README file for that perticular week content.
+

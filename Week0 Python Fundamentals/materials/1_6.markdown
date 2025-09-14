@@ -1,0 +1,30 @@
+# Hour 1 LeetCode/NeetCode Problems
+
+These are basic problems to practice variables and types. Use LeetCode or NeetCode platforms.
+
+1. **Fizz Buzz** (LeetCode #412)  
+   Problem: Write a program that outputs the string representation of numbers from 1 to n. For multiples of 3, "Fizz"; 5, "Buzz"; both, "FizzBuzz".  
+   Outcome: List of strings.  
+   Example: n=3 → ["1","2","Fizz"]
+
+2. **Palindrome Number** (LeetCode #9)  
+   Problem: Determine if an integer is a palindrome without converting to string (but you can for basics).  
+   Outcome: Boolean.  
+   Example: 121 → True
+
+3. **Roman to Integer** (LeetCode #13)  
+   Problem: Convert Roman numeral string to int.  
+   Outcome: Integer.  
+   Example: "III" → 3
+
+4. **Add Digits** (LeetCode #258)  
+   Problem: Reduce number to single digit by summing digits repeatedly.  
+   Outcome: Integer.  
+   Example: 38 → 2 (3+8=11, 1+1=2)
+
+5. **Ugly Number** (LeetCode #263)  
+   Problem: Check if number is ugly (prime factors only 2,3,5).  
+   Outcome: Boolean.  
+   Example: 6 → True
+
+Practice these to apply basics.

@@ -1,0 +1,66 @@
+# Hour 1 Quiz: 30 Questions
+
+These questions cover Hour 1 topics. Mix with basics (since no previous).
+
+1. What does Python use for comments?  
+2. How do you check the type of a variable?  
+3. What is the output of print("Hello" + "World")?  
+4. True or False: Variable names can start with a number.  
+5. What data type is 3.14?  
+6. How to install Python? (Short answer)  
+7. What command enters the Python interpreter?  
+8. What is dynamic typing?  
+9. Convert "42" to int.  
+10. What is the boolean for 0 == 0?  
+11. Print your name using a variable. (Code)  
+12. What happens if you print(5 + "5")?  
+13. What is Python named after? (Fun fact: Monty Python)  
+14. Difference between int and float.  
+15. How to exit interpreter?  
+16. Is Python compiled or interpreted?  
+17. What does print(type(True)) output?  
+18. Create a variable x = 10, reassign to "ten".  
+19. What is indentation in Python?  
+20. Common error if quotes missing around string.  
+21. What version of Python are we using? (3.x)  
+22. Why use descriptive variable names?  
+23. Output of bool(0).  
+24. How to run a .py file?  
+25. What is a high-level language?  
+26. True or False: Python is case-sensitive.  
+27. Example of boolean.  
+28. What does PATH do in installation?  
+29. Convert 100 to string.  
+30. Why Python for interviews?
+
+## Solutions for the Quiz
+1. # symbol.  
+2. type(variable).  
+3. HelloWorld (no space).  
+4. False.  
+5. float.  
+6. Download from python.org, run installer.  
+7. python or python3.  
+8. Types determined at runtime.  
+9. int("42").  
+10. True.  
+11. name = "YourName"; print(name)  
+12. TypeError (int + str).  
+13. Monty Python comedy group.  
+14. int: whole, float: decimal.  
+15. exit().  
+16. Interpreted.  
+17. <class 'bool'>.  
+18. x = 10; x = "ten"  
+19. Spaces for code blocks.  
+20. NameError.  
+21. Python 3.  
+22. Readability, maintainability.  
+23. False.  
+24. python filename.py  
+25. Closer to human language.  
+26. True.  
+27. True or False.  
+28. Allows running python from anywhere.  
+29. str(100).  
+30. Simple syntax, focus on logic.
