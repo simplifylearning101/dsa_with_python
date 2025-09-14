@@ -1,0 +1,129 @@
+# Solutions to Week 1, Hour 6 LeetCode Problems
+
+## 1. Word Frequency
+**Explanation**: Count word frequencies in file.
+
+**Solution**:
+```python
+# Function to count word frequencies
+def word_frequency(filename):
+    # Initialize dictionary for word counts
+    freq = {}
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read entire content
+        content = file.read()
+        # Split into words
+        words = content.split()
+        # Count each word
+        for word in words:
+            # Update frequency in dictionary
+            freq[word] = freq.get(word, 0) + 1
+    return freq
+# Test the function
+print(word_frequency('input.txt'))  # Output: {'the': 2, 'day': 1} (if file has "the day the")
+```
+**Time**: O(n), where n is file size. **Space**: O(k), where k is unique words. **Pros**: Simple. **Cons**: Assumes clean input.
+
+## 2. Valid Parentheses
+**Explanation**: Read string from file and check valid parentheses.
+
+**Solution**:
+```python
+# Function to check valid parentheses
+def is_valid_parentheses(filename):
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read string
+        s = file.read().strip()
+    # Initialize stack for parentheses
+    stack = []
+    # Dictionary for matching pairs
+    pairs = {')': '(', '}': '{', ']': '['}
+    # Iterate through each character
+    for char in s:
+        # If closing parenthesis
+        if char in pairs:
+            # Check if stack empty or mismatch
+            if not stack or stack.pop() != pairs[char]:
+                return False
+        # If opening parenthesis
+        else:
+            stack.append(char)
+    # Return True if stack empty
+    return len(stack) == 0
+# Test the function
+print(is_valid_parentheses('parens.txt'))  # Output: True (if file has "()")
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Robust. **Cons**: Stack usage.
+
+## 3. CSV Parser
+**Explanation**: Parse CSV and return sorted scores.
+
+**Solution**:
+```python
+# Function to parse CSV and return sorted scores
+def parse_scores(filename):
+    # Initialize list for scores
+    scores = []
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read all lines
+        lines = file.readlines()
+        # Process lines after header
+        for line in lines[1:]:
+            # Split into name and score
+            _, score = line.strip().split(',')
+            # Append score as integer
+            scores.append(int(score))
+    # Return sorted scores
+    return sorted(scores)
+# Test the function
+print(parse_scores('data.csv'))  # Output: [85, 90] (if file has "name,score\nAlice,90\nBob,85")
+```
+**Time**: O(n log n), **Space**: O(n). **Pros**: Clean. **Cons**: Assumes valid CSV.
+
+## 4. Log File Analysis
+**Explanation**: Count user entries in log file.
+
+**Solution**:
+```python
+# Function to count user entries
+def count_users(filename):
+    # Initialize dictionary for user counts
+    counts = {}
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read each line
+        for line in file:
+            # Extract user from line
+            user = line.strip().split(',')[0]
+            # Update count
+            counts[user] = counts.get(user, 0) + 1
+    return counts
+# Test the function
+print(count_users('log.txt'))  # Output: {'Alice': 1, 'Bob': 1} (if file has "Alice,login\nBob,logout")
+```
+**Time**: O(n), **Space**: O(k). **Pros**: Simple. **Cons**: Assumes format.
+
+## 5. Reverse File Content
+**Explanation**: Reverse file content and write to new file.
+
+**Solution**:
+```python
+# Function to reverse file content
+def reverse_file(input_file, output_file):
+    # Open input file for reading
+    with open(input_file, 'r') as infile:
+        # Read content
+        content = infile.read()
+    # Reverse the content
+    reversed_content = content[::-1]
+    # Open output file for writing
+    with open(output_file, 'w') as outfile:
+        # Write reversed content
+        outfile.write(reversed_content)
+# Test the function
+reverse_file('input.txt', 'output.txt')  # Output file has "cba" (if input has "abc")
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Straightforward. **Cons**: Loads entire file.

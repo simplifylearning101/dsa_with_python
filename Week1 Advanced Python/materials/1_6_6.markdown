@@ -1,0 +1,28 @@
+# Week 1, Hour 6 LeetCode/NeetCode Problems
+
+Practice these to apply file handling concepts. Since LeetCode typically doesn’t involve file I/O, these are adapted problems using file inputs.
+
+1. **Word Frequency** (Inspired by LeetCode #192)  
+   **Problem**: Read file and count word frequencies.  
+   **Outcome**: Dictionary.  
+   **Example**: File: "the day the" → {'the': 2, 'day': 1}
+
+2. **Valid Parentheses** (LeetCode #20, File Input)  
+   **Problem**: Read string from file and check valid parentheses.  
+   **Outcome**: Boolean.  
+   **Example**: File: "()" → True
+
+3. **CSV Parser** (Inspired by Data Processing)  
+   **Problem**: Parse CSV file with name,score and return sorted scores.  
+   **Outcome**: List of scores.  
+   **Example**: File: "name,score\nAlice,90\nBob,85" → [85, 90]
+
+4. **Log File Analysis** (Inspired by Data Processing)  
+   **Problem**: Read log file and count entries by user.  
+   **Outcome**: Dictionary.  
+   **Example**: File: "Alice,login\nBob,logout" → {'Alice': 1, 'Bob': 1}
+
+5. **Reverse File Content** (Inspired by File Manipulation)  
+   **Problem**: Read file and write reversed content to new file.  
+   **Outcome**: New file.  
+   **Example**: Input file: "abc" → Output file: "cba"

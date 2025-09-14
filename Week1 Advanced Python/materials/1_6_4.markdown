@@ -1,0 +1,66 @@
+# Week 1, Hour 6 Quiz: 30 Questions
+
+Covers Hour 6 and some Week 0/Hour 1-5 concepts.
+
+1. What does `open(file, 'r')` do?  
+2. Purpose of `with` statement?  
+3. Read entire file content. (Code)  
+4. Output of writing "Test" to new file?  
+5. What is `FileNotFoundError`?  
+6. True or False: Files auto-close without `with`.  
+7. Append "Hi" to file. (Code)  
+8. What does `readlines()` return?  
+9. Parse CSV line "a,1". (Code)  
+10. Why use `with` in interviews?  
+11. Output of `file.readline()` for first line?  
+12. Common error in file handling?  
+13. Count lines in file. (Code)  
+14. What is file mode 'a'?  
+15. True or False: `write()` adds newline.  
+16. Handle missing file. (Code)  
+17. Why explain file operations?  
+18. Write list ["x", "y"] to file. (Code)  
+19. Output of `len(file.readlines())`?  
+20. Why test empty files?  
+21. Reverse file lines. (Code)  
+22. What is `writelines()`?  
+23. Count word "test" in file. (Code)  
+24. Why avoid manual file closing?  
+25. Output of parsing "name,age\nBob,25"?  
+26. Copy file content. (Code)  
+27. Why handle file exceptions?  
+28. Read first two lines. (Code)  
+29. Output of appending to empty file?  
+30. When to use `csv` module?
+
+## Solutions for the Quiz
+1. Opens file for reading.  
+2. Ensures file auto-closes.  
+3. `with open('file.txt', 'r') as f: print(f.read())`  
+4. Creates file with "Test".  
+5. Error when file doesn’t exist.  
+6. False  
+7. `with open('file.txt', 'a') as f: f.write('Hi\n')`  
+8. List of lines.  
+9. `line.strip().split(',')`  
+10. Shows robust coding.  
+11. First line of file.  
+12. Forgetting to close file.  
+13. `with open('file.txt', 'r') as f: print(len(f.readlines()))`  
+14. Append mode.  
+15. False  
+16. `try: with open('file.txt', 'r') as f: print(f.read()); except FileNotFoundError: print("Not found")`  
+17. Shows clarity, robustness.  
+18. `with open('file.txt', 'w') as f: for x in ['x', 'y']: f.write(f'{x}\n')`  
+19. Number of lines.  
+20. Common edge case.  
+21. `with open('file.txt', 'r') as f: for line in reversed(f.readlines()): print(line.strip())`  
+22. Writes list of strings.  
+23. `with open('file.txt', 'r') as f: print(f.read().split().count('test'))`  
+24. Risks resource leaks.  
+25. ['Bob', '25']  
+26. `with open('in.txt', 'r') as f: content = f.read(); with open('out.txt', 'w') as f: f.write(content)`  
+27. Ensures robust code.  
+28. `with open('file.txt', 'r') as f: print(f.readline().strip()); print(f.readline().strip())`  
+29. File with appended content.  
+30. For complex CSV parsing.

@@ -1,0 +1,43 @@
+# Week 1, Hour 6 Homework: Practice Problems
+
+Practice these 10 programs to master file handling. Write each as a .py file and verify outputs. Assume input files exist unless specified.
+
+1. **Problem**: Read and print entire file content.  
+   **Outcome**: Print content.  
+   **Example**: Input file: "Hello\nWorld" → Output: Hello\nWorld
+
+2. **Problem**: Write "Test" to a new file.  
+   **Outcome**: Create file with content.  
+   **Example**: Output file: "Test"
+
+3. **Problem**: Append "New line" to existing file.  
+   **Outcome**: Update file.  
+   **Example**: File: "Old" → Output: Old\nNew line
+
+4. **Problem**: Count lines in a file.  
+   **Outcome**: Print line count.  
+   **Example**: File: "a\nb\nc" → Output: 3
+
+5. **Problem**: Read file and print lines in reverse.  
+   **Outcome**: Print reversed lines.  
+   **Example**: File: "a\nb" → Output: b\na
+
+6. **Problem**: Handle missing file gracefully.  
+   **Outcome**: Print error message.  
+   **Example**: Missing file → Output: File not found
+
+7. **Problem**: Parse CSV file with names and scores.  
+   **Outcome**: Print names and scores.  
+   **Example**: File: "name,score\nAlice,90" → Output: Alice: 90
+
+8. **Problem**: Write list ["a", "b"] to file.  
+   **Outcome**: Create file with lines.  
+   **Example**: Output file: "a\nb"
+
+9. **Problem**: Count word occurrences in file.  
+   **Outcome**: Print word frequencies.  
+   **Example**: File: "hello world hello" → Output: {'hello': 2, 'world': 1}
+
+10. **Problem**: Copy content from one file to another.  
+    **Outcome**: Create new file with same content.  
+    **Example**: Input file: "data" → Output file: "data"

@@ -1,0 +1,155 @@
+# Solutions to Week 1, Hour 6 Homework Problems
+
+Solutions with extensively commented code for clarity.
+
+**Problem 1**:
+```python
+# Function to read and print file content
+def read_file(filename):
+    # Open file in read mode using with for safety
+    with open(filename, 'r') as file:
+        # Read entire content
+        content = file.read()
+        # Print content
+        print(content)
+# Test the function
+read_file('example.txt')  # Output: Hello\nWorld (if file contains this)
+```
+
+**Problem 2**:
+```python
+# Function to write "Test" to a file
+def write_test(filename):
+    # Open file in write mode (overwrites if exists)
+    with open(filename, 'w') as file:
+        # Write the string "Test"
+        file.write('Test')
+# Test the function
+write_test('output.txt')  # Creates output.txt with "Test"
+```
+
+**Problem 3**:
+```python
+# Function to append "New line" to file
+def append_line(filename):
+    # Open file in append mode
+    with open(filename, 'a') as file:
+        # Append the string with newline
+        file.write('New line\n')
+# Test the function
+append_line('output.txt')  # Appends "New line" to output.txt
+```
+
+**Problem 4**:
+```python
+# Function to count lines in a file
+def count_lines(filename):
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read all lines and count them
+        line_count = len(file.readlines())
+        # Print the count
+        print(line_count)
+    return line_count
+# Test the function
+count_lines('example.txt')  # Output: 3 (if file has 3 lines)
+```
+
+**Problem 5**:
+```python
+# Function to print file lines in reverse
+def reverse_lines(filename):
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read all lines into a list
+        lines = file.readlines()
+        # Print lines in reverse order
+        for line in reversed(lines):
+            print(line.strip())  # Strip newline for clean output
+# Test the function
+reverse_lines('example.txt')  # Output: b\na (if file has "a\nb")
+```
+
+**Problem 6**:
+```python
+# Function to handle missing file
+def read_safe(filename):
+    try:
+        # Attempt to open and read file
+        with open(filename, 'r') as file:
+            content = file.read()
+            print(content)
+    # Handle file not found error
+    except FileNotFoundError:
+        print("File not found!")
+# Test the function
+read_safe('nonexistent.txt')  # Output: File not found!
+```
+
+**Problem 7**:
+```python
+# Function to parse CSV with names and scores
+def parse_csv(filename):
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read all lines
+        lines = file.readlines()
+        # Skip header line
+        for line in lines[1:]:
+            # Split line into name and score
+            name, score = line.strip().split(',')
+            # Print formatted output
+            print(f"Name: {name}, Score: {int(score)}")
+# Test the function
+parse_csv('data.csv')  # Output: Name: Alice, Score: 90 (if file has "name,score\nAlice,90")
+```
+
+**Problem 8**:
+```python
+# Function to write list to file
+def write_list(filename, items):
+    # Open file in write mode
+    with open(filename, 'w') as file:
+        # Write each item with newline
+        for item in items:
+            file.write(f"{item}\n")
+# Test the function
+write_list('output.txt', ['a', 'b'])  # Creates file with "a\nb"
+```
+
+**Problem 9**:
+```python
+# Function to count word frequencies in file
+def word_frequencies(filename):
+    # Initialize dictionary for word counts
+    freq = {}
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read entire content
+        content = file.read()
+        # Split into words
+        words = content.split()
+        # Count each word
+        for word in words:
+            freq[word] = freq.get(word, 0) + 1
+    # Print frequency dictionary
+    print(freq)
+# Test the function
+word_frequencies('example.txt')  # Output: {'hello': 2, 'world': 1} (if file has "hello world hello")
+```
+
+**Problem 10**:
+```python
+# Function to copy file content
+def copy_file(input_file, output_file):
+    # Open input file for reading
+    with open(input_file, 'r') as infile:
+        # Read content
+        content = infile.read()
+    # Open output file for writing
+    with open(output_file, 'w') as outfile:
+        # Write content to output file
+        outfile.write(content)
+# Test the function
+copy_file('input.txt', 'output.txt')  # Copies content from input.txt to output.txt
+```

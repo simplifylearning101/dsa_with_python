@@ -1,0 +1,127 @@
+# Week 1, Hour 6: File Handling and Basic I/O Operations
+
+## Agenda
+This hour covers file handling and input/output (I/O) operations in Python, focusing on reading, writing, and processing text files. These skills are critical for coding interviews involving data processing and for building robust programs that handle external data.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Read from and write to text files using Python’s built-in functions.
+- Process file data with string and list operations.
+- Use context managers (`with` statement) for safe file handling.
+- Handle file-related exceptions (e.g., FileNotFoundError).
+- Parse structured file data (e.g., CSV-like formats).
+- Explain file I/O logic clearly in interviews.
+
+## Topics Covered
+1. Reading Files
+2. Writing Files
+3. Context Managers (`with` Statement)
+4. Exception Handling in File Operations
+5. Processing Structured File Data
+6. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. Reading Files
+Python provides built-in functions to read files:
+- `open(file, mode)`: Opens file in specified mode ('r' for read).
+- `read()`: Reads entire file.
+- `readline()`: Reads one line.
+- `readlines()`: Reads all lines into list.
+
+Example:
+```python
+# Reading a file
+# Assume 'example.txt' contains: "Hello\nWorld"
+file = open('example.txt', 'r')  # Open file in read mode
+content = file.read()  # Read entire content
+print(content)  # Output: Hello\nWorld
+file.close()  # Close file to free resources
+```
+
+### 2. Writing Files
+Write to files using modes 'w' (write, overwrites) or 'a' (append).
+- `write(text)`: Writes string to file.
+- `writelines(lines)`: Writes list of strings.
+
+Example:
+```python
+# Writing to a file
+file = open('output.txt', 'w')  # Open file in write mode
+file.write('Hello, Python!\n')  # Write a line
+file.writelines(['Line 1\n', 'Line 2\n'])  # Write multiple lines
+file.close()  # Close file
+```
+
+### 3. Context Managers (`with` Statement)
+The `with` statement ensures files are closed automatically, even if errors occur.
+
+Example:
+```python
+# Using with statement for safe file reading
+with open('example.txt', 'r') as file:
+    content = file.read()  # Read file content
+    print(content)  # Output: File content
+# File auto-closes after with block
+```
+
+### 4. Exception Handling in File Operations
+Handle errors like `FileNotFoundError` or `PermissionError` using `try-except`.
+
+Example:
+```python
+# Safe file reading with exception handling
+try:
+    with open('nonexistent.txt', 'r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print("File not found!")  # Output: File not found!
+```
+
+### 5. Processing Structured File Data
+Files often contain structured data (e.g., CSV). Parse using string methods or libraries like `csv`.
+
+Example:
+```python
+# Parsing a simple CSV file
+# Assume 'data.csv' contains: "name,age\nAlice,20\nBob,25"
+with open('data.csv', 'r') as file:
+    lines = file.readlines()  # Read all lines
+    for line in lines[1:]:  # Skip header
+        name, age = line.strip().split(',')  # Split line into fields
+        print(f"Name: {name}, Age: {int(age)}")
+# Output: Name: Alice, Age: 20
+#         Name: Bob, Age: 25
+```
+
+### 6. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Always use `with` for file operations to avoid resource leaks.
+  - Explain file modes ('r', 'w', 'a') in interviews.
+  - Handle exceptions to show robust coding.
+- **Pitfalls**:
+  - Forgetting to close files without `with`.
+  - Not handling empty files or missing files.
+  - Incorrect file modes (e.g., reading with 'w').
+
+Example:
+```python
+# Safe file writing with checks
+try:
+    with open('output.txt', 'w') as file:
+        file.write('Safe write\n')
+except PermissionError:
+    print("Cannot write to file!")
+```
+
+## Points to Remember
+- Use `with` for automatic file closing.
+- File modes: 'r' (read), 'w' (write, overwrite), 'a' (append).
+- Handle exceptions like `FileNotFoundError` and `PermissionError`.
+- Strip lines (`strip()`) to remove newlines.
+- Use `csv` module for complex CSV files.
+- Explain file operations clearly in interviews.
+- Common error: Forgetting to check if file exists.
+- Test edge cases: empty files, large files, invalid formats.
+- Use string/list methods to process file data.
+- Practice verbalizing file I/O logic for clarity.

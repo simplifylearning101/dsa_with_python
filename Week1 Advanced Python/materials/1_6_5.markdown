@@ -1,0 +1,102 @@
+# Week 1, Hour 6 Deep Dive: Mastering File Handling for Interviews
+
+This section explores advanced file handling techniques with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Processing Large Files**: Read large files line-by-line to save memory.
+
+Example: Count Lines in Large File
+```python
+# Function to count lines in a file efficiently
+def count_lines_large(filename):
+    # Initialize line count
+    count = 0
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Iterate line by line to save memory
+        for line in file:
+            # Increment count for each line
+            count += 1
+    # Return total lines
+    return count
+# Test the function
+print(count_lines_large('example.txt'))  # Output: Number of lines
+```
+
+- **Parsing Complex CSV**: Handle quoted fields.
+
+Example: Parse Quoted CSV
+```python
+# Function to parse CSV with quoted fields
+def parse_quoted_csv(filename):
+    # Initialize result list
+    data = []
+    # Open file in read mode
+    with open(filename, 'r') as file:
+        # Read all lines
+        lines = file.readlines()
+        # Process each line after header
+        for line in lines[1:]:
+            # Split on commas, handling quotes manually
+            fields = line.strip().split(',')
+            # Extract name (remove quotes) and score
+            name = fields[0].strip('"')
+            score = int(fields[1])
+            # Append tuple to result
+            data.append((name, score))
+    # Return parsed data
+    return data
+# Test the function
+print(parse_quoted_csv('data.csv'))  # Output: [('Alice', 90)] (if file has '"Alice",90')
+```
+
+## Interview Questions and Answers
+1. **Why use `with` for file operations?**  
+   **Answer**: Auto-closes files, prevents resource leaks. **Intent**: Robustness.
+
+2. **Write function to count word occurrences in file.**  
+   **Answer**:
+   ```python
+   # Function to count word frequencies
+   def word_freq(filename):
+       # Initialize dictionary for frequencies
+       freq = {}
+       # Open file in read mode
+       with open(filename, 'r') as file:
+           # Read content
+           content = file.read()
+           # Split into words
+           words = content.split()
+           # Count each word
+           for word in words:
+               freq[word] = freq.get(word, 0) + 1
+       return freq
+   # Test the function
+   print(word_freq('example.txt'))  # Output: {'hello': 2, 'world': 1}
+   ```
+   **Intent**: File processing.
+
+3. **How to handle large files?**  
+   **Answer**: Read line-by-line using `for line in file`. **Intent**: Memory efficiency.
+
+4. **Write function to merge two files.**  
+   **Answer**:
+   ```python
+   # Function to merge two files into one
+   def merge_files(file1, file2, output):
+       # Open output file in write mode
+       with open(output, 'w') as outfile:
+           # Read and write first file
+           with open(file1, 'r') as f1:
+               outfile.write(f1.read())
+               outfile.write('\n')  # Add separator
+           # Read and write second file
+           with open(file2, 'r') as f2:
+               outfile.write(f2.read())
+   # Test the function
+   merge_files('file1.txt', 'file2.txt', 'merged.txt')
+   ```
+   **Intent**: File manipulation.
+
+5. **Why handle file exceptions?**  
+   **Answer**: Prevents crashes from missing files or permissions. **Intent**: Robustness.
