@@ -1,0 +1,28 @@
+# Week 1, Hour 2 LeetCode/NeetCode Problems
+
+Practice these to apply dictionaries and sets.
+
+1. **Two Sum** (LeetCode #1)  
+   **Problem**: Find indices of two numbers summing to target.  
+   **Outcome**: List of indices.  
+   **Example**: nums=[2,7,11,15], target=9 → [0,1]
+
+2. **Contains Duplicate** (LeetCode #217)  
+   **Problem**: Check if list has duplicates.  
+   **Outcome**: Boolean.  
+   **Example**: nums=[1,2,3,1] → True
+
+3. **Group Anagrams** (LeetCode #49)  
+   **Problem**: Group strings that are anagrams.  
+   **Outcome**: List of lists.  
+   **Example**: strs=["eat","tea","tan"] → [["eat","tea"], ["tan"]]
+
+4. **Valid Anagram** (LeetCode #242)  
+   **Problem**: Check if two strings are anagrams.  
+   **Outcome**: Boolean.  
+   **Example**: s="anagram", t="nagaram" → True
+
+5. **Intersection of Two Arrays** (LeetCode #349)  
+   **Problem**: Find common elements in two arrays.  
+   **Outcome**: List.  
+   **Example**: nums1=[1,2,2,1], nums2=[2,2] → [2]

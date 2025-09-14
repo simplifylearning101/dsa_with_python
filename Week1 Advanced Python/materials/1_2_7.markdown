@@ -1,0 +1,109 @@
+# Solutions to Week 1, Hour 2 LeetCode Problems
+
+## 1. Two Sum
+**Explanation**: Find indices summing to target.
+
+**Brute-Force**:
+```python
+def twoSum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: Simple. **Cons**: Slow.
+
+**Optimized** (Dictionary):
+```python
+def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Fast. **Cons**: Uses space.
+
+## 2. Contains Duplicate
+**Explanation**: Check for duplicates.
+
+**Brute-Force**:
+```python
+def containsDuplicate(nums):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]:
+                return True
+    return False
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: No space. **Cons**: Slow.
+
+**Optimized** (Set):
+```python
+def containsDuplicate(nums):
+    return len(nums) != len(set(nums))
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple, fast. **Cons**: Space.
+
+## 3. Group Anagrams
+**Explanation**: Group strings with same characters.
+
+**Brute-Force**: Compare each pair (O(n²)).
+
+**Optimized** (Dictionary):
+```python
+def groupAnagrams(strs):
+    groups = {}
+    for s in strs:
+        key = "".join(sorted(s))
+        groups.setdefault(key, []).append(s)
+    return list(groups.values())
+```
+**Time**: O(n * k * log k), **Space**: O(n * k). **Pros**: Clear. **Cons**: Sorting cost.
+
+## 4. Valid Anagram
+**Explanation**: Check if strings have same characters and counts.
+
+**Brute-Force** (Sort):
+```python
+def isAnagram(s, t):
+    return sorted(s) == sorted(t)
+```
+**Time**: O(n log n), **Space**: O(n). **Pros**: Simple. **Cons**: Sorting.
+
+**Optimized** (Counter):
+```python
+from collections import Counter
+def isAnagram(s, t):
+    return Counter(s) == Counter(t)
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Linear. **Cons**: Space.
+
+## 5. Intersection of Two Arrays
+**Explanation**: Find common elements.
+
+**Brute-Force**:
+```python
+def intersection(nums1, nums2):
+    result = []
+    for x in nums1:
+        if x in nums2 and x not in result:
+            result.append(x)
+    return result
+```
+**Time**: O(n * m), **Space**: O(n). **Pros**: Intuitive. **Cons**: Slow.
+
+**Optimized** (Set):
+```python
+def intersection(nums1, nums2):
+    set1 = set(nums1)
+    result = set()
+    for x in nums2:
+        if x in set1:
+            result.add(x)
+    return list(result)
+```
+**Time**: O(n + m), **Space**: O(n). **Pros**: Fast. **Cons**: Space.

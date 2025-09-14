@@ -1,0 +1,138 @@
+# Week 1, Hour 2: Dictionaries and Sets: Advanced Operations
+
+## Agenda
+This hour dives into advanced operations for dictionaries and sets, focusing on efficient data manipulation using Python’s built-in features and the `collections` module. These structures are essential in coding interviews for tasks like frequency counting, deduplication, and fast lookups.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Use advanced dictionary methods like `items()`, `keys()`, `values()`, and `setdefault()`.
+- Perform set operations (union, intersection, difference) for problem-solving.
+- Leverage `defaultdict` and `Counter` from the `collections` module.
+- Handle nested dictionaries and sets.
+- Choose dictionaries or sets for O(1) lookups in interviews.
+- Explain dictionary/set logic clearly to interviewers.
+
+## Topics Covered
+1. Advanced Dictionary Methods
+2. Set Operations: Union, Intersection, Difference
+3. Using `defaultdict` and `Counter` from `collections`
+4. Nested Dictionaries and Sets
+5. Choosing Dictionaries vs Sets for Interviews
+6. Common Pitfalls and Interview Tips
+
+## Detailed Explanation of Topics
+
+### 1. Advanced Dictionary Methods
+Dictionaries support powerful methods for manipulation:
+- `items()`: Returns key-value pairs.
+- `keys()`: Returns keys.
+- `values()`: Returns values.
+- `setdefault()`: Gets value or sets default if key is missing.
+
+Example:
+```python
+# Dictionary methods
+student = {"name": "Alice", "age": 20}
+print(student.items())  # Output: dict_items([('name', 'Alice'), ('age', 20)])
+print(student.keys())  # Output: dict_keys(['name', 'age'])
+print(student.setdefault("grade", "A"))  # Output: A
+print(student)  # Output: {'name': 'Alice', 'age': 20, 'grade': 'A'}
+```
+
+### 2. Set Operations: Union, Intersection, Difference
+Sets support operations for combining or comparing:
+- Union (`|`): All unique elements.
+- Intersection (`&`): Common elements.
+- Difference (`-`): Elements in one but not the other.
+- Symmetric difference (`^`): Elements in either but not both.
+
+Example:
+```python
+# Set operations
+set1 = {1, 2, 3}
+set2 = {2, 3, 4}
+print(set1 | set2)  # Output: {1, 2, 3, 4}
+print(set1 & set2)  # Output: {2, 3}
+print(set1 - set2)  # Output: {1}
+print(set1 ^ set2)  # Output: {1, 4}
+```
+
+### 3. Using `defaultdict` and `Counter` from `collections`
+- `defaultdict`: Dictionary with default value for missing keys.
+- `Counter`: Counts occurrences of items.
+
+Example:
+```python
+from collections import defaultdict, Counter
+# defaultdict
+d = defaultdict(int)
+d["a"] += 1  # No KeyError
+print(d)  # Output: defaultdict(<class 'int'>, {'a': 1})
+
+# Counter
+words = ["apple", "banana", "apple"]
+c = Counter(words)
+print(c)  # Output: Counter({'apple': 2, 'banana': 1})
+```
+
+### 4. Nested Dictionaries and Sets
+Dictionaries and sets can be nested for complex data.
+
+Example:
+```python
+# Nested dictionary
+students = {
+    "Alice": {"grades": [90, 85], "id": 1},
+    "Bob": {"grades": [80, 75], "id": 2}
+}
+print(students["Alice"]["grades"])  # Output: [90, 85]
+
+# Set in dictionary
+data = {"evens": {2, 4, 6}, "odds": {1, 3, 5}}
+print(data["evens"])  # Output: {2, 4, 6}
+```
+
+### 5. Choosing Dictionaries vs Sets for Interviews
+- **Dictionaries**: Use for key-value mappings, frequency counting (O(1) lookup).
+- **Sets**: Use for unique elements, membership tests, or set operations.
+- **Interview Tip**: Explain choice (e.g., “Used dict for O(1) key lookup”).
+
+Example:
+```python
+# Dict for frequency, set for unique
+nums = [1, 2, 2, 3]
+freq = {}
+for n in nums:
+    freq[n] = freq.get(n, 0) + 1
+print(freq)  # Output: {1: 1, 2: 2, 3: 1}
+unique = set(nums)  # Output: {1, 2, 3}
+```
+
+### 6. Common Pitfalls and Interview Tips
+- **Pitfalls**:
+  - Using unhashable types (e.g., lists) as dict keys or set elements.
+  - Forgetting `get()` or `setdefault()` for missing keys.
+  - Modifying dict/set during iteration.
+- **Tips**:
+  - Use `Counter` for frequency problems to impress interviewers.
+  - Verbalize why you chose dict/set (e.g., “Set for O(1) membership”).
+  - Test edge cases: empty dicts/sets, missing keys.
+
+Example:
+```python
+# Safe key access
+d = {"a": 1}
+print(d.get("b", 0))  # Output: 0 (no KeyError)
+```
+
+## Points to Remember
+- Dictionaries and sets offer O(1) average-time lookups.
+- Use `get()` or `setdefault()` to avoid KeyError.
+- `Counter` simplifies frequency counting.
+- Sets are unordered; don’t assume order in interviews.
+- Only hashable types (e.g., int, str, tuple) can be dict keys or set elements.
+- Explain data structure choice in interviews.
+- Common error: Modifying dict during iteration (use `.copy()` or list comprehension).
+- Use set operations for problems involving unique elements.
+- Test edge cases: empty dicts/sets, duplicate keys.
+- Practice verbalizing logic for frequency or membership problems.

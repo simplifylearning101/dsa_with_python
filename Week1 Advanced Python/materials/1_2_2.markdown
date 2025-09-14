@@ -1,0 +1,43 @@
+# Week 1, Hour 2 Homework: Practice Problems
+
+Practice these 10 programs to master dictionaries and sets. Write each as a .py file and verify outputs.
+
+1. **Problem**: Create a dictionary with 3 key-value pairs and print keys.  
+   **Outcome**: Print keys.  
+   **Example**: {"a": 1, "b": 2, "c": 3} → Output: dict_keys(['a', 'b', 'c'])
+
+2. **Problem**: Count frequency of numbers using dict.  
+   **Outcome**: Print frequency dict.  
+   **Example**: [1, 2, 2, 3] → Output: {1: 1, 2: 2, 3: 1}
+
+3. **Problem**: Find intersection of two sets.  
+   **Outcome**: Print common elements.  
+   **Example**: {1, 2, 3} & {2, 3, 4} → Output: {2, 3}
+
+4. **Problem**: Use `setdefault()` to add default value.  
+   **Outcome**: Print updated dict.  
+   **Example**: {"a": 1} → Add "b": 0 → Output: {"a": 1, "b": 0}
+
+5. **Problem**: Use `Counter` to count string chars.  
+   **Outcome**: Print char frequencies.  
+   **Example**: "hello" → Output: Counter({'l': 2, 'h': 1, 'e': 1, 'o': 1})
+
+6. **Problem**: Merge two dictionaries.  
+   **Outcome**: Print merged dict.  
+   **Example**: {"a": 1} + {"b": 2} → Output: {"a": 1, "b": 2}
+
+7. **Problem**: Create nested dict for student grades.  
+   **Outcome**: Print nested dict.  
+   **Example**: Output: {"Alice": {"math": 90, "science": 85}}
+
+8. **Problem**: Check if element exists in set.  
+   **Outcome**: Print True/False.  
+   **Example**: 2 in {1, 2, 3} → Output: True
+
+9. **Problem**: Use `defaultdict` to count items.  
+   **Outcome**: Print defaultdict.  
+   **Example**: ["a", "b", "a"] → Output: defaultdict(<class 'int'>, {'a': 2, 'b': 1})
+
+10. **Problem**: Find symmetric difference of two sets.  
+    **Outcome**: Print unique elements.  
+    **Example**: {1, 2} ^ {2, 3} → Output: {1, 3}

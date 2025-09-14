@@ -1,0 +1,64 @@
+# Week 1, Hour 2 Deep Dive: Mastering Dictionaries and Sets for Interviews
+
+This section explores dictionaries and sets in depth with complex programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Complex Frequency Counting**: Use `Counter` for advanced analysis.
+
+Example: Most Common Elements
+```python
+from collections import Counter
+# Get 2 most common items
+items = ["apple", "banana", "apple", "cherry"]
+counts = Counter(items)
+print(counts.most_common(2))  # Output: [('apple', 2), ('banana', 1)]
+```
+
+- **Nested Dictionary Processing**: Handle nested data structures.
+
+Example: Average Grades
+```python
+# Average grades per student
+students = {
+    "Alice": {"math": 90, "science": 85},
+    "Bob": {"math": 80, "science": 75}
+}
+for name, subjects in students.items():
+    avg = sum(subjects.values()) / len(subjects)
+    print(f"{name}: {avg:.2f}")
+# Output: Alice: 87.50, Bob: 77.50
+```
+
+## Interview Questions and Answers
+1. **When to use dict vs set?**  
+   **Answer**: Dict for key-value pairs, set for unique elements/membership. **Intent**: Data structure choice.
+
+2. **Write function to count pairs summing to target.**  
+   **Answer**:
+   ```python
+   def count_pairs(nums, target):
+       freq = {}
+       count = 0
+       for num in nums:
+           complement = target - num
+           if complement in freq:
+               count += freq[complement]
+           freq[num] = freq.get(num, 0) + 1
+       return count
+   print(count_pairs([1, 2, 3, 4], 5))  # Output: 2 (1+4, 2+3)
+   ```
+   **Intent**: Tests frequency counting.
+
+3. **Why use `Counter`?**  
+   **Answer**: Simplifies frequency tasks, provides methods like `most_common()`. **Intent**: Python fluency.
+
+4. **Handle missing dict keys.**  
+   **Answer**: Use `get()` or `setdefault()` to avoid KeyError. **Intent**: Robustness.
+
+5. **Write function to find unique elements.**  
+   **Answer**:
+   ```python
+   def unique_elements(lst):
+       return list(set(lst))
+   ```
+   **Intent**: Set usage.
