@@ -1,0 +1,107 @@
+# Solutions to Week 1, Hour 4 Homework Problems
+
+Solutions with extensively commented code for clarity.
+
+**Problem 1**:
+```python
+# Import math module for factorial calculation
+import math
+# Calculate 6! (6 factorial)
+result = math.factorial(6)  # Computes 6 * 5 * 4 * 3 * 2 * 1
+print(result)  # Output: 720
+```
+
+**Problem 2**:
+```python
+# Import math module for square root
+import math
+# Calculate square root of 25
+result = math.sqrt(25)  # Returns floating-point square root
+print(result)  # Output: 5.0
+```
+
+**Problem 3**:
+```python
+# Import random module for random selection
+import random
+# Define list of items
+items = ["a", "b", "c"]
+# Check if list is not empty to avoid errors
+if items:
+    # Select one random item from the list
+    chosen = random.choice(items)  # Picks one element randomly
+    print(chosen)  # Output: Random item (e.g., "b")
+else:
+    print("Empty list")
+```
+
+**Problem 4**:
+```python
+# Import random module for shuffling
+import random
+# Define list of numbers
+numbers = [1, 2, 3]
+# Shuffle the list in-place (modifies original list)
+random.shuffle(numbers)  # Reorders elements randomly
+print(numbers)  # Output: Shuffled list (e.g., [3, 1, 2])
+```
+
+**Problem 5**:
+```python
+# Import datetime module for date handling
+import datetime
+# Get current date
+today = datetime.date.today()  # Returns current date (year, month, day)
+print(today)  # Output: 2025-09-14
+```
+
+**Problem 6**:
+```python
+# Import datetime module for date arithmetic
+import datetime
+# Get current date
+today = datetime.date.today()  # Current date
+# Add 10 days using timedelta
+future = today + datetime.timedelta(days=10)  # Adds 10 days to current date
+print(future)  # Output: 2025-09-24
+```
+
+**Problem 7**:
+```python
+# Import itertools for combinations
+import itertools
+# Define list of numbers
+nums = [1, 2, 3]
+# Generate all pairs (combinations of length 2)
+combs = list(itertools.combinations(nums, 2))  # Creates tuples of pairs
+print(combs)  # Output: [(1, 2), (1, 3), (2, 3)]
+```
+
+**Problem 8**:
+```python
+# Import itertools for permutations
+import itertools
+# Define list of numbers
+nums = [1, 2]
+# Generate all permutations of length 2
+perms = list(itertools.permutations(nums, 2))  # Creates ordered tuples
+print(perms)  # Output: [(1, 2), (2, 1)]
+```
+
+**Problem 9**:
+```python
+# Import math module for ceiling
+import math
+# Round up 3.14 to nearest integer
+result = math.ceil(3.14)  # Returns smallest integer >= 3.14
+print(result)  # Output: 4
+```
+
+**Problem 10**:
+```python
+# Import random module for random integers
+import random
+# Generate random integer between 1 and 10 (inclusive)
+num = random.randint(1, 10)  # Picks integer in range [1, 10]
+print(num)  # Output: Random number (e.g., 7)
+```

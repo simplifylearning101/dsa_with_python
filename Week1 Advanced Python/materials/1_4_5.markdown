@@ -1,0 +1,90 @@
+# Week 1, Hour 4 Deep Dive: Mastering Modules for Interviews
+
+This section explores advanced uses of Python’s standard libraries with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Randomized Testing**: Generate test cases for algorithms.
+
+Example: Random Test Case Generator
+```python
+# Import random for generating test data
+import random
+# Function to generate random list for testing
+def generate_test_case(size, min_val, max_val):
+    # Create list of 'size' random integers in [min_val, max_val]
+    test_case = [random.randint(min_val, max_val) for _ in range(size)]
+    return test_case
+# Generate and print test case
+print(generate_test_case(5, 1, 10))  # Output: e.g., [3, 7, 1, 9, 4]
+```
+
+- **Date Range Processing**: Handle sequences of dates.
+
+Example: Generate Date Range
+```python
+# Import datetime for date manipulation
+import datetime
+# Function to generate list of dates between start and end
+def date_range(start_date, end_date):
+    # Initialize empty list for dates
+    dates = []
+    # Get current date as starting point
+    current = start_date
+    # Loop until current date exceeds end_date
+    while current <= end_date:
+        # Append current date to list
+        dates.append(current)
+        # Increment by one day
+        current += datetime.timedelta(days=1)
+    return dates
+# Example usage
+start = datetime.date(2025, 9, 14)
+end = datetime.date(2025, 9, 16)
+# Print range of dates
+print(date_range(start, end))  # Output: [2025-09-14, 2025-09-15, 2025-09-16]
+```
+
+## Interview Questions and Answers
+1. **Why use `math.factorial` over manual loop?**  
+   **Answer**: Faster, tested implementation; avoids errors. **Intent**: Efficiency.
+
+2. **Write function to generate random pairs.**  
+   **Answer**:
+   ```python
+   # Import itertools for combinations
+   import itertools
+   # Import random for shuffling
+   import random
+   # Function to generate random pairs from list
+   def random_pairs(items):
+       # Get all possible pairs
+       pairs = list(itertools.combinations(items, 2))
+       # Shuffle pairs randomly
+       random.shuffle(pairs)
+       return pairs
+   # Example usage
+   print(random_pairs([1, 2, 3]))  # Output: e.g., [(1, 3), (2, 3), (1, 2)]
+   ```
+   **Intent**: Combinatorial logic.
+
+3. **How to handle invalid `math` inputs?**  
+   **Answer**: Use try-except for errors like `ValueError`. **Intent**: Robustness.
+
+4. **Write function to check if date is today.**  
+   **Answer**:
+   ```python
+   # Import datetime for date comparison
+   import datetime
+   # Function to check if input date is today
+   def is_today(date):
+       # Get current date
+       today = datetime.date.today()
+       # Compare input date with today
+       return date == today
+   # Example usage
+   print(is_today(datetime.date(2025, 9, 14)))  # Output: True (if today is 2025-09-14)
+   ```
+   **Intent**: Date handling.
+
+5. **Why use `itertools` for combinations?**  
+   **Answer**: Efficient, avoids manual recursion. **Intent**: Library knowledge.

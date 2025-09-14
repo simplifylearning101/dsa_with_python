@@ -1,0 +1,209 @@
+# Solutions to Week 1, Hour 4 LeetCode Problems
+
+## 1. Factorial Trailing Zeroes
+**Explanation**: Count trailing zeros in n! by counting factors of 5.
+
+**Brute-Force**:
+```python
+# Import math for factorial
+import math
+def trailingZeroes(n):
+    # Calculate factorial
+    fact = math.factorial(n)
+    # Count trailing zeros
+    count = 0
+    # Keep dividing by 10 to count zeros
+    while fact % 10 == 0:
+        count += 1
+        fact //= 10
+    return count
+```
+**Time**: O(n + log n), **Space**: O(1). **Pros**: Simple. **Cons**: Large factorials overflow.
+
+**Optimized**:
+```python
+def trailingZeroes(n):
+    # Initialize count of trailing zeros
+    count = 0
+    # Count factors of 5 (since 2s are abundant)
+    while n > 0:
+        # Divide n by 5 to count multiples of 5, 25, 125, etc.
+        n //= 5
+        # Add number of multiples to count
+        count += n
+    return count
+```
+**Time**: O(log n), **Space**: O(1). **Pros**: Efficient, no overflow. **Cons**: Math-based logic.
+
+## 2. Generate Parentheses
+**Explanation**: Generate valid parentheses combinations.
+
+**Brute-Force** (Using itertools):
+```python
+# Import itertools for permutations
+import itertools
+def generateParenthesis(n):
+    # Generate all possible sequences of n '(' and n ')'
+    chars = ['('] * n + [')'] * n
+    # Get all permutations
+    perms = set(''.join(p) for p in itertools.permutations(chars))
+    # Filter valid ones (manual check)
+    result = []
+    for p in perms:
+        # Check if string is valid
+        balance = 0
+        valid = True
+        for c in p:
+            if c == '(': balance += 1
+            else: balance -= 1
+            if balance < 0: valid = False; break
+        if valid and balance == 0:
+            result.append(p)
+    return result
+```
+**Time**: O(2^(2n)), **Space**: O(2n). **Pros**: Uses itertools. **Cons**: Inefficient.
+
+**Optimized** (Backtracking):
+```python
+def generateParenthesis(n):
+    # Initialize result list
+    result = []
+    # Helper function for backtracking
+    def backtrack(s, open_count, close_count):
+        # Base case: if string length is 2n, add to result
+        if len(s) == 2 * n:
+            result.append(s)
+            return
+        # Add open parenthesis if possible
+        if open_count < n:
+            backtrack(s + '(', open_count + 1, close_count)
+        # Add close parenthesis if valid
+        if close_count < open_count:
+            backtrack(s + ')', open_count, close_count + 1)
+    # Start with empty string, 0 open, 0 close
+    backtrack('', 0, 0)
+    return result
+```
+**Time**: O(4^n / sqrt(n)), **Space**: O(n). **Pros**: Efficient. **Cons**: Recursive logic.
+
+## 3. Random Pick Index
+**Explanation**: Pick random index of target using reservoir sampling.
+
+**Brute-Force**:
+```python
+# Import random for selection
+import random
+class Solution:
+    def __init__(self, nums):
+        # Store input array
+        self.nums = nums
+    
+    def pick(self, target):
+        # Find all indices where nums[i] == target
+        indices = [i for i in range(len(self.nums)) if self.nums[i] == target]
+        # Return random index
+        return random.choice(indices)
+```
+**Time**: O(n) per pick, **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+**Optimized** (Reservoir Sampling):
+```python
+# Import random for selection
+import random
+class Solution:
+    def __init__(self, nums):
+        # Store input array
+        self.nums = nums
+    
+    def pick(self, target):
+        # Initialize count of matches and chosen index
+        count = 0
+        chosen = 0
+        # Iterate through array
+        for i in range(len(self.nums)):
+            # If current element equals target
+            if self.nums[i] == target:
+                # Increment count of matches
+                count += 1
+                # Randomly select this index with probability 1/count
+                if random.randint(0, count - 1) == 0:
+                    chosen = i
+        return chosen
+```
+**Time**: O(n) per pick, **Space**: O(1). **Pros**: No extra space. **Cons**: Complex.
+
+## 4. Combination Sum
+**Explanation**: Find combinations summing to target.
+
+**Brute-Force** (Using itertools):
+```python
+# Import itertools for combinations
+import itertools
+def combinationSum(candidates, target):
+    # Initialize result list
+    result = []
+    # Try combinations of all lengths
+    for r in range(1, target // min(candidates) + 2):
+        # Generate combinations with replacement
+        for comb in itertools.combinations_with_replacement(candidates, r):
+            # If sum equals target, add to result
+            if sum(comb) == target:
+                result.append(list(comb))
+    return result
+```
+**Time**: O(n^target), **Space**: O(target). **Pros**: Uses itertools. **Cons**: Inefficient.
+
+**Optimized** (Backtracking):
+```python
+def combinationSum(candidates, target):
+    # Initialize result list
+    result = []
+    # Helper function for backtracking
+    def backtrack(start, curr_sum, curr_list):
+        # Base case: if sum equals target, add to result
+        if curr_sum == target:
+            result.append(curr_list[:])
+            return
+        # If sum exceeds target, stop
+        if curr_sum > target:
+            return
+        # Try each candidate from start index
+        for i in range(start, len(candidates)):
+            # Add current candidate to list and sum
+            curr_list.append(candidates[i])
+            # Recurse with updated sum and same start (allow reuse)
+            backtrack(i, curr_sum + candidates[i], curr_list)
+            # Remove last candidate for backtracking
+            curr_list.pop()
+    # Start backtracking with empty list and sum 0
+    backtrack(0, 0, [])
+    return result
+```
+**Time**: O(2^target), **Space**: O(target). **Pros**: Efficient. **Cons**: Recursive.
+
+## 5. Power of Two
+**Explanation**: Check if number is power of 2.
+
+**Brute-Force**:
+```python
+# Import math for log
+import math
+def isPowerOfTwo(n):
+    # Handle non-positive numbers
+    if n <= 0:
+        return False
+    # Check if log2(n) is an integer
+    return math.log2(n).is_integer()
+```
+**Time**: O(1), **Space**: O(1). **Pros**: Simple. **Cons**: Floating-point precision.
+
+**Optimized** (Bit Manipulation):
+```python
+def isPowerOfTwo(n):
+    # Handle non-positive numbers
+    if n <= 0:
+        return False
+    # Check if n has exactly one 1 bit (e.g., 8 = 1000)
+    return (n & (n - 1)) == 0
+```
+**Time**: O(1), **Space**: O(1). **Pros**: Fast, no floating-point. **Cons**: Bit logic.

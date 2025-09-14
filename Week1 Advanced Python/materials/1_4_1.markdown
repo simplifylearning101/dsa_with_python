@@ -1,0 +1,129 @@
+# Week 1, Hour 4: Working with Modules and Built-in Libraries
+
+## Agenda
+This hour introduces Python’s standard libraries (`math`, `random`, `datetime`, `itertools`) to solve problems efficiently. These modules are powerful tools for coding interviews, allowing you to write concise, robust code for mathematical calculations, randomization, date handling, and combinatorial tasks.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Use key functions from `math`, `random`, `datetime`, and `itertools` modules.
+- Import and explore modules effectively.
+- Write reusable code leveraging built-in libraries.
+- Apply modules to solve common interview problems.
+- Explain module usage clearly to interviewers.
+- Avoid over-reliance on libraries without understanding their logic.
+
+## Topics Covered
+1. Overview of Python’s Standard Libraries
+2. Key Functions in `math` Module
+3. Randomization with `random` Module
+4. Date and Time Handling with `datetime`
+5. Combinatorial Tools with `itertools`
+6. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. Overview of Python’s Standard Libraries
+Python’s standard library provides pre-built modules for common tasks. Using these in interviews shows efficiency and familiarity with Python’s ecosystem.
+
+Example:
+```python
+# Importing modules
+import math
+import random
+import datetime
+import itertools
+```
+
+### 2. Key Functions in `math` Module
+The `math` module provides mathematical functions and constants.
+- `math.factorial(n)`: Computes n!.
+- `math.sqrt(x)`: Square root of x.
+- `math.ceil(x)`, `math.floor(x)`: Round up/down.
+- `math.pi`, `math.e`: Mathematical constants.
+
+Example:
+```python
+import math
+# Calculate factorial and square root
+print(math.factorial(5))  # Output: 120
+print(math.sqrt(16))  # Output: 4.0
+```
+
+### 3. Randomization with `random` Module
+The `random` module generates pseudo-random numbers.
+- `random.choice(seq)`: Picks random element.
+- `random.shuffle(list)`: Shuffles list in-place.
+- `random.randint(a, b)`: Random integer in [a, b].
+
+Example:
+```python
+import random
+# Random selection and shuffle
+items = ["apple", "banana", "cherry"]
+print(random.choice(items))  # Output: Random item
+random.shuffle(items)  # Shuffles in-place
+print(items)  # Output: Shuffled list
+```
+
+### 4. Date and Time Handling with `datetime`
+The `datetime` module handles dates and times.
+- `datetime.date.today()`: Current date.
+- `datetime.datetime.now()`: Current date and time.
+- `datetime.timedelta`: Date arithmetic.
+
+Example:
+```python
+import datetime
+# Get current date and add days
+today = datetime.date.today()
+print(today)  # Output: Current date (e.g., 2025-09-14)
+future = today + datetime.timedelta(days=7)
+print(future)  # Output: 2025-09-21
+```
+
+### 5. Combinatorial Tools with `itertools`
+The `itertools` module provides tools for combinations and permutations.
+- `itertools.combinations(iterable, r)`: Combinations of length r.
+- `itertools.permutations(iterable, r)`: Permutations of length r.
+
+Example:
+```python
+import itertools
+# Generate combinations
+nums = [1, 2, 3]
+combs = list(itertools.combinations(nums, 2))
+print(combs)  # Output: [(1, 2), (1, 3), (2, 3)]
+```
+
+### 6. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Use modules to simplify code but explain the underlying logic.
+  - Mention module names (e.g., “I’ll use `random.choice` for efficiency”).
+  - Test edge cases (e.g., empty inputs, invalid dates).
+- **Pitfalls**:
+  - Overusing libraries without understanding (e.g., not knowing how `factorial` works).
+  - Forgetting to import modules.
+  - Misusing `random` (e.g., not seeding for reproducibility).
+
+Example:
+```python
+import random
+# Safe random choice with check
+lst = []
+if lst:
+    print(random.choice(lst))
+else:
+    print("Empty list")  # Handle edge case
+```
+
+## Points to Remember
+- Import only needed modules to keep code clean.
+- `math` is for precise calculations; avoid manual implementations in interviews.
+- `random` is pseudo-random; seed with `random.seed()` for reproducibility.
+- Use `datetime` for date arithmetic, not string manipulation.
+- `itertools` is ideal for combinatorial problems (e.g., subsets).
+- Explain module usage to show Python fluency.
+- Common error: Forgetting to handle empty inputs or invalid data.
+- Test edge cases: empty lists, negative numbers, invalid dates.
+- Use `try-except` with modules to handle errors (e.g., invalid factorial input).
+- Practice verbalizing module-based solutions for clarity.
