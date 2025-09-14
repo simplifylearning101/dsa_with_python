@@ -1,4 +1,4 @@
-![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=simplifylearning101.dsa_with_cpp)
+![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=simplifylearning101.dsa_with_python)
 
 ## Roadmap for this week
 | Part | Read | Practice | Attempt | Master the topic | Samples from Leetcode |
