@@ -1,0 +1,66 @@
+# Week 1, Hour 3 Quiz: 30 Questions
+
+Covers Hour 3 and some Week 0/Hour 1-2 concepts.
+
+1. What does `str.find()` return?  
+2. Purpose of `re.findall()`?  
+3. Replace "cat" with "dog" in "catnip". (Code)  
+4. Output of `"hello".startswith("he")`?  
+5. What is `\b` in regex?  
+6. True or False: Strings are mutable.  
+7. Extract words from "hi there". (Code)  
+8. What does `str.count()` do?  
+9. Validate phone number (basic digits). (Code)  
+10. Why use regex in interviews?  
+11. Output of `re.findall(r"\d", "abc12")`?  
+12. Common error with regex patterns?  
+13. Check if string ends with ".com". (Code)  
+14. What is `re.match()` vs `re.search()`?  
+15. True or False: `split()` uses regex.  
+16. Count "l" in "hello". (Code)  
+17. Why explain string logic in interviews?  
+18. Split "a,b,c" by comma. (Code)  
+19. Output of `"test".replace("t", "x")`?  
+20. Why test empty strings?  
+21. Extract emails with regex. (Code)  
+22. What is `str.title()`?  
+23. Tokenize "hi! there" with regex. (Code)  
+24. Why avoid regex for simple tasks?  
+25. Output of `"abc".find("d")`?  
+26. Check if string is alphanumeric. (Code)  
+27. Why handle case sensitivity?  
+28. Convert "hello" to uppercase. (Code)  
+29. Output of `len("hello".split())`?  
+30. When to use manual parsing?
+
+## Solutions for the Quiz
+1. Index of substring or -1.  
+2. Returns all matches of pattern.  
+3. `"catnip".replace("cat", "dog")` → "dognip"  
+4. True  
+5. Word boundary.  
+6. False  
+7. `"hi there".split()` or `re.findall(r"\b\w+\b", "hi there")`  
+8. Counts occurrences of substring.  
+9. `bool(re.match(r"^\d+$", "123"))`  
+10. Shows pattern-matching skills.  
+11. ['1', '2']  
+12. Incorrect patterns (e.g., missing anchors).  
+13. `"site.com".endswith(".com")`  
+14. `match()` checks start; `search()` checks anywhere.  
+15. False (uses delimiter).  
+16. `"hello".count("l")`  
+17. Shows clarity, understanding.  
+18. `"a,b,c".split(",")`  
+19. xesx  
+20. Common edge case.  
+21. `re.findall(r"\w+@\w+\.\w+", text)`  
+22. Capitalizes each word.  
+23. `re.findall(r"\b\w+\b", "hi! there")`  
+24. Slower, less readable.  
+25. -1  
+26. `"text".isalnum()`  
+27. Affects comparisons, searches.  
+28. `"hello".upper()`  
+29. 1  
+30. Simple tasks, better performance.

@@ -1,0 +1,28 @@
+# Week 1, Hour 3 LeetCode/NeetCode Problems
+
+Practice these to apply string processing and regex.
+
+1. **Valid Palindrome** (LeetCode #125)  
+   **Problem**: Check if string is palindrome, ignoring non-alphanumeric.  
+   **Outcome**: Boolean.  
+   **Example**: s="A man, a plan, a canal: Panama" → True
+
+2. **Longest Common Prefix** (LeetCode #14)  
+   **Problem**: Find longest common prefix among strings.  
+   **Outcome**: String.  
+   **Example**: strs=["flower","flow","flight"] → "fl"
+
+3. **Reverse String** (LeetCode #344)  
+   **Problem**: Reverse a string in-place.  
+   **Outcome**: Modified list.  
+   **Example**: s=["h","e","l","l","o"] → ["o","l","l","e","h"]
+
+4. **String to Integer (atoi)** (LeetCode #8)  
+   **Problem**: Convert string to integer, handle edge cases.  
+   **Outcome**: Integer.  
+   **Example**: s="42" → 42
+
+5. **Length of Last Word** (LeetCode #58)  
+   **Problem**: Find length of last word in string.  
+   **Outcome**: Integer.  
+   **Example**: s="Hello World" → 5

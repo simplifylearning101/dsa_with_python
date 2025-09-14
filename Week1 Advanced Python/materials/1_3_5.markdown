@@ -1,0 +1,57 @@
+# Week 1, Hour 3 Deep Dive: Mastering String Processing and Regex for Interviews
+
+This section explores advanced string processing and regex with complex programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Complex Regex Patterns**: Match structured data (e.g., dates).
+
+Example: Extract Dates
+```python
+import re
+# Extract dates in MM/DD/YYYY
+text = "Meeting on 12/25/2025 and 01/01/2026"
+dates = re.findall(r"\d{2}/\d{2}/\d{4}", text)
+print(dates)  # Output: ['12/25/2025', '01/01/2026']
+```
+
+- **Advanced Parsing**: Process structured text.
+
+Example: Parse CSV Line
+```python
+# Parse CSV with regex
+import re
+line = '"Alice",25,"A"'
+fields = re.split(r",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", line)
+print(fields)  # Output: ['"Alice"', '25', '"A"']
+```
+
+## Interview Questions and Answers
+1. **When to use regex vs string methods?**  
+   **Answer**: Regex for complex patterns; string methods for simple tasks. **Intent**: Efficiency choice.
+
+2. **Write function to reverse words in string.**  
+   **Answer**:
+   ```python
+   def reverse_words(s):
+       words = s.split()
+       return " ".join(words[::-1])
+   print(reverse_words("hello world"))  # Output: world hello
+   ```
+   **Intent**: String manipulation.
+
+3. **Why use `re.match()` over `re.search()`?**  
+   **Answer**: `match()` checks start of string; `search()` checks anywhere. **Intent**: Regex precision.
+
+4. **Validate phone number with regex.**  
+   **Answer**:
+   ```python
+   import re
+   def valid_phone(phone):
+       pattern = r"^\d{3}-\d{3}-\d{4}$"
+       return bool(re.match(pattern, phone))
+   print(valid_phone("123-456-7890"))  # Output: True
+   ```
+   **Intent**: Pattern matching.
+
+5. **Handle special characters in strings.**  
+   **Answer**: Use `strip()`, `replace()`, or regex to clean. **Intent**: Robustness.

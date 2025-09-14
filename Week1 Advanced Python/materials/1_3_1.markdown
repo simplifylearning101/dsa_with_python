@@ -1,0 +1,133 @@
+# Week 1, Hour 3: String Processing and Regular Expressions
+
+## Agenda
+This hour focuses on advanced string processing and introduces regular expressions (regex) using Python’s `re` module. These skills are essential for coding interviews, where string manipulation (e.g., palindromes, substrings) and pattern matching (e.g., validating inputs) are common tasks.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Use advanced string methods like `find()`, `replace()`, `startswith()`, and `endswith()`.
+- Apply basic regex patterns for matching and extracting data.
+- Parse and tokenize strings effectively.
+- Handle string-related edge cases in interviews.
+- Choose between regex and manual parsing for problems.
+- Explain string and regex logic clearly to interviewers.
+
+## Topics Covered
+1. Advanced String Methods
+2. Introduction to Regular Expressions (`re` Module)
+3. String Parsing and Tokenization
+4. Case Studies: Validating Inputs and Extracting Data
+5. Regex vs Manual Parsing
+6. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. Advanced String Methods
+Python provides powerful string methods for manipulation:
+- `find(sub)`: Returns lowest index of substring or -1 if not found.
+- `replace(old, new)`: Replaces occurrences of substring.
+- `startswith(prefix)`: Checks if string starts with prefix.
+- `endswith(suffix)`: Checks if string ends with suffix.
+
+Example:
+```python
+# String methods
+text = "hello world"
+print(text.find("world"))  # Output: 6
+print(text.replace("world", "Python"))  # Output: hello Python
+print(text.startswith("he"))  # Output: True
+print(text.endswith("ld"))  # Output: True
+```
+
+### 2. Introduction to Regular Expressions (`re` Module)
+Regex allows pattern-based string matching using the `re` module.
+- Common functions: `re.findall()`, `re.search()`, `re.match()`.
+- Basic patterns: `\d` (digit), `\w` (word char), `\b` (word boundary).
+
+Example:
+```python
+import re
+# Extract digits
+text = "Room 123, price $45.99"
+digits = re.findall(r"\d+", text)
+print(digits)  # Output: ['123', '45', '99']
+```
+
+### 3. String Parsing and Tokenization
+Break strings into meaningful parts using `split()` or regex.
+
+Example:
+```python
+# Tokenize sentence
+sentence = "The quick brown fox"
+tokens = sentence.split()
+print(tokens)  # Output: ['The', 'quick', 'brown', 'fox']
+
+# Regex tokenize
+import re
+words = re.findall(r"\b\w+\b", sentence)
+print(words)  # Output: ['The', 'quick', 'brown', 'fox']
+```
+
+### 4. Case Studies: Validating Inputs and Extracting Data
+- **Validation**: Check if input matches expected format (e.g., email).
+- **Extraction**: Pull specific data (e.g., phone numbers).
+
+Example:
+```python
+# Basic email validation
+import re
+def is_valid_email(email):
+    pattern = r"^\w+@\w+\.\w+$"
+    return bool(re.match(pattern, email))
+print(is_valid_email("user@domain.com"))  # Output: True
+```
+
+### 5. Regex vs Manual Parsing
+- **Regex**: Use for complex patterns (e.g., emails, dates).
+- **Manual Parsing**: Use for simple tasks (e.g., splitting words).
+
+Example:
+```python
+# Manual vs regex
+text = "apple,banana,cherry"
+# Manual
+fruits = text.split(",")
+print(fruits)  # Output: ['apple', 'banana', 'cherry']
+# Regex
+import re
+fruits = re.split(r",", text)
+print(fruits)  # Output: ['apple', 'banana', 'cherry']
+```
+
+### 6. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Use string methods for simple tasks to avoid regex overhead.
+  - Explain regex patterns clearly (e.g., “\d+ matches one or more digits”).
+  - Validate inputs for edge cases (empty strings, special characters).
+- **Pitfalls**:
+  - Overusing regex for simple tasks (e.g., `split()` is often enough).
+  - Incorrect regex patterns (e.g., missing anchors `^`, `$`).
+  - Forgetting to handle case sensitivity in strings.
+
+Example:
+```python
+# Safe string check
+s = input("Enter text: ").strip()
+if not s:
+    print("Empty input")
+else:
+    print(s.lower())  # Normalize case
+```
+
+## Points to Remember
+- String methods are fast and readable for simple tasks.
+- Regex is powerful but slower; use judiciously in interviews.
+- Always strip input to remove unwanted whitespace.
+- Use `re.match()` for start-of-string, `re.search()` for anywhere.
+- Test edge cases: empty strings, special characters, case sensitivity.
+- Explain regex patterns step-by-step in interviews.
+- Common error: Forgetting strings are immutable (operations create new strings).
+- Use `lower()` or `upper()` for case-insensitive comparisons.
+- Validate inputs before processing to avoid errors.
+- Practice verbalizing string parsing logic for clarity.

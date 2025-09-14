@@ -1,0 +1,80 @@
+# Solutions to Week 1, Hour 3 Homework Problems
+
+Solutions with commented code.
+
+**Problem 1**:
+```python
+# Find substring index
+text = "cathedral"
+print(text.find("cat"))  # Output: 0
+```
+
+**Problem 2**:
+```python
+# Replace substring
+text = "I have a dog"
+print(text.replace("dog", "cat"))  # Output: I have a cat
+```
+
+**Problem 3**:
+```python
+# Check startswith
+text = "hello"
+print(text.startswith("he"))  # Output: True
+```
+
+**Problem 4**:
+```python
+# Extract digits with regex
+import re
+text = "abc123def45"
+digits = re.findall(r"\d+", text)
+print(digits)  # Output: ['123', '45']
+```
+
+**Problem 5**:
+```python
+# Split into words
+text = "The quick fox"
+words = text.split()
+print(words)  # Output: ['The', 'quick', 'fox']
+```
+
+**Problem 6**:
+```python
+# Validate email
+import re
+email = "user@domain.com"
+pattern = r"^\w+@\w+\.\w+$"
+print(bool(re.match(pattern, email)))  # Output: True
+```
+
+**Problem 7**:
+```python
+# Count occurrences
+text = "banana"
+print(text.count("a"))  # Output: 3
+```
+
+**Problem 8**:
+```python
+# Tokenize with regex
+import re
+text = "hello,world!"
+words = re.findall(r"\b\w+\b", text)
+print(words)  # Output: ['hello', 'world']
+```
+
+**Problem 9**:
+```python
+# Check endswith
+text = "file.txt"
+print(text.endswith(".txt"))  # Output: True
+```
+
+**Problem 10**:
+```python
+# Title case
+text = "hello world"
+print(text.title())  # Output: Hello World
+```

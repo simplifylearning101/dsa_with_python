@@ -1,0 +1,43 @@
+# Week 1, Hour 3 Homework: Practice Problems
+
+Practice these 10 programs to master string processing and regex. Write each as a .py file and verify outputs.
+
+1. **Problem**: Find index of substring "cat" in "cathedral".  
+   **Outcome**: Print index.  
+   **Example**: Output: 0
+
+2. **Problem**: Replace "dog" with "cat" in string.  
+   **Outcome**: Print new string.  
+   **Example**: Input: "I have a dog" → Output: I have a cat
+
+3. **Problem**: Check if string starts with "he".  
+   **Outcome**: Print True/False.  
+   **Example**: Input: "hello" → Output: True
+
+4. **Problem**: Extract all digits from string using regex.  
+   **Outcome**: Print list of digits.  
+   **Example**: Input: "abc123def45" → Output: ['123', '45']
+
+5. **Problem**: Split string into words.  
+   **Outcome**: Print list of words.  
+   **Example**: Input: "The quick fox" → Output: ['The', 'quick', 'fox']
+
+6. **Problem**: Validate basic email format using regex.  
+   **Outcome**: Print True/False.  
+   **Example**: Input: "user@domain.com" → Output: True
+
+7. **Problem**: Count occurrences of "a" in string.  
+   **Outcome**: Print count.  
+   **Example**: Input: "banana" → Output: 3
+
+8. **Problem**: Tokenize string with regex (word boundaries).  
+   **Outcome**: Print list of words.  
+   **Example**: Input: "hello,world!" → Output: ['hello', 'world']
+
+9. **Problem**: Check if string ends with ".txt".  
+   **Outcome**: Print True/False.  
+   **Example**: Input: "file.txt" → Output: True
+
+10. **Problem**: Convert string to title case.  
+    **Outcome**: Print title case string.  
+    **Example**: Input: "hello world" → Output: Hello World
