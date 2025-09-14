@@ -1,0 +1,66 @@
+# Week 1, Hour 10 Quiz: 30 Questions
+
+Covers Hour 10 and some Week 0/Hour 1-9 concepts.
+
+1. What is metaprogramming?  
+2. Purpose of decorators with arguments?  
+3. Repeat print("Test") twice. (Code)  
+4. Output of context manager timing sleep(1)?  
+5. What is a context manager?  
+6. True or False: Metaclasses are used for all classes.  
+7. Create singleton metaclass. (Code)  
+8. What is `__enter__` in context managers?  
+9. Add dynamic attribute 'age'. (Code)  
+10. Why explain decorators in interviews?  
+11. Output of `setattr(obj, 'x', 1); getattr(obj, 'x')`?  
+12. Common metaclass error?  
+13. Context manager for temp list. (Code)  
+14. What is `__new__` in metaclasses?  
+15. True or False: Context managers handle exceptions automatically.  
+16. Decorator to log function name. (Code)  
+17. Why use context managers?  
+18. Metaclass to enforce method prefix. (Code)  
+19. Output of `hasattr(obj, 'x')` after `delattr(obj, 'x')`?  
+20. Why test exceptions in context managers?  
+21. Dynamic method to return square. (Code)  
+22. What is `contextlib.contextmanager`?  
+23. Decorator to check string inputs. (Code)  
+24. Why avoid metaclasses in simple code?  
+25. Output of temporary dict context manager?  
+26. Context manager for file writing. (Code)  
+27. Why use dynamic attributes?  
+28. Metaclass to log attribute access. (Code)  
+29. Output of `count_calls` decorator after 3 calls?  
+30. When to use context managers vs try-finally?
+
+## Solutions for the Quiz
+1. Programming that manipulates code dynamically.  
+2. Customizes decorator behavior.  
+3. `def repeat(n): def decorator(func): def wrapper(*args, **kwargs): for _ in range(n): func(*args, **kwargs); return wrapper; return decorator; @repeat(2) def test(): print("Test")`  
+4. ~1 second  
+5. Manages setup/cleanup with `with` statement.  
+6. False  
+7. `class Singleton(type): _instances = {}; def __call__(cls, *args, **kwargs): if cls not in cls._instances: cls._instances[cls] = super().__call__(*args, **kwargs); return cls._instances[cls]`  
+8. Defines setup for context manager.  
+9. `setattr(obj, 'age', 25)`  
+10. Shows advanced Python knowledge.  
+11. 1  
+12. Incorrect `__new__` implementation.  
+13. `from contextlib import contextmanager; @contextmanager def temp_list(): lst = []; yield lst; print(lst)`  
+14. Constructs class object.  
+15. False  
+16. `def log(func): def wrapper(*args, **kwargs): print(func.__name__); return func(*args, **kwargs); return wrapper`  
+17. Simplifies resource management.  
+18. `class PrefixEnforcer(type): def __new__(cls, name, bases, attrs): for key, val in attrs.items(): if callable(val) and not key.startswith('_') and not key.startswith('prefix_'): raise ValueError("Methods must start with prefix_"); return super().__new__(cls, name, bases, attrs)`  
+19. False  
+20. Ensures robust cleanup.  
+21. `class Dynamic: pass; def add_square(cls): def square(self, x): return x * x; setattr(cls, 'square', square); add_square(Dynamic)`  
+22. Decorator for generator-based context managers.  
+23. `def check_str(func): def wrapper(*args): for arg in args: if not isinstance(arg, str): raise ValueError("String required"); return func(*args); return wrapper`  
+24. Adds unnecessary complexity.  
+25. Dict with added key-values  
+26. `from contextlib import contextmanager; @contextmanager def file_writer(filename): f = open(filename, 'w'); try: yield f; finally: f.close()`  
+27. Enables flexible designs.  
+28. `class LogAttr(type): def __new__(cls, name, bases, attrs): for key, val in attrs.items(): if not key.startswith('_'): attrs[key] = property(lambda self, k=key: (print(f"Access {k}"), getattr(self, f"_{k}"))[1], lambda self, v, k=key: (print(f"Set {k}"), setattr(self, f"_{k}", v))[1]); return super().__new__(cls, name, bases, attrs)`  
+29. 3  
+30. Context managers for reusable cleanup; try-finally for one-off cases.

@@ -1,0 +1,220 @@
+# Solutions to Week 1, Hour 10 Homework Problems
+
+Solutions with extensively commented code for clarity.
+
+**Problem 1**:
+```python
+# Decorator to repeat function
+def repeat(n):
+    # Decorator function
+    def decorator(func):
+        # Wrapper function
+        def wrapper(*args, **kwargs):
+            # Call function n times
+            for _ in range(n):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+# Test function
+@repeat(2)
+def print_hi():
+    print("Hi")
+
+# Test the function
+print_hi()  # Output: Hi (x2)
+```
+
+**Problem 2**:
+```python
+# Context manager for timing
+class Timer:
+    def __enter__(self):
+        # Start timer
+        import time
+        self.start = time.time()
+        return self
+    
+    def __exit__(self, *args):
+        # Print elapsed time
+        import time
+        print(f"Time: {time.time() - self.start:.2f} seconds")
+
+# Test the context manager
+with Timer():
+    import time
+    time.sleep(1)  # Output: Time: ~1.00 seconds
+```
+
+**Problem 3**:
+```python
+# Singleton metaclass
+class Singleton(type):
+    # Store instances
+    _instances = {}
+    
+    # Create class instance
+    def __call__(cls, *args, **kwargs):
+        # Return existing instance or create new
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+# Test class
+class MyClass(metaclass=Singleton):
+    pass
+
+# Test singleton
+a = MyClass()
+b = MyClass()
+print(id(a) == id(b))  # Output: True
+```
+
+**Problem 4**:
+```python
+# Dynamic attribute addition
+class DynamicObject:
+    pass
+
+# Add attribute
+def add_attribute(obj, name, value):
+    # Set attribute dynamically
+    setattr(obj, name, value)
+    return getattr(obj, name)
+
+# Test the function
+obj = DynamicObject()
+print(add_attribute(obj, 'name', 'Bob'))  # Output: Bob
+```
+
+**Problem 5**:
+```python
+from contextlib import contextmanager
+
+# Temporary dict context manager
+@contextmanager
+def temp_dict():
+    # Create dict
+    d = {}
+    # Yield dict
+    yield d
+    # Print dict
+    print(f"Dict: {d}")
+
+# Test the context manager
+with temp_dict() as d:
+    d['a'] = 1
+# Output: Dict: {'a': 1}
+```
+
+**Problem 6**:
+```python
+# Decorator to check non-negative inputs
+def non_negative(func):
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        # Check inputs
+        for arg in args:
+            if arg < 0:
+                raise ValueError("Inputs must be non-negative")
+        return func(*args, **kwargs)
+    return wrapper
+
+# Test function
+@non_negative
+def add(x, y):
+    return x + y
+
+# Test with try-except
+try:
+    print(add(2, 3))  # Output: 5
+    print(add(-1, 2))  # Raises ValueError
+except ValueError as e:
+    print(e)  # Output: Inputs must be non-negative
+```
+
+**Problem 7**:
+```python
+# Metaclass to log class creation
+class LogCreation(type):
+    # Create class
+    def __new__(cls, name, bases, attrs):
+        # Log creation
+        print(f"Creating {name}")
+        return super().__new__(cls, name, bases, attrs)
+
+# Test class
+class MyClass(metaclass=LogCreation):
+    pass
+
+# Output: Creating MyClass
+```
+
+**Problem 8**:
+```python
+from contextlib import contextmanager
+
+# File reading context manager
+@contextmanager
+def file_reader(filename):
+    # Open file
+    f = open(filename, 'r')
+    try:
+        # Yield file content
+        yield f.read()
+    finally:
+        # Close file
+        f.close()
+
+# Test with file (assumes test.txt exists)
+with open('test.txt', 'w') as f:
+    f.write('Hello')
+with file_reader('test.txt') as content:
+    print(content)  # Output: Hello
+```
+
+**Problem 9**:
+```python
+# Decorator to count calls
+def count_calls(func):
+    # Initialize counter
+    func.calls = 0
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        # Increment counter
+        func.calls += 1
+        # Call function
+        return func(*args, **kwargs)
+    return wrapper
+
+# Test function
+@count_calls
+def say_hello():
+    pass
+
+# Test the function
+say_hello()
+say_hello()
+print(say_hello.calls)  # Output: 2
+```
+
+**Problem 10**:
+```python
+# Dynamic method addition
+class DynamicClass:
+    pass
+
+# Add method dynamically
+def add_method(cls):
+    # Define method
+    def greet(self):
+        return "Hello"
+    # Add to class
+    setattr(cls, 'greet', greet)
+    return cls
+
+# Test the class
+DynamicClass = add_method(DynamicClass)
+obj = DynamicClass()
+print(obj.greet())  # Output: Hello
+```

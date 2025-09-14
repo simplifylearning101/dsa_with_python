@@ -1,0 +1,198 @@
+# Week 1, Hour 10: Metaprogramming and Advanced Python Features
+
+## Agenda
+This hour explores metaprogramming in Python, covering advanced decorators, context managers, metaclasses, and dynamic attribute manipulation. These features allow you to write flexible, reusable code and are often tested in interviews to gauge deep Python expertise.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Create decorators with arguments for flexible function modification.
+- Implement context managers using `with` statements and `@contextmanager`.
+- Use metaclasses to control class creation.
+- Manipulate object attributes dynamically.
+- Analyze use cases and complexity of metaprogramming techniques.
+- Explain advanced Python features clearly in interviews.
+
+## Topics Covered
+1. Advanced Decorators with Arguments
+2. Context Managers and the `with` Statement
+3. Metaclasses
+4. Dynamic Attribute Manipulation
+5. Interview Tips and Common Pitfalls
+
+## Detailed Explanation of Topics
+
+### 1. Advanced Decorators with Arguments
+Decorators with arguments use an extra layer of functions to accept parameters, enabling customizable behavior.
+
+Example:
+```python
+# Decorator with arguments
+def repeat(n):
+    # Decorator function
+    def decorator(func):
+        # Wrapper function
+        def wrapper(*args, **kwargs):
+            # Call function n times
+            for _ in range(n):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return decorator
+
+# Apply decorator
+@repeat(3)
+def say_hello(name):
+    # Print greeting
+    print(f"Hello, {name}!")
+    return name
+
+# Test the function
+print(say_hello("Alice"))  # Output: Hello, Alice! (x3), Alice
+```
+
+### 2. Context Managers and the `with` Statement
+Context managers handle setup and cleanup (e.g., file handling) using the `with` statement. Implement using classes or `@contextmanager`.
+
+Example (Class-based):
+```python
+# Context manager class
+class Timer:
+    def __init__(self):
+        # Initialize start time
+        self.start = None
+    
+    # Enter context
+    def __enter__(self):
+        import time
+        self.start = time.time()
+        return self
+    
+    # Exit context
+    def __exit__(self, exc_type, exc_value, traceback):
+        # Print elapsed time
+        print(f"Elapsed time: {time.time() - self.start:.2f} seconds")
+
+# Test context manager
+with Timer():
+    import time
+    time.sleep(1)  # Output: Elapsed time: ~1.00 seconds
+```
+
+Example (Using `@contextmanager`):
+```python
+from contextlib import contextmanager
+
+# Context manager using decorator
+@contextmanager
+def temporary_list():
+    # Setup: create list
+    lst = []
+    # Yield control
+    yield lst
+    # Cleanup: print list
+    print(f"Temporary list: {lst}")
+
+# Test context manager
+with temporary_list() as lst:
+    lst.append(1)
+    lst.append(2)  # Output: Temporary list: [1, 2]
+```
+
+### 3. Metaclasses
+Metaclasses define how classes are created, allowing customization of class behavior.
+
+Example:
+```python
+# Metaclass to enforce method naming
+class MethodNameEnforcer(type):
+    # Called when class is created
+    def __new__(cls, name, bases, attrs):
+        # Check method names
+        for key, value in attrs.items():
+            if callable(value) and not key.startswith('_'):
+                if not key.islower():
+                    raise ValueError(f"Method {key} must be lowercase")
+        # Create class
+        return super().__new__(cls, name, bases, attrs)
+
+# Class using metaclass
+class MyClass(metaclass=MethodNameEnforcer):
+    # Valid method
+    def my_method(self):
+        return "OK"
+    
+    # Would raise ValueError if uncommented
+    # def InvalidMethod(self):
+    #     pass
+
+# Test the class
+obj = MyClass()
+print(obj.my_method())  # Output: OK
+```
+
+### 4. Dynamic Attribute Manipulation
+Python allows dynamic addition, modification, or deletion of object attributes using `setattr`, `getattr`, and `delattr`.
+
+Example:
+```python
+# Dynamic attribute manipulation
+class DynamicObject:
+    pass
+
+# Create object
+obj = DynamicObject()
+# Set attribute dynamically
+setattr(obj, 'name', 'Alice')
+# Get attribute
+print(getattr(obj, 'name'))  # Output: Alice
+# Delete attribute
+delattr(obj, 'name')
+# Check if attribute exists
+print(hasattr(obj, 'name'))  # Output: False
+```
+
+### 5. Interview Tips and Common Pitfalls
+- **Tips**:
+  - Use context managers for resource management (e.g., files, timers).
+  - Explain decorators as function wrappers with practical examples.
+  - Discuss metaclasses only for advanced scenarios (e.g., framework design).
+  - Demonstrate dynamic attributes for flexible designs.
+- **Pitfalls**:
+  - Overusing metaclasses (they’re rarely needed).
+  - Forgetting to handle exceptions in context managers.
+  - Incorrect decorator syntax (missing wrapper return).
+  - Misusing dynamic attributes (reduces readability).
+
+Example (Safe Context Manager):
+```python
+from contextlib import contextmanager
+
+# Safe context manager
+@contextmanager
+def safe_file_writer(filename):
+    # Try to open file
+    try:
+        f = open(filename, 'w')
+        yield f
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        # Ensure file is closed
+        f.close()
+
+# Test with try-except
+with safe_file_writer('test.txt') as f:
+    f.write('Hello')  # Writes to file
+```
+
+## Points to Remember
+- Decorators with arguments use three layers: argument, decorator, wrapper.
+- Context managers handle setup/cleanup; use `@contextmanager` for simplicity.
+- Metaclasses control class creation but are rarely needed.
+- Dynamic attributes enable flexible designs but require caution.
+- Common error: Missing `__exit__` in context managers.
+- Test edge cases: invalid inputs, exceptions.
+- Explain complexity: O(1) for attribute access, O(n) for metaclass checks.
+- Use context managers for resource-intensive operations.
+- Practice verbalizing metaprogramming logic (e.g., “This decorator repeats the function n times”).
+- Avoid overcomplicating solutions with metaclasses.

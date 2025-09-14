@@ -1,0 +1,133 @@
+# Solutions to Week 1, Hour 10 LeetCode-Style Problems
+
+## 1. Timed Function Execution
+**Explanation**: Decorator to measure execution time.
+
+**Solution**:
+```python
+import time
+
+# Decorator to time execution
+def timer(func):
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        # Start timer
+        start = time.time()
+        # Call function
+        result = func(*args, **kwargs)
+        # Print time
+        print(f"{func.__name__} took {time.time() - start:.2f} seconds")
+        return result
+    return wrapper
+
+# Test function
+@timer
+def sleep_one():
+    time.sleep(1)
+
+# Test the function
+sleep_one()  # Output: sleep_one took ~1.00 seconds
+```
+**Time**: O(1) overhead, **Space**: O(1). **Pros**: Simple. **Cons**: Timer precision.
+
+## 2. Singleton Class
+**Explanation**: Ensure single instance using metaclass.
+
+**Solution**:
+```python
+# Singleton metaclass
+class Singleton(type):
+    # Store instances
+    _instances = {}
+    # Create instance
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super().__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+# Test class
+class MyClass(metaclass=Singleton):
+    pass
+
+# Test the singleton
+a = MyClass()
+b = MyClass()
+print(id(a) == id(b))  # Output: True
+```
+**Time**: O(1), **Space**: O(1). **Pros**: Ensures single instance. **Cons**: Complex for simple tasks.
+
+## 3. Dynamic Attribute Adder
+**Explanation**: Add attributes dynamically.
+
+**Solution**:
+```python
+# Dynamic attribute adder
+class DynamicObject:
+    pass
+
+# Add attribute
+def add_attribute(obj, name, value):
+    # Set attribute
+    setattr(obj, name, value)
+    return getattr(obj, name)
+
+# Test the function
+obj = DynamicObject()
+print(add_attribute(obj, 'name', 'Alice'))  # Output: Alice
+```
+**Time**: O(1), **Space**: O(1). **Pros**: Flexible. **Cons**: Reduces readability.
+
+## 4. Context Manager for Temp List
+**Explanation**: Manage temporary list.
+
+**Solution**:
+```python
+from contextlib import contextmanager
+
+# Temporary list context manager
+@contextmanager
+def temp_list():
+    # Create list
+    lst = []
+    # Yield list
+    yield lst
+    # Print list
+    print(f"List: {lst}")
+
+# Test the context manager
+with temp_list() as lst:
+    lst.append(1)
+    lst.append(2)  # Output: List: [1, 2]
+```
+**Time**: O(1), **Space**: O(n). **Pros**: Clean. **Cons**: Limited scope.
+
+## 5. Method Name Validator
+**Explanation**: Metaclass to enforce method names.
+
+**Solution**:
+```python
+# Metaclass to enforce lowercase methods
+class LowercaseMethods(type):
+    # Create class
+    def __new__(cls, name, bases, attrs):
+        # Check method names
+        for key, val in attrs.items():
+            if callable(val) and not key.startswith('_'):
+                if not key.islower():
+                    raise ValueError(f"Method {key} must be lowercase")
+        return super().__new__(cls, name, bases, attrs)
+
+# Test class
+class TestClass(metaclass=LowercaseMethods):
+    def valid_method(self):
+        pass
+
+# Test the metaclass
+try:
+    class InvalidClass(metaclass=LowercaseMethods):
+        def InvalidMethod(self):
+            pass
+except ValueError as e:
+    print(e)  # Output: Method InvalidMethod must be lowercase
+```
+**Time**: O(n) for class creation, **Space**: O(1). **Pros**: Enforces rules. **Cons**: Overhead.

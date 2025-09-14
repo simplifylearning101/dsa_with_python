@@ -1,0 +1,130 @@
+# Week 1, Hour 10 Deep Dive: Mastering Metaprogramming for Interviews
+
+This section explores advanced metaprogramming techniques with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Decorator with Arguments for Access Control**: Restrict function access.
+
+Example: Access Control Decorator
+```python
+# Decorator for access control
+def restrict_access(role_required):
+    # Decorator function
+    def decorator(func):
+        # Wrapper function
+        def wrapper(user_role, *args, **kwargs):
+            # Check user role
+            if user_role != role_required:
+                raise PermissionError(f"Requires {role_required} role")
+            # Call function
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+# Test function
+@restrict_access('admin')
+def sensitive_operation(data):
+    # Perform operation
+    return f"Processed {data}"
+
+# Test the decorator
+try:
+    print(sensitive_operation('admin', 'data'))  # Output: Processed data
+    print(sensitive_operation('user', 'data'))  # Raises PermissionError
+except PermissionError as e:
+    print(e)  # Output: Requires admin role
+```
+
+- **Custom Metaclass for Attribute Validation**: Enforce attribute types.
+
+Example: Type-Enforcing Metaclass
+```python
+# Metaclass to enforce attribute types
+class TypeEnforcer(type):
+    # Define allowed types
+    def __new__(cls, name, bases, attrs):
+        # Wrap methods to check attributes
+        for key, val in attrs.items():
+            if not key.startswith('_'):
+                attrs[key] = property(
+                    lambda self, k=key: getattr(self, f"_{k}"),
+                    lambda self, v, k=key: setattr(self, f"_{k}", cls._validate(v, k))
+                )
+        return super().__new__(cls, name, bases, attrs)
+    
+    # Validate attribute type
+    @staticmethod
+    def _validate(value, key):
+        if key == 'age' and not isinstance(value, int):
+            raise TypeError(f"{key} must be int")
+        return value
+
+# Test class
+class Person(metaclass=TypeEnforcer):
+    def __init__(self, age):
+        self._age = age
+
+# Test the metaclass
+try:
+    p = Person(25)
+    print(p.age)  # Output: 25
+    p = Person('invalid')  # Raises TypeError
+except TypeError as e:
+    print(e)  # Output: age must be int
+```
+
+## Interview Questions and Answers
+1. **Why use context managers in Python?**  
+   **Answer**: Simplify resource management and ensure cleanup. **Intent**: Robustness.
+
+2. **Write a decorator to log execution time.**  
+   **Answer**:
+   ```python
+   import time
+   # Decorator to log time
+   def timer(func):
+       # Wrapper function
+       def wrapper(*args, **kwargs):
+           # Start timer
+           start = time.time()
+           # Call function
+           result = func(*args, **kwargs)
+           # Log time
+           print(f"{func.__name__} took {time.time() - start:.2f} seconds")
+           return result
+       return wrapper
+   # Test function
+   @timer
+   def sleep_one():
+       time.sleep(1)
+   # Test
+   sleep_one()  # Output: sleep_one took ~1.00 seconds
+   ```
+   **Intent**: Performance monitoring.
+
+3. **How to implement a singleton pattern?**  
+   **Answer**: Use a metaclass to store single instance. **Intent**: Design pattern.
+
+4. **Write a context manager for file handling.**  
+   **Answer**:
+   ```python
+   from contextlib import contextmanager
+   # File context manager
+   @contextmanager
+   def file_handler(filename, mode):
+       # Open file
+       f = open(filename, mode)
+       try:
+           # Yield file
+           yield f
+       finally:
+           # Close file
+           f.close()
+   # Test
+   with file_handler('test.txt', 'w') as f:
+       f.write('Hello')  # Writes to file
+   ```
+   **Intent**: Resource management.
+
+5. **Why use metaclasses sparingly?**  
+   **Answer**: Complex and often unnecessary for simple tasks. **Intent**: Code simplicity.

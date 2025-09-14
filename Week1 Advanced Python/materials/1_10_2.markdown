@@ -1,0 +1,43 @@
+# Week 1, Hour 10 Homework: Practice Problems
+
+Practice these 10 programs to master metaprogramming. Write each as a .py file and verify outputs.
+
+1. **Problem**: Create decorator to repeat function n times.  
+   **Outcome**: Print repeated output.  
+   **Example**: Input: n=2, func=print("Hi") → Output: Hi (x2)
+
+2. **Problem**: Implement context manager for timing.  
+   **Outcome**: Print execution time.  
+   **Example**: Input: sleep(1) → Output: ~1 second
+
+3. **Problem**: Create metaclass to enforce singleton pattern.  
+   **Outcome**: Same instance for class.  
+   **Example**: Input: Two instances → Output: Same id
+
+4. **Problem**: Dynamically add attribute to object.  
+   **Outcome**: Print attribute value.  
+   **Example**: Input: name="Bob" → Output: Bob
+
+5. **Problem**: Create context manager for temporary dict.  
+   **Outcome**: Print dict after operations.  
+   **Example**: Input: Add key-value → Output: {'a': 1}
+
+6. **Problem**: Decorator to check non-negative inputs.  
+   **Outcome**: Raise error for negative inputs.  
+   **Example**: Input: -1 → Raises ValueError
+
+7. **Problem**: Metaclass to log class creation.  
+   **Outcome**: Print class name on creation.  
+   **Example**: Input: class MyClass → Output: Creating MyClass
+
+8. **Problem**: Context manager for file reading.  
+   **Outcome**: Read file content.  
+   **Example**: Input: File with "Hello" → Output: Hello
+
+9. **Problem**: Decorator to count function calls.  
+   **Outcome**: Print call count.  
+   **Example**: Input: Call func twice → Output: 2
+
+10. **Problem**: Dynamic method addition to class.  
+    **Outcome**: Call added method.  
+    **Example**: Input: Add greet method → Output: Hello

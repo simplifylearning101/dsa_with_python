@@ -1,0 +1,28 @@
+# Week 1, Hour 10 LeetCode/NeetCode-Style Problems
+
+Practice these to apply metaprogramming concepts.
+
+1. **Timed Function Execution**  
+   **Problem**: Create decorator to time function execution.  
+   **Outcome**: Print execution time.  
+   **Example**: Input: sleep(1) → Output: ~1 second
+
+2. **Singleton Class**  
+   **Problem**: Implement singleton using metaclass.  
+   **Outcome**: Same instance for multiple creations.  
+   **Example**: Input: Two instances → Output: Same id
+
+3. **Dynamic Attribute Adder**  
+   **Problem**: Add attributes dynamically to object.  
+   **Outcome**: Print attribute value.  
+   **Example**: Input: name="Alice" → Output: Alice
+
+4. **Context Manager for Temp List**  
+   **Problem**: Create context manager for temporary list.  
+   **Outcome**: Print list after operations.  
+   **Example**: Input: Append 1, 2 → Output: [1, 2]
+
+5. **Method Name Validator**  
+   **Problem**: Metaclass to enforce lowercase method names.  
+   **Outcome**: Raise error for invalid names.  
+   **Example**: Input: InvalidMethod → Raises ValueError
