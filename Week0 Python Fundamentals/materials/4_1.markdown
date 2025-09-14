@@ -1,0 +1,135 @@
+# Hour 4: Basic Data Structures in Python
+
+## Agenda
+This hour introduces Python's built-in data structures: lists, tuples, sets, and dictionaries. These are the building blocks for solving many coding interview problems, allowing you to store and manipulate data efficiently.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Create and manipulate lists, tuples, sets, and dictionaries.
+- Understand their properties (mutable vs immutable, unique elements, key-value pairs).
+- Perform common operations like adding, removing, and accessing elements.
+- Use these structures to solve simple problems.
+- Explain their use cases clearly in interviews.
+
+## Topics Covered
+1. Lists: Creation, Indexing, and Operations
+2. Tuples: Creation and Uses
+3. Sets: Unique Elements and Operations
+4. Dictionaries: Key-Value Pairs and Operations
+5. Common Operations Across Data Structures
+6. Choosing the Right Data Structure for Interviews
+
+## Detailed Explanation of Topics
+
+### 1. Lists: Creation, Indexing, and Operations
+Lists are ordered, mutable collections of items. They can hold mixed types.
+
+Example:
+```python
+# Create a list
+fruits = ["apple", "banana", "cherry"]  # List with strings
+print(fruits[0])  # Output: apple (indexing starts at 0)
+fruits.append("orange")  # Add to end
+print(fruits)  # Output: ['apple', 'banana', 'cherry', 'orange']
+fruits[1] = "blueberry"  # Modify index 1
+print(fruits)  # Output: ['apple', 'blueberry', 'cherry', 'orange']
+```
+
+Common operations:
+- Access: `list[index]`
+- Add: `append()`, `insert(index, item)`
+- Remove: `pop()`, `remove(item)`
+- Length: `len(list)`
+
+### 2. Tuples: Creation and Uses
+Tuples are ordered, immutable collections. Useful for fixed data.
+
+Example:
+```python
+# Create a tuple
+coords = (10, 20)  # Tuple with numbers
+print(coords[0])  # Output: 10
+# coords[0] = 5  # Error: tuples are immutable
+point = tuple([1, 2])  # Convert list to tuple
+print(point)  # Output: (1, 2)
+```
+
+Use case: Return multiple values from functions.
+
+### 3. Sets: Unique Elements and Operations
+Sets are unordered collections of unique items. Great for removing duplicates.
+
+Example:
+```python
+# Create a set
+numbers = {1, 2, 2, 3}  # Duplicates removed
+print(numbers)  # Output: {1, 2, 3}
+numbers.add(4)  # Add item
+print(numbers)  # Output: {1, 2, 3, 4}
+print(2 in numbers)  # Output: True (membership test)
+```
+
+Operations: Union (`|`), intersection (`&`), difference (`-`).
+
+### 4. Dictionaries: Key-Value Pairs and Operations
+Dictionaries store key-value pairs, with unique keys.
+
+Example:
+```python
+# Create a dictionary
+student = {"name": "Alice", "age": 20}  # Key: value
+print(student["name"])  # Output: Alice
+student["grade"] = "A"  # Add new pair
+print(student)  # Output: {'name': 'Alice', 'age': 20, 'grade': 'A'}
+del student["age"]  # Remove key
+print(student)  # Output: {'name': 'Alice', 'grade': 'A'}
+```
+
+Operations: Access (`dict[key]`), add (`dict[key] = value`), remove (`del`).
+
+### 5. Common Operations Across Data Structures
+- Membership: `in` operator (e.g., `x in list`, `key in dict`).
+- Length: `len()`.
+- Iteration: Use for loops.
+
+Example:
+```python
+# Iterate over list
+for fruit in ["apple", "banana"]:
+    print(fruit)  # Output: apple, banana
+
+# Iterate over dict keys
+for key in {"a": 1, "b": 2}:
+    print(key)  # Output: a, b
+```
+
+### 6. Choosing the Right Data Structure for Interviews
+Cheatsheet:
+
+| Structure | Mutable | Ordered | Use Case |
+|-----------|---------|---------|----------|
+| List      | Yes     | Yes     | Ordered data, dynamic size |
+| Tuple     | No      | Yes     | Fixed data, return multiple values |
+| Set       | Yes     | No      | Unique elements, fast lookup |
+| Dict      | Yes     | Yes*    | Key-value pairs, fast lookup |
+
+*Since Python 3.7, dicts maintain insertion order.
+
+Example:
+```python
+# Choose set for unique items
+items = [1, 2, 2, 3]
+unique = set(items)  # Output: {1, 2, 3}
+```
+
+## Points to Remember
+- Lists are versatile but slower for lookups (O(n)); use sets/dicts for O(1) lookups.
+- Tuples are immutable—use for fixed data or function returns.
+- Sets are great for deduplication and membership tests.
+- Dictionaries require unique keys; use descriptive keys.
+- In interviews, explain why you chose a data structure (e.g., “Set for fast lookup”).
+- Common error: Accessing non-existent dict key (use `get()` to avoid KeyError).
+- Negative indexing: `list[-1]` is last element.
+- Practice converting between structures (e.g., list to set).
+- Always check for empty structures before operations.
+- Explain iteration logic clearly in interviews.

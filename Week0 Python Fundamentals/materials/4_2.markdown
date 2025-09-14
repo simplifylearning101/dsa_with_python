@@ -1,0 +1,43 @@
+# Hour 4 Homework: Practice Problems
+
+Practice these 10 programs to master lists, tuples, sets, and dictionaries. Write each as a .py file and verify outputs.
+
+1. **Problem**: Create a list of 3 fruits and print it.  
+   **Outcome**: Print list.  
+   **Example**: Output: ["apple", "banana", "cherry"]
+
+2. **Problem**: Add an item to a list and print last element.  
+   **Outcome**: Print last item.  
+   **Example**: list=["a", "b"] → add "c" → Output: "c"
+
+3. **Problem**: Create a tuple with 2 numbers and print first.  
+   **Outcome**: Print first element.  
+   **Example**: tuple=(5, 10) → Output: 5
+
+4. **Problem**: Remove duplicates from list using set.  
+   **Outcome**: Print unique items.  
+   **Example**: list=[1, 2, 2, 3] → Output: {1, 2, 3}
+
+5. **Problem**: Create a dictionary with name and age, print age.  
+   **Outcome**: Print age value.  
+   **Example**: dict={"name": "Bob", "age": 25} → Output: 25
+
+6. **Problem**: Check if item exists in list.  
+   **Outcome**: Print True/False.  
+   **Example**: item="apple", list=["apple", "banana"] → Output: True
+
+7. **Problem**: Merge two lists and print result.  
+   **Outcome**: Print merged list.  
+   **Example**: [1, 2] + [3, 4] → Output: [1, 2, 3, 4]
+
+8. **Problem**: Create set from list and add new item.  
+   **Outcome**: Print updated set.  
+   **Example**: list=[1, 1, 2] → add 3 → Output: {1, 2, 3}
+
+9. **Problem**: Update dictionary value and print updated dict.  
+   **Outcome**: Print dictionary.  
+   **Example**: dict={"score": 90} → update to 95 → Output: {"score": 95}
+
+10. **Problem**: Count items in a list using loop.  
+    **Outcome**: Print count.  
+    **Example**: list=["a", "b", "c"] → Output: 3

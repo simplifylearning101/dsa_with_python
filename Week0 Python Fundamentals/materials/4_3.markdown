@@ -1,0 +1,83 @@
+# Solutions to Hour 4 Homework Problems
+
+Solutions with commented code.
+
+**Problem 1**:
+```python
+# Create list
+fruits = ["apple", "banana", "cherry"]
+print(fruits)  # Output: ['apple', 'banana', 'cherry']
+```
+
+**Problem 2**:
+```python
+# Add and print last
+items = ["a", "b"]
+items.append("c")  # Add item
+print(items[-1])  # Output: c
+```
+
+**Problem 3**:
+```python
+# Tuple first element
+coords = (5, 10)
+print(coords[0])  # Output: 5
+```
+
+**Problem 4**:
+```python
+# Remove duplicates
+numbers = [1, 2, 2, 3]
+unique = set(numbers)
+print(unique)  # Output: {1, 2, 3}
+```
+
+**Problem 5**:
+```python
+# Dictionary access
+student = {"name": "Bob", "age": 25}
+print(student["age"])  # Output: 25
+```
+
+**Problem 6**:
+```python
+# Check existence
+items = ["apple", "banana"]
+print("apple" in items)  # Output: True
+```
+
+**Problem 7**:
+```python
+# Merge lists
+list1 = [1, 2]
+list2 = [3, 4]
+merged = list1 + list2
+print(merged)  # Output: [1, 2, 3, 4]
+```
+
+**Problem 8**:
+```python
+# Set from list
+numbers = [1, 1, 2]
+s = set(numbers)
+s.add(3)
+print(s)  # Output: {1, 2, 3}
+```
+
+**Problem 9**:
+```python
+# Update dictionary
+d = {"score": 90}
+d["score"] = 95
+print(d)  # Output: {'score': 95}
+```
+
+**Problem 10**:
+```python
+# Count items
+items = ["a", "b", "c"]
+count = 0
+for _ in items:
+    count += 1
+print(count)  # Output: 3
+```

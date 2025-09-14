@@ -1,0 +1,62 @@
+# Hour 4 Deep Dive: Mastering Data Structures for Interviews
+
+This section explores data structures in depth with complex programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Nested Data Structures**: Lists of dictionaries, sets in lists, etc.
+
+Example: Student Records
+```python
+# List of dictionaries for students
+students = [
+    {"name": "Alice", "grades": [90, 85]},
+    {"name": "Bob", "grades": [80, 95]}
+]
+# Add grade to Alice
+students[0]["grades"].append(88)
+print(students)  # Output: [{'name': 'Alice', 'grades': [90, 85, 88]}, ...]
+```
+
+- **Set Operations for Efficiency**: Use sets for fast membership and deduplication.
+
+Example: Common Elements
+```python
+# Find common elements in two lists
+def common_elements(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    return list(set1 & set2)  # Intersection
+print(common_elements([1, 2, 3], [2, 3, 4]))  # Output: [2, 3]
+```
+
+## Interview Questions and Answers
+1. **When to use list vs set?**  
+   **Answer**: List for ordered, repeatable data; set for unique items, fast lookup (O(1)). **Intent**: Tests data structure choice.
+
+2. **Write function to count frequency in list using dict.**  
+   **Answer**:
+   ```python
+   def frequency(lst):
+       counts = {}
+       for item in lst:
+           counts[item] = counts.get(item, 0) + 1
+       return counts
+   print(frequency([1, 2, 2, 3]))  # {'1': 1, '2': 2, '3': 1}
+   ```
+   **Intent**: Tests dict usage, edge cases.
+
+3. **Why are tuples immutable?**  
+   **Answer**: Ensures data integrity, used as dict keys (hashable). **Intent**: Understands immutability.
+
+4. **How to handle missing dict key?**  
+   **Answer**: Use `dict.get(key, default)` to avoid KeyError. **Intent**: Robustness.
+
+5. **Write function to merge two dicts.**  
+   **Answer**:
+   ```python
+   def merge_dicts(d1, d2):
+       result = d1.copy()
+       result.update(d2)
+       return result
+   ```
+   **Intent**: Tests dict operations.
