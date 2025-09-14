@@ -19,7 +19,7 @@ The course is structured as follows: Week 0 covers Python fundamentals to ensure
 | 7 | [Dynamic Programming](/README.markdown) |
 | 8 | [Hashing and Heaps](/README.markdown) |
 | 9 | [Advanced Topics, Review, and Mock Interviews](/README.markdown) |
-| 10 | [](/README.markdown) |
+| 10 | [Mock Interviews](/README.markdown) |
 
 
 ## Week 0: Python Fundamentals
