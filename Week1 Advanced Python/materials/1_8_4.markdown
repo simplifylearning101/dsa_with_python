@@ -2,65 +2,65 @@
 
 Covers Hour 8 and some Week 0/Hour 1-7 concepts.
 
-1. What is recursion?  
-2. Purpose of base case?  
-3. Compute factorial of 3. (Code)  
-4. Output of `sum_n(3)`?  
-5. What is recursive case?  
-6. True or False: Recursion always uses less memory than iteration.  
-7. Reverse "abc". (Code)  
-8. What is memoization?  
-9. Compute 2^4. (Code)  
-10. Why explain recursion in interviews?  
-11. Output of `fibonacci(5)`?  
-12. Common recursion error?  
-13. Sum [1, 2]. (Code)  
-14. What is call stack in recursion?  
-15. True or False: Recursion can cause stack overflow.  
-16. Count digits in 1234. (Code)  
-17. Why use memoization?  
-18. Find max in [3, 1, 4]. (Code)  
-19. Output of `is_palindrome("deed")`?  
-20. Why test base cases?  
-21. Generate first 4 Fibonacci numbers. (Code)  
-22. What is divide-and-conquer?  
-23. Compute sum_n(5). (Code)  
-24. Why avoid deep recursion?  
-25. Output of `factorial(4)`?  
-26. Check palindrome "aba". (Code)  
-27. Why handle negative inputs?  
-28. Compute 3^2. (Code)  
-29. Output of `sum_list([4, 5])`?  
-30. When to use recursion vs iteration?
+1. What is a lambda function?  
+2. Purpose of `map` function?  
+3. Square [1, 2] using map. (Code)  
+4. Output of `filter(lambda x: x > 2, [1, 2, 3, 4])`?  
+5. What is `reduce`?  
+6. True or False: Generators can be iterated multiple times.  
+7. Compute sum with reduce. (Code)  
+8. What is a list comprehension?  
+9. Filter evens from range(6). (Code)  
+10. Why use functional programming in interviews?  
+11. Output of `(x * x for x in range(3))` after list conversion?  
+12. Common generator error?  
+13. Decorator to print function name. (Code)  
+14. What is `yield`?  
+15. True or False: Lambda functions can have multiple lines.  
+16. Sort [(1, 2), (2, 1)] by first element. (Code)  
+17. Why use generators?  
+18. Filter strings <= 2 chars from ["a", "ab", "abc"]. (Code)  
+19. Output of `reduce(lambda x, y: x + y, [1, 2, 3])`?  
+20. Why test empty iterables?  
+21. Generate first 3 Fibonacci numbers. (Code)  
+22. What is a decorator?  
+23. Map lambda x: x + 1 to [1, 2]. (Code)  
+24. Why avoid complex lambdas?  
+25. Output of `[x for x in range(4) if x % 2 == 0]`?  
+26. Decorator to check string inputs. (Code)  
+27. Why use list comprehensions?  
+28. Generate squares of first 3 numbers. (Code)  
+29. Output of `filter(lambda x: x % 2 == 0, [1, 2, 3, 4])`?  
+30. When to use functional vs OOP?
 
 ## Solutions for the Quiz
-1. Function calling itself with smaller input.  
-2. Stops recursion.  
-3. `def factorial(n): if n <= 1: return 1; return n * factorial(n-1)`  
-4. 6  
-5. Function call with smaller input.  
+1. Anonymous function defined with `lambda`.  
+2. Applies function to each iterable element.  
+3. `list(map(lambda x: x * x, [1, 2]))`  
+4. [3, 4]  
+5. Combines iterable into single value.  
 6. False  
-7. `def reverse(s): if len(s) <= 1: return s; return s[-1] + reverse(s[:-1])`  
-8. Caching results to avoid recomputation.  
-9. `def power(base, exp): if exp == 0: return 1; return base * power(base, exp-1)`  
-10. Shows problem-solving clarity.  
-11. 5  
-12. Missing base case.  
-13. `def sum_list(lst): if not lst: return 0; return lst[0] + sum_list(lst[1:])`  
-14. Tracks function calls.  
-15. True  
-16. `def count_digits(n): n = abs(n); if n < 10: return 1; return 1 + count_digits(n//10)`  
-17. Improves efficiency for overlapping subproblems.  
-18. `def find_max(lst): if len(lst) == 1: return lst[0]; return max(lst[0], find_max(lst[1:]))`  
-19. True  
-20. Ensures recursion terminates.  
-21. `def fib_list(n): return [fib(i) for i in range(n)] where def fib(i): if i <= 1: return i; return fib(i-1) + fib(i-2)`  
-22. Split problem into smaller parts.  
-23. `def sum_n(n): if n == 0: return 0; return n + sum_n(n-1)`  
-24. Risks stack overflow.  
-25. 24  
-26. `def is_palindrome(s): if len(s) <= 1: return True; if s[0] != s[-1]: return False; return is_palindrome(s[1:-1])`  
-27. Prevents invalid recursion.  
-28. `def power(base, exp): if exp == 0: return 1; return base * power(base, exp-1)`  
-29. 9  
-30. Recursion for tree-like problems; iteration for linear ones.
+7. `from functools import reduce; reduce(lambda x, y: x + y, [1, 2, 3])`  
+8. Concise way to create lists.  
+9. `[x for x in range(6) if x % 2 == 0]`  
+10. Shows Pythonic, concise code.  
+11. [0, 1, 4]  
+12. Exhausting generator.  
+13. `def log(func): def wrapper(*args, **kwargs): print(func.__name__); return func(*args, **kwargs); return wrapper`  
+14. Yields value from generator.  
+15. False  
+16. `sorted([(1, 2), (2, 1)], key=lambda x: x[0])`  
+17. Memory efficiency for large data.  
+18. `list(filter(lambda s: len(s) <= 2, ["a", "ab", "abc"]))`  
+19. 6  
+20. Ensures robust code.  
+21. `def fib(n): a, b = 0, 1; for _ in range(n): yield a; a, b = b, a + b`  
+22. Function that wraps another function.  
+23. `list(map(lambda x: x + 1, [1, 2]))`  
+24. Reduces readability.  
+25. [0, 2]  
+26. `def check_str(func): def wrapper(*args): for arg in args: if not isinstance(arg, str): raise ValueError("String input required"); return func(*args); return wrapper`  
+27. Concise, Pythonic code.  
+28. `(x * x for x in range(3))`  
+29. [2, 4]  
+30. Functional for transformations; OOP for stateful objects.

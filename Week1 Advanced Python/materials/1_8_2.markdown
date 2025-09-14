@@ -1,43 +1,43 @@
 # Week 1, Hour 8 Homework: Practice Problems
 
-Practice these 10 programs to master recursion. Write each as a .py file and verify outputs.
+Practice these 10 programs to master functional programming. Write each as a .py file and verify outputs.
 
-1. **Problem**: Compute factorial of n.  
-   **Outcome**: Print factorial.  
-   **Example**: Input: 5 → Output: 120
+1. **Problem**: Square numbers using lambda and map.  
+   **Outcome**: Print squared list.  
+   **Example**: Input: [1, 2, 3] → Output: [1, 4, 9]
 
-2. **Problem**: Sum first n numbers.  
-   **Outcome**: Print sum.  
-   **Example**: Input: 4 → Output: 10
+2. **Problem**: Filter odd numbers using lambda and filter.  
+   **Outcome**: Print filtered list.  
+   **Example**: Input: [1, 2, 3, 4] → Output: [1, 3]
 
-3. **Problem**: Compute nth Fibonacci number.  
-   **Outcome**: Print Fibonacci number.  
-   **Example**: Input: 6 → Output: 8
-
-4. **Problem**: Reverse a string recursively.  
-   **Outcome**: Print reversed string.  
-   **Example**: Input: "hello" → Output: "olleh"
-
-5. **Problem**: Count digits in a number.  
-   **Outcome**: Print digit count.  
-   **Example**: Input: 123 → Output: 3
-
-6. **Problem**: Compute power (base, exponent).  
-   **Outcome**: Print result.  
-   **Example**: Input: 2, 3 → Output: 8
-
-7. **Problem**: Sum elements of a list.  
-   **Outcome**: Print sum.  
+3. **Problem**: Compute product of numbers using reduce.  
+   **Outcome**: Print product.  
    **Example**: Input: [1, 2, 3] → Output: 6
 
-8. **Problem**: Find max in a list.  
-   **Outcome**: Print max.  
-   **Example**: Input: [4, 2, 7] → Output: 7
+4. **Problem**: Create list comprehension for even numbers.  
+   **Outcome**: Print even numbers.  
+   **Example**: Input: range(5) → Output: [0, 2, 4]
 
-9. **Problem**: Check if string is palindrome.  
-   **Outcome**: Print True/False.  
-   **Example**: Input: "racecar" → Output: True
+5. **Problem**: Generate first n squares using generator.  
+   **Outcome**: Print squares.  
+   **Example**: Input: 4 → Output: [0, 1, 4, 9]
 
-10. **Problem**: Generate first n Fibonacci numbers.  
-    **Outcome**: Print list.  
-    **Example**: Input: 5 → Output: [0, 1, 1, 2, 3]
+6. **Problem**: Create decorator to time function execution.  
+   **Outcome**: Print execution time.  
+   **Example**: Input: sleep(1) → Output: ~1 second
+
+7. **Problem**: Use lambda to sort list of tuples by second element.  
+   **Outcome**: Print sorted list.  
+   **Example**: Input: [(1, 3), (2, 1)] → Output: [(2, 1), (1, 3)]
+
+8. **Problem**: Generate Fibonacci numbers using generator expression.  
+   **Outcome**: Print Fibonacci list.  
+   **Example**: Input: 5 → Output: [0, 1, 1, 2, 3]
+
+9. **Problem**: Filter strings longer than 3 chars using filter.  
+   **Outcome**: Print filtered list.  
+   **Example**: Input: ["cat", "dog", "horse"] → Output: ["horse"]
+
+10. **Problem**: Create decorator to check positive inputs.  
+    **Outcome**: Raise error for negative inputs.  
+    **Example**: Input: -1 → Raises ValueError

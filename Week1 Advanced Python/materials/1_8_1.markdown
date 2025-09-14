@@ -1,166 +1,163 @@
-# Week 1, Hour 8: Introduction to Recursion
+# Week 1, Hour 8: Advanced Functional Programming in Python
 
 ## Agenda
-This hour introduces recursion in Python, a technique where a function calls itself to solve smaller instances of a problem. Recursion is essential for coding interviews, particularly for problems involving trees, graphs, and divide-and-conquer algorithms.
+This hour explores advanced functional programming in Python, focusing on tools like lambda functions, `map`, `filter`, `reduce`, list comprehensions, generators, and decorators. These features enable concise, expressive code, which is highly valued in coding interviews and Pythonic programming.
 
 ## Outcome Expected
 By the end of this hour, you will be able to:
-- Understand and implement recursive functions.
-- Identify base cases and recursive cases.
-- Analyze recursion time and space complexity.
-- Solve common recursive problems (e.g., factorial, Fibonacci).
-- Debug recursive functions to avoid infinite recursion.
-- Explain recursive logic clearly in interviews.
+- Use lambda functions for inline operations.
+- Apply `map`, `filter`, and `reduce` for functional transformations.
+- Write efficient list comprehensions and generator expressions.
+- Implement generators for memory-efficient iteration.
+- Create and use decorators to modify function behavior.
+- Explain functional programming concepts in interviews.
 
 ## Topics Covered
-1. What is Recursion?
-2. Base Case and Recursive Case
-3. Recursion vs Iteration
-4. Common Recursive Patterns
-5. Time and Space Complexity
+1. Lambda Functions
+2. Map, Filter, and Reduce
+3. List Comprehensions and Generator Expressions
+4. Generators and Iterators
+5. Decorators
 6. Interview Tips and Common Pitfalls
 
 ## Detailed Explanation of Topics
 
-### 1. What is Recursion?
-Recursion is when a function calls itself with a smaller input to solve a problem. It breaks problems into smaller subproblems until a base case is reached.
+### 1. Lambda Functions
+Lambda functions are anonymous functions defined using the `lambda` keyword. They’re useful for short, throwaway functions in functional programming.
 
 Example:
 ```python
-# Recursive factorial function
-def factorial(n):
-    # Base case: factorial of 0 or 1 is 1
-    if n <= 1:
-        return 1
-    # Recursive case: n * factorial of (n-1)
-    return n * factorial(n - 1)
+# Lambda function to square a number
+square = lambda x: x * x
+# Use lambda
+print(square(5))  # Output: 25
 
-# Test the function
-print(factorial(5))  # Output: 120 (5 * 4 * 3 * 2 * 1)
+# Lambda with multiple arguments
+add = lambda x, y: x + y
+print(add(3, 4))  # Output: 7
 ```
 
-### 2. Base Case and Recursive Case
-- **Base Case**: Condition to stop recursion.
-- **Recursive Case**: Calls the function with a smaller input.
+### 2. Map, Filter, and Reduce
+These functions apply operations to iterables:
+- `map`: Applies a function to each element.
+- `filter`: Selects elements based on a condition.
+- `reduce`: Combines elements into a single result.
 
 Example:
 ```python
-# Recursive sum of first n numbers
-def sum_n(n):
-    # Base case: sum of 0 is 0
-    if n == 0:
-        return 0
-    # Recursive case: n + sum of (n-1)
-    return n + sum_n(n - 1)
+from functools import reduce
 
-# Test the function
-print(sum_n(4))  # Output: 10 (4 + 3 + 2 + 1)
+# Map: Square each number
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x * x, numbers))
+print(squared)  # Output: [1, 4, 9, 16]
+
+# Filter: Keep even numbers
+evens = list(filter(lambda x: x % 2 == 0, numbers))
+print(evens)  # Output: [2, 4]
+
+# Reduce: Sum all numbers
+total = reduce(lambda x, y: x + y, numbers)
+print(total)  # Output: 10
 ```
 
-### 3. Recursion vs Iteration
-Recursion uses function calls; iteration uses loops. Recursion is elegant for tree-like problems but can consume more stack space.
+### 3. List Comprehensions and Generator Expressions
+List comprehensions create lists concisely; generator expressions create iterators for memory efficiency.
 
-Example (Iterative vs Recursive):
+Example:
 ```python
-# Iterative factorial
-def factorial_iterative(n):
-    result = 1
-    for i in range(1, n + 1):
-        result *= i
-    return result
+# List comprehension
+squares = [x * x for x in range(5)]
+print(squares)  # Output: [0, 1, 4, 9, 16]
 
-# Recursive factorial
-def factorial_recursive(n):
-    if n <= 1:
-        return 1
-    return n * factorial_recursive(n - 1)
-
-# Test both
-print(factorial_iterative(5))  # Output: 120
-print(factorial_recursive(5))  # Output: 120
+# Generator expression
+squares_gen = (x * x for x in range(5))
+print(list(squares_gen))  # Output: [0, 1, 4, 9, 16]
 ```
 
-### 4. Common Recursive Patterns
-- **Divide-and-Conquer**: Split problem into halves (e.g., merge sort).
-- **Tree Traversal**: Process nodes recursively.
-- **Backtracking**: Explore all possibilities (e.g., permutations).
+### 4. Generators and Iterators
+Generators yield values one at a time, saving memory for large datasets. Defined using `yield` or generator expressions.
 
-Example (Fibonacci):
+Example:
 ```python
-# Recursive Fibonacci
+# Generator function
 def fibonacci(n):
-    # Base cases: fib(0)=0, fib(1)=1
-    if n <= 1:
-        return n
-    # Recursive case: fib(n) = fib(n-1) + fib(n-2)
-    return fibonacci(n - 1) + fibonacci(n - 2)
+    # Initialize first two numbers
+    a, b = 0, 1
+    # Yield n Fibonacci numbers
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
-# Test the function
-print(fibonacci(6))  # Output: 8 (0, 1, 1, 2, 3, 5, 8)
+# Use generator
+print(list(fibonacci(5)))  # Output: [0, 1, 1, 2, 3]
 ```
 
-### 5. Time and Space Complexity
-- **Time Complexity**: Often exponential (e.g., O(2^n) for naive Fibonacci) without optimization.
-- **Space Complexity**: O(n) for call stack in most cases.
-- **Optimization**: Use memoization to cache results.
+### 5. Decorators
+Decorators wrap functions to modify their behavior, often used for logging, timing, or access control.
 
-Example (Memoized Fibonacci):
+Example:
 ```python
-# Memoized Fibonacci
-def fibonacci_memo(n, memo={}):
-    # Check if result is cached
-    if n in memo:
-        return memo[n]
-    # Base cases
-    if n <= 1:
-        return n
-    # Recursive case with memoization
-    memo[n] = fibonacci_memo(n - 1, memo) + fibonacci_memo(n - 2, memo)
-    return memo[n]
+# Decorator to log function calls
+def logger(func):
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__} with {args}, {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"Finished {func.__name__}, result: {result}")
+        return result
+    return wrapper
+
+# Apply decorator
+@logger
+def add(x, y):
+    return x + y
 
 # Test the function
-print(fibonacci_memo(6))  # Output: 8
+print(add(2, 3))  # Output: Calling add with (2, 3), {}; Finished add, result: 5; 5
 ```
 
 ### 6. Interview Tips and Common Pitfalls
 - **Tips**:
-  - Always define a clear base case to avoid infinite recursion.
-  - Explain recursive logic step-by-step in interviews.
-  - Use memoization for overlapping subproblems.
+  - Use lambda functions for concise solutions in interviews.
+  - Prefer list comprehensions over loops for Pythonic code.
+  - Use generators for memory-efficient solutions with large data.
+  - Explain decorators by describing their wrapping behavior.
 - **Pitfalls**:
-  - Missing base case (infinite recursion).
-  - Stack overflow for large inputs.
-  - Not considering iterative alternatives for efficiency.
+  - Overusing lambda functions for complex logic.
+  - Forgetting to import `reduce` from `functools`.
+  - Exhausting generators (they’re single-use).
+  - Misplacing `@` in decorator syntax.
 
-Example (Safe Recursion):
+Example (Safe Generator):
 ```python
-# Recursive sum with error handling
-def safe_sum_n(n):
-    # Check for negative input
+# Generator with error handling
+def safe_fibonacci(n):
+    # Check for valid input
     if n < 0:
         raise ValueError("Input must be non-negative")
-    # Base case
-    if n == 0:
-        return 0
-    # Recursive case
-    return n + safe_sum_n(n - 1)
+    # Initialize Fibonacci sequence
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
 # Test with try-except
 try:
-    print(safe_sum_n(4))  # Output: 10
-    print(safe_sum_n(-1))  # Raises ValueError
+    print(list(safe_fibonacci(5)))  # Output: [0, 1, 1, 2, 3]
+    print(list(safe_fibonacci(-1)))  # Raises ValueError
 except ValueError as e:
     print(e)  # Output: Input must be non-negative
 ```
 
 ## Points to Remember
-- Recursion solves problems by breaking them into smaller subproblems.
-- Always define a base case to stop recursion.
-- Recursive calls add to the call stack, impacting space complexity.
-- Use memoization to optimize overlapping subproblems.
-- Explain recursion clearly in interviews (e.g., “This base case stops at n=0”).
-- Common error: Missing base case causes infinite recursion.
-- Test edge cases: n=0, negative inputs, large inputs.
-- Consider iterative solutions for large inputs to avoid stack overflow.
-- Visualize recursive calls as a tree for clarity.
-- Practice verbalizing recursive steps for interviews.
+- Lambda functions are concise but should be simple.
+- `map`, `filter`, `reduce` transform iterables functionally.
+- List comprehensions are Pythonic; generator expressions save memory.
+- Generators yield values lazily, ideal for large datasets.
+- Decorators modify function behavior using wrappers.
+- Common error: Forgetting to handle exhausted generators.
+- Test edge cases: empty iterables, invalid inputs.
+- Explain functional programming benefits (e.g., conciseness, immutability).
+- Use `@` syntax for decorators, ensure proper wrapping.
+- Practice verbalizing functional logic (e.g., “This maps a lambda to square each element”).

@@ -4,150 +4,152 @@ Solutions with extensively commented code for clarity.
 
 **Problem 1**:
 ```python
-# Function to compute factorial
-def factorial(n):
-    # Base case: factorial of 0 or 1 is 1
-    if n <= 1:
-        return 1
-    # Recursive case: n * factorial(n-1)
-    return n * factorial(n - 1)
+# Square numbers using lambda and map
+def square_list(nums):
+    # Apply lambda to square each number
+    return list(map(lambda x: x * x, nums))
 
 # Test the function
-print(factorial(5))  # Output: 120
+print(square_list([1, 2, 3]))  # Output: [1, 4, 9]
 ```
 
 **Problem 2**:
 ```python
-# Function to sum first n numbers
-def sum_n(n):
-    # Base case: sum of 0 is 0
-    if n == 0:
-        return 0
-    # Recursive case: n + sum(n-1)
-    return n + sum_n(n - 1)
+# Filter odd numbers
+def filter_odds(nums):
+    # Filter numbers where x % 2 == 1
+    return list(filter(lambda x: x % 2 == 1, nums))
 
 # Test the function
-print(sum_n(4))  # Output: 10
+print(filter_odds([1, 2, 3, 4]))  # Output: [1, 3]
 ```
 
 **Problem 3**:
 ```python
-# Function to compute nth Fibonacci number
-def fibonacci(n):
-    # Base cases: fib(0)=0, fib(1)=1
-    if n <= 1:
-        return n
-    # Recursive case: fib(n-1) + fib(n-2)
-    return fibonacci(n - 1) + fibonacci(n - 2)
+from functools import reduce
+
+# Compute product using reduce
+def product(nums):
+    # Multiply all numbers
+    return reduce(lambda x, y: x * y, nums, 1)
 
 # Test the function
-print(fibonacci(6))  # Output: 8
+print(product([1, 2, 3]))  # Output: 6
 ```
 
 **Problem 4**:
 ```python
-# Function to reverse a string
-def reverse_string(s):
-    # Base case: empty or single char
-    if len(s) <= 1:
-        return s
-    # Recursive case: last char + reverse(rest)
-    return s[-1] + reverse_string(s[:-1])
+# List comprehension for evens
+def get_evens(n):
+    # Select even numbers from range
+    return [x for x in range(n) if x % 2 == 0]
 
 # Test the function
-print(reverse_string("hello"))  # Output: olleh
+print(get_evens(5))  # Output: [0, 2, 4]
 ```
 
 **Problem 5**:
 ```python
-# Function to count digits in a number
-def count_digits(n):
-    # Handle negative numbers
-    n = abs(n)
-    # Base case: single digit
-    if n < 10:
-        return 1
-    # Recursive case: 1 + count digits of n//10
-    return 1 + count_digits(n // 10)
+# Generator for squares
+def squares(n):
+    # Yield square of each number
+    for i in range(n):
+        yield i * i
 
 # Test the function
-print(count_digits(123))  # Output: 3
+print(list(squares(4)))  # Output: [0, 1, 4, 9]
 ```
 
 **Problem 6**:
 ```python
-# Function to compute power
-def power(base, exp):
-    # Base case: exponent 0
-    if exp == 0:
-        return 1
-    # Recursive case: base * power(base, exp-1)
-    return base * power(base, exp - 1)
+import time
+
+# Decorator to time execution
+def timer(func):
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        # Record start time
+        start = time.time()
+        # Call function
+        result = func(*args, **kwargs)
+        # Compute duration
+        duration = time.time() - start
+        print(f"{func.__name__} took {duration:.2f} seconds")
+        return result
+    return wrapper
+
+# Test function
+@timer
+def sleep_one():
+    time.sleep(1)
 
 # Test the function
-print(power(2, 3))  # Output: 8
+sleep_one()  # Output: sleep_one took ~1.00 seconds
 ```
 
 **Problem 7**:
 ```python
-# Function to sum list elements
-def sum_list(lst):
-    # Base case: empty list
-    if not lst:
-        return 0
-    # Recursive case: first element + sum(rest)
-    return lst[0] + sum_list(lst[1:])
+# Sort tuples by second element
+def sort_tuples(tuples):
+    # Sort using lambda on second element
+    return sorted(tuples, key=lambda x: x[1])
 
 # Test the function
-print(sum_list([1, 2, 3]))  # Output: 6
+print(sort_tuples([(1, 3), (2, 1)]))  # Output: [(2, 1), (1, 3)]
 ```
 
 **Problem 8**:
 ```python
-# Function to find max in list
-def find_max(lst):
-    # Base case: single element
-    if len(lst) == 1:
-        return lst[0]
-    # Recursive case: max of first and max(rest)
-    return max(lst[0], find_max(lst[1:]))
+# Fibonacci using generator expression
+def fib_gen(n):
+    # Initialize Fibonacci sequence
+    def fib(i):
+        if i <= 1:
+            return i
+        a, b = 0, 1
+        for _ in range(i):
+            a, b = b, a + b
+        return a
+    # Generator expression
+    return (fib(i) for i in range(n))
 
 # Test the function
-print(find_max([4, 2, 7]))  # Output: 7
+print(list(fib_gen(5)))  # Output: [0, 1, 1, 2, 3]
 ```
 
 **Problem 9**:
 ```python
-# Function to check palindrome
-def is_palindrome(s):
-    # Base case: empty or single char
-    if len(s) <= 1:
-        return True
-    # Recursive case: check first/last, recurse on rest
-    if s[0] != s[-1]:
-        return False
-    return is_palindrome(s[1:-1])
+# Filter strings longer than 3
+def filter_long_strings(strings):
+    # Filter strings with len > 3
+    return list(filter(lambda s: len(s) > 3, strings))
 
 # Test the function
-print(is_palindrome("racecar"))  # Output: True
+print(filter_long_strings(["cat", "dog", "horse"]))  # Output: ["horse"]
 ```
 
 **Problem 10**:
 ```python
-# Function to generate first n Fibonacci numbers
-def fib_list(n):
-    # Initialize result list
-    result = []
-    # Generate each Fibonacci number
-    for i in range(n):
-        # Helper function for Fibonacci
-        def fib(i):
-            if i <= 1:
-                return i
-            return fib(i - 1) + fib(i - 2)
-        result.append(fib(i))
-    return result
+# Decorator to check positive inputs
+def positive_check(func):
+    # Wrapper function
+    def wrapper(*args, **kwargs):
+        # Check all positional args
+        for arg in args:
+            if arg < 0:
+                raise ValueError("Inputs must be non-negative")
+        return func(*args, **kwargs)
+    return wrapper
 
-# Test the function
-print(fib_list(5))  # Output: [0, 1, 1, 2, 3]
+# Test function
+@positive_check
+def add(x, y):
+    return x + y
+
+# Test with try-except
+try:
+    print(add(2, 3))  # Output: 5
+    print(add(-1, 2))  # Raises ValueError
+except ValueError as e:
+    print(e)  # Output: Inputs must be non-negative
 ```

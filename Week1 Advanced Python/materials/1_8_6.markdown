@@ -1,28 +1,28 @@
-# Week 1, Hour 8 LeetCode/NeetCode Problems
+# Week 1, Hour 8 LeetCode/NeetCode-Style Problems
 
-Practice these to apply recursion concepts.
+Practice these to apply functional programming concepts.
 
-1. **Factorial** (Basic Recursion)  
-   **Problem**: Compute factorial of n.  
+1. **Map Squares**  
+   **Problem**: Square each element in a list using `map`.  
+   **Outcome**: List of squares.  
+   **Example**: nums=[1, 2, 3] → [1, 4, 9]
+
+2. **Filter Primes**  
+   **Problem**: Filter prime numbers from a list.  
+   **Outcome**: List of primes.  
+   **Example**: nums=[2, 3, 4, 5] → [2, 3, 5]
+
+3. **Reduce Product**  
+   **Problem**: Compute product of list using `reduce`.  
    **Outcome**: Integer.  
-   **Example**: n=5 → 120
+   **Example**: nums=[1, 2, 3] → 6
 
-2. **Fibonacci Number** (LeetCode #509)  
-   **Problem**: Compute nth Fibonacci number.  
-   **Outcome**: Integer.  
-   **Example**: n=6 → 8
+4. **List Comprehension Evens**  
+   **Problem**: Extract even numbers using list comprehension.  
+   **Outcome**: List of evens.  
+   **Example**: nums=[1, 2, 3, 4] → [2, 4]
 
-3. **Reverse String** (LeetCode #344)  
-   **Problem**: Reverse a string in-place.  
-   **Outcome**: Modified string.  
-   **Example**: Input: ["h","e","l","l","o"] → ["o","l","l","e","h"]
-
-4. **Power of Two** (LeetCode #231)  
-   **Problem**: Check if n is a power of 2.  
-   **Outcome**: Boolean.  
-   **Example**: n=8 → True
-
-5. **Subsets** (LeetCode #78)  
-   **Problem**: Generate all subsets of a set.  
-   **Outcome**: List of lists.  
-   **Example**: nums=[1,2] → [[],[1],[2],[1,2]]
+5. **Generator Fibonacci**  
+   **Problem**: Generate first n Fibonacci numbers.  
+   **Outcome**: List of numbers.  
+   **Example**: n=5 → [0, 1, 1, 2, 3]

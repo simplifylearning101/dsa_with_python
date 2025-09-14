@@ -1,133 +1,93 @@
-# Solutions to Week 1, Hour 8 LeetCode Problems
+# Solutions to Week 1, Hour 8 LeetCode-Style Problems
 
-## 1. Factorial
-**Explanation**: Compute factorial of n.
+## 1. Map Squares
+**Explanation**: Square each element using `map`.
 
 **Solution**:
 ```python
-# Function to compute factorial
-def factorial(n):
-    # Base case: factorial of 0 or 1 is 1
-    if n <= 1:
-        return 1
-    # Recursive case: n * factorial(n-1)
-    return n * factorial(n - 1)
+# Function to square elements
+def map_squares(nums):
+    # Use map with lambda to square
+    return list(map(lambda x: x * x, nums))
 
 # Test the function
-print(factorial(5))  # Output: 120
+print(map_squares([1, 2, 3]))  # Output: [1, 4, 9]
 ```
-**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Stack usage.
+**Time**: O(n), **Space**: O(n). **Pros**: Concise. **Cons**: Creates new list.
 
-## 2. Fibonacci Number
-**Explanation**: Compute nth Fibonacci number.
-
-**Brute-Force**:
-```python
-# Naive recursive Fibonacci
-def fib(n):
-    # Base cases: fib(0)=0, fib(1)=1
-    if n <= 1:
-        return n
-    # Recursive case: fib(n-1) + fib(n-2)
-    return fib(n - 1) + fib(n - 2)
-```
-**Time**: O(2^n), **Space**: O(n). **Pros**: Clear. **Cons**: Inefficient.
-
-**Optimized** (Memoized):
-```python
-# Memoized Fibonacci
-def fib(n, memo={}):
-    # Check if cached
-    if n in memo:
-        return memo[n]
-    # Base cases
-    if n <= 1:
-        return n
-    # Recursive case with memoization
-    memo[n] = fib(n - 1, memo) + fib(n - 2, memo)
-    return memo[n]
-```
-**Time**: O(n), **Space**: O(n). **Pros**: Efficient. **Cons**: Uses extra space.
-
-## 3. Reverse String
-**Explanation**: Reverse a string in-place.
+## 2. Filter Primes
+**Explanation**: Filter prime numbers.
 
 **Solution**:
 ```python
-# Function to reverse string in-place
-def reverseString(s):
-    # Helper function for recursion
-    def reverse_helper(s, left, right):
-        # Base case: pointers meet or cross
-        if left >= right:
-            return
-        # Swap characters
-        s[left], s[right] = s[right], s[left]
-        # Recursive call with updated pointers
-        reverse_helper(s, left + 1, right - 1)
-    
-    # Call helper with initial pointers
-    reverse_helper(s, 0, len(s) - 1)
-
-# Test the function
-s = ["h", "e", "l", "l", "o"]
-reverseString(s)
-print(s)  # Output: ["o", "l", "l", "e", "h"]
-```
-**Time**: O(n), **Space**: O(n). **Pros**: Uses recursion. **Cons**: Stack usage.
-
-## 4. Power of Two
-**Explanation**: Check if n is a power of 2.
-
-**Solution**:
-```python
-# Function to check if n is power of 2
-def isPowerOfTwo(n):
-    # Base cases: handle non-positive
-    if n <= 0:
+# Function to check if prime
+def is_prime(n):
+    # Handle edge cases
+    if n < 2:
         return False
-    # Base case: n=1 is 2^0
-    if n == 1:
-        return True
-    # Check if n is even
-    if n % 2 != 0:
-        return False
-    # Recursive case: check n/2
-    return isPowerOfTwo(n // 2)
+    # Check divisibility
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Function to filter primes
+def filter_primes(nums):
+    # Filter using is_prime
+    return list(filter(is_prime, nums))
 
 # Test the function
-print(isPowerOfTwo(8))  # Output: True
+print(filter_primes([2, 3, 4, 5]))  # Output: [2, 3, 5]
 ```
-**Time**: O(log n), **Space**: O(log n). **Pros**: Simple. **Cons**: Recursive overhead.
+**Time**: O(n * sqrt(m)), **Space**: O(n). **Pros**: Functional. **Cons**: Prime check cost.
 
-## 5. Subsets
-**Explanation**: Generate all subsets of a set.
+## 3. Reduce Product
+**Explanation**: Compute product using `reduce`.
 
 **Solution**:
 ```python
-# Function to generate all subsets
-def subsets(nums):
-    # Initialize result list
-    result = []
-    
-    # Helper function for backtracking
-    def backtrack(start, curr):
-        # Add current subset
-        result.append(curr[:])
-        # Explore each element
-        for i in range(start, len(nums)):
-            # Include current element
-            curr.append(nums[i])
-            # Recurse with next index
-            backtrack(i + 1, curr)
-            # Backtrack
-            curr.pop()
-    
-    # Start backtracking
-    backtrack(0, [])
-    return result
+from functools import reduce
+
+# Function to compute product
+def reduce_product(nums):
+    # Use reduce to multiply
+    return reduce(lambda x, y: x * y, nums, 1)
 
 # Test the function
-print(subsets([1, 2]))  # Output: [[], [1], [2], [1, 2]]
+print(reduce_product([1, 2, 3]))  # Output: 6
 ```
-**Time**: O(2^n), **Space**: O(n). **Pros**: Clean backtracking. **Cons**: Exponential time.
+**Time**: O(n), **Space**: O(1). **Pros**: Elegant. **Cons**: Requires `functools`.
+
+## 4. List Comprehension Evens
+**Explanation**: Extract even numbers.
+
+**Solution**:
+```python
+# Function to get even numbers
+def get_evens(nums):
+    # Use list comprehension
+    return [x for x in nums if x % 2 == 0]
+
+# Test the function
+print(get_evens([1, 2, 3, 4]))  # Output: [2, 4]
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Pythonic. **Cons**: Creates new list.
+
+## 5. Generator Fibonacci
+**Explanation**: Generate Fibonacci numbers.
+
+**Solution**:
+```python
+# Function to generate Fibonacci
+def fib_generator(n):
+    # Initialize sequence
+    a, b = 0, 1
+    # Yield n numbers
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+# Test the function
+print(list(fib_generator(5)))  # Output: [0, 1, 1, 2, 3]
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Memory-efficient. **Cons**: Single-use.
