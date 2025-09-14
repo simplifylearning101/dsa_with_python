@@ -1,0 +1,131 @@
+# Solutions to Hour 6 LeetCode Problems
+
+## 1. Two Sum
+**Explanation**: Find indices summing to target.
+
+**Brute-Force**:
+```python
+def twoSum(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: Simple. **Cons**: Slow.
+
+**Optimized** (Dictionary):
+```python
+def twoSum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Fast. **Cons**: Uses space.
+
+## 2. Valid Palindrome
+**Explanation**: Check palindrome ignoring non-alphanumeric.
+
+**Brute-Force**:
+```python
+def isPalindrome(s):
+    clean = "".join(c.lower() for c in s if c.isalnum())
+    return clean == clean[::-1]
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Extra space.
+
+**Optimized** (Two-pointer):
+```python
+def isPalindrome(s):
+    left, right = 0, len(s) - 1
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
+        if s[left].lower() != s[right].lower():
+            return False
+        left += 1
+        right -= 1
+    return True
+```
+**Time**: O(n), **Space**: O(1). **Pros**: In-place. **Cons**: Complex.
+
+## 3. Reverse Integer
+**Explanation**: Reverse digits, handle overflow.
+
+**Brute-Force**:
+```python
+def reverse(x):
+    sign = 1 if x >= 0 else -1
+    x = abs(x)
+    rev = int(str(x)[::-1])
+    rev *= sign
+    if rev > 2**31 - 1 or rev < -2**31:
+        return 0
+    return rev
+```
+**Time**: O(log x), **Space**: O(log x). **Pros**: Easy. **Cons**: String usage.
+
+**Optimized**:
+```python
+def reverse(x):
+    sign = 1 if x >= 0 else -1
+    x = abs(x)
+    rev = 0
+    while x > 0:
+        rev = rev * 10 + x % 10
+        x //= 10
+    rev *= sign
+    if rev > 2**31 - 1 or rev < -2**31:
+        return 0
+    return rev
+```
+**Time**: O(log x), **Space**: O(1). **Pros**: No strings. **Cons**: Overflow logic.
+
+## 4. Contains Duplicate
+**Explanation**: Check for duplicates.
+
+**Brute-Force**:
+```python
+def containsDuplicate(nums):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]:
+                return True
+    return False
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: No space. **Cons**: Slow.
+
+**Optimized** (Set):
+```python
+def containsDuplicate(nums):
+    return len(nums) != len(set(nums))
+```
+**Time**: O(n), **Space**: O(n). **Pros**: Simple, fast. **Cons**: Space.
+
+## 5. Climbing Stairs
+**Explanation**: Count ways to climb stairs.
+
+**Brute-Force** (Recursion):
+```python
+def climbStairs(n):
+    if n <= 2: return n
+    return climbStairs(n-1) + climbStairs(n-2)
+```
+**Time**: O(2^n), **Space**: O(n). **Pros**: Intuitive. **Cons**: Slow.
+
+**Optimized** (Iterative):
+```python
+def climbStairs(n):
+    if n <= 2: return n
+    a, b = 1, 2
+    for _ in range(3, n + 1):
+        a, b = b, a + b
+    return b
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Fast. **Cons**: Less intuitive.

@@ -1,0 +1,65 @@
+# Hour 6 Deep Dive: Mastering the Mini-Project for Interviews
+
+This section dives deeper into the mini-project, focusing on complex enhancements and interview scenarios.
+
+## Complex Topics and Programs
+- **Data Validation and Parsing**: Parse complex file formats.
+
+Example: Enhanced File Loading
+```python
+# Load with validation
+def load_from_file(filename):
+    students = {}
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                try:
+                    name, grades = line.strip().split(":")
+                    if not name.isalpha():
+                        print(f"Invalid name: {name}")
+                        continue
+                    grades = [float(g) for g in grades.split(",") if 0 <= float(g) <= 100]
+                    students[name] = grades
+                except ValueError:
+                    print(f"Invalid line: {line.strip()}")
+        print("Data loaded")
+        return students
+    except Exception as e:
+        print(f"Error loading: {e}")
+        return students
+```
+
+- **Complex Output Formatting**: Create a report-like output.
+
+Example: Grade Report
+```python
+# Detailed report
+def grade_report(students):
+    print("Grade Report".center(40, "="))
+    for name, grades in students.items():
+        avg = sum(grades) / len(grades) if grades else 0
+        status = "Pass" if avg >= 60 else "Fail"
+        print(f"{name:<10} | {str(grades):<20} | {avg:<10.2f} | {status}")
+    print("=" * 40)
+```
+
+## Interview Questions and Answers
+1. **How to design modular code?**  
+   **Answer**: Break tasks into functions, use clear names, avoid globals. **Intent**: Tests organization.
+
+2. **Write function to validate grades.**  
+   **Answer**:
+   ```python
+   def valid_grades(grades):
+       return all(0 <= g <= 100 for g in grades)
+   ```
+   **Intent**: Input validation.
+
+3. **Why use dict for student data?**  
+   **Answer**: Fast lookup by name, flexible for grades. **Intent**: Data structure choice.
+
+4. **Handle corrupted file data.**  
+   **Answer**: Use try-except per line, skip invalid entries. **Intent**: Robustness.
+
+5. **Explain project flow in interview.**  
+   **Answer**: Describe input → process → output, highlight functions. **Intent**: Communication skills.

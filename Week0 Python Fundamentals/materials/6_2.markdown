@@ -1,0 +1,43 @@
+# Hour 6 Homework: Practice Problems
+
+Practice these 10 extensions to the mini-project to reinforce Week 0 concepts. Modify the Student Grade Manager program for each task.
+
+1. **Problem**: Add function to find student with highest average.  
+   **Outcome**: Print name and average.  
+   **Example**: Alice:90, Bob:80 → Output: Alice, 90.0
+
+2. **Problem**: Validate name to allow only letters.  
+   **Outcome**: Reject non-letter names.  
+   **Example**: Input: 123 → Output: Invalid name
+
+3. **Problem**: Add function to remove student by name.  
+   **Outcome**: Remove student from dictionary.  
+   **Example**: Remove "Alice" → Output: Student removed
+
+4. **Problem**: Count total grades across all students.  
+   **Outcome**: Print total count.  
+   **Example**: Alice:[90,85], Bob:[80] → Output: 3
+
+5. **Problem**: Save averages to file instead of grades.  
+   **Outcome**: Save name:average pairs.  
+   **Example**: File: Alice:87.5\nBob:80.0
+
+6. **Problem**: Add function to find students with average > 90.  
+   **Outcome**: Print matching students.  
+   **Example**: Alice:95, Bob:85 → Output: Alice
+
+7. **Problem**: Handle empty file on load.  
+   **Outcome**: Print message, return empty dict.  
+   **Example**: Empty file → Output: File empty
+
+8. **Problem**: Add function to update a student’s grade.  
+   **Outcome**: Update specific grade.  
+   **Example**: Alice:[90,85] → Update index 0 to 95 → [95,85]
+
+9. **Problem**: Format output with aligned columns.  
+   **Outcome**: Print aligned table.  
+   **Example**: Alice | [90, 85] | 87.50
+
+10. **Problem**: Add menu option to clear all students.  
+    **Outcome**: Empty the dictionary.  
+    **Example**: Output: All students cleared

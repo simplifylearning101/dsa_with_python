@@ -1,0 +1,191 @@
+# Hour 6: Mini-Project - Student Grade Manager
+
+## Agenda
+This hour is a mini-project that ties together all Week 0 topics: variables, control structures, functions, data structures, input/output, error handling, and string manipulation. You'll build a "Student Grade Manager" program to manage student records, calculate grades, and save/load data to a file. This project mimics real-world coding tasks and interview scenarios requiring multiple concepts.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Combine variables, control structures, and functions in a cohesive program.
+- Use lists and dictionaries to store and manipulate data.
+- Handle user input and errors robustly.
+- Perform file I/O to save and load data.
+- Process strings for formatting and validation.
+- Explain the program’s logic clearly, as required in interviews.
+
+## Topics Covered
+1. Project Overview and Requirements
+2. Program Structure and Functions
+3. Input Validation and Error Handling
+4. Data Storage with Lists and Dictionaries
+5. File Input/Output
+6. String Manipulation for Output Formatting
+
+## Detailed Explanation of Topics
+
+### 1. Project Overview and Requirements
+The Student Grade Manager allows users to:
+- Add a student with name and grades.
+- Calculate average grade for a student.
+- Display all students and their averages.
+- Save student data to a file.
+- Load student data from a file.
+- Handle invalid inputs (e.g., non-numeric grades).
+
+This project uses all Week 0 concepts in a practical application.
+
+### 2. Program Structure and Functions
+The program uses functions to modularize tasks:
+- `add_student`: Add student and grades.
+- `calculate_average`: Compute average grade.
+- `display_students`: Show all students.
+- `save_to_file`: Save data to file.
+- `load_from_file`: Load data from file.
+
+Example function:
+```python
+# Function to add student
+def add_student(students, name, grades):
+    students[name] = grades  # Store in dictionary
+    print(f"Added {name} with grades {grades}")
+```
+
+### 3. Input Validation and Error Handling
+Validate inputs (e.g., grades must be numbers) using try-except.
+
+Example:
+```python
+# Validate grade input
+def get_valid_grade():
+    try:
+        grade = float(input("Enter grade: "))
+        if 0 <= grade <= 100:
+            return grade
+        print("Grade must be between 0 and 100")
+        return None
+    except ValueError:
+        print("Invalid grade")
+        return None
+```
+
+### 4. Data Storage with Lists and Dictionaries
+Use a dictionary to store student data, with names as keys and lists of grades as values.
+
+Example:
+```python
+# Student data
+students = {
+    "Alice": [90, 85, 88],
+    "Bob": [75, 80, 82]
+}
+```
+
+### 5. File Input/Output
+Save student data to a file and load it back.
+
+Example:
+```python
+# Save to file
+def save_to_file(students, filename):
+    with open(filename, "w") as file:
+        for name, grades in students.items():
+            file.write(f"{name}:{','.join(map(str, grades))}\n")
+```
+
+### 6. String Manipulation for Output Formatting
+Format output for readability using f-strings.
+
+Example:
+```python
+# Display students
+def display_students(students):
+    for name, grades in students.items():
+        avg = sum(grades) / len(grades) if grades else 0
+        print(f"{name}: Grades={grades}, Average={avg:.2f}")
+```
+
+## Complete Program
+```python
+# Student Grade Manager
+def add_student(students, name, grades):
+    students[name] = grades
+    print(f"Added {name} with grades {grades}")
+
+def calculate_average(grades):
+    return sum(grades) / len(grades) if grades else 0
+
+def display_students(students):
+    for name, grades in students.items():
+        avg = calculate_average(grades)
+        print(f"{name}: Grades={grades}, Average={avg:.2f}")
+
+def save_to_file(students, filename):
+    try:
+        with open(filename, "w") as file:
+            for name, grades in students.items():
+                file.write(f"{name}:{','.join(map(str, grades))}\n")
+        print("Data saved")
+    except Exception as e:
+        print(f"Error saving: {e}")
+
+def load_from_file(filename):
+    students = {}
+    try:
+        with open(filename, "r") as file:
+            for line in file:
+                name, grades = line.strip().split(":")
+                grades = [float(g) for g in grades.split(",")]
+                students[name] = grades
+        print("Data loaded")
+        return students
+    except Exception as e:
+        print(f"Error loading: {e}")
+        return students
+
+# Main program
+students = {}
+while True:
+    print("\n1. Add student\n2. Display students\n3. Save to file\n4. Load from file\n5. Exit")
+    choice = input("Enter choice: ")
+    if choice == "1":
+        name = input("Enter name: ")
+        if not name.strip():
+            print("Name cannot be empty")
+            continue
+        grades = []
+        while True:
+            grade_input = input("Enter grade (or 'done'): ")
+            if grade_input.lower() == "done":
+                break
+            try:
+                grade = float(grade_input)
+                if 0 <= grade <= 100:
+                    grades.append(grade)
+                else:
+                    print("Grade must be 0-100")
+            except ValueError:
+                print("Invalid grade")
+        if grades:
+            add_student(students, name, grades)
+    elif choice == "2":
+        display_students(students)
+    elif choice == "3":
+        save_to_file(students, "students.txt")
+    elif choice == "4":
+        students = load_from_file("students.txt")
+    elif choice == "5":
+        break
+    else:
+        print("Invalid choice")
+```
+
+## Points to Remember
+- Modularize code with functions for clarity in interviews.
+- Validate all inputs to handle edge cases (empty names, invalid grades).
+- Use dictionaries for key-value data; lists for grades.
+- Handle file errors to show robustness.
+- Format output clearly using f-strings.
+- Explain each function’s purpose in interviews.
+- Common error: Forgetting to convert string inputs to numbers.
+- Test edge cases: empty inputs, invalid files, no grades.
+- Use `strip()` to clean inputs.
+- Practice verbalizing the program’s flow for interviews.

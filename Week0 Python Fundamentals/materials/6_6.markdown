@@ -1,0 +1,28 @@
+# Hour 6 LeetCode/NeetCode Problems
+
+Practice these to apply Week 0 concepts.
+
+1. **Two Sum** (LeetCode #1)  
+   **Problem**: Find indices of two numbers summing to target.  
+   **Outcome**: List of indices.  
+   **Example**: nums=[2,7,11,15], target=9 → [0,1]
+
+2. **Valid Palindrome** (LeetCode #125)  
+   **Problem**: Check if string is palindrome, ignoring non-alphanumeric.  
+   **Outcome**: Boolean.  
+   **Example**: s="A man, a plan, a canal: Panama" → True
+
+3. **Reverse Integer** (LeetCode #7)  
+   **Problem**: Reverse digits of integer, handle overflow.  
+   **Outcome**: Integer.  
+   **Example**: x=123 → 321
+
+4. **Contains Duplicate** (LeetCode #217)  
+   **Problem**: Check if list has duplicates.  
+   **Outcome**: Boolean.  
+   **Example**: nums=[1,2,3,1] → True
+
+5. **Climbing Stairs** (LeetCode #70)  
+   **Problem**: Count ways to climb n stairs (1 or 2 steps).  
+   **Outcome**: Integer.  
+   **Example**: n=3 → 3

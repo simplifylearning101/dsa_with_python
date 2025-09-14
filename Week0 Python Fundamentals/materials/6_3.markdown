@@ -1,0 +1,124 @@
+# Solutions to Hour 6 Homework Problems
+
+Solutions modify the Student Grade Manager.
+
+**Problem 1**:
+```python
+# Highest average
+def highest_average(students):
+    if not students:
+        print("No students")
+        return
+    max_name = max(students, key=lambda x: sum(students[x])/len(students[x]) if students[x] else 0)
+    avg = sum(students[max_name]) / len(students[max_name]) if students[max_name] else 0
+    print(f"{max_name}, {avg:.2f}")
+```
+
+**Problem 2**:
+```python
+# Validate name
+def is_valid_name(name):
+    return name.isalpha()
+# In main loop, before adding student:
+if not is_valid_name(name):
+    print("Invalid name")
+    continue
+```
+
+**Problem 3**:
+```python
+# Remove student
+def remove_student(students, name):
+    if name in students:
+        del students[name]
+        print("Student removed")
+    else:
+        print("Student not found")
+# Add to main: if choice == "3": remove_student(students, input("Enter name: "))
+```
+
+**Problem 4**:
+```python
+# Count total grades
+def count_grades(students):
+    total = sum(len(grades) for grades in students.values())
+    print(total)
+```
+
+**Problem 5**:
+```python
+# Save averages
+def save_averages(students, filename):
+    try:
+        with open(filename, "w") as file:
+            for name, grades in students.items():
+                avg = sum(grades) / len(grades) if grades else 0
+                file.write(f"{name}:{avg:.2f}\n")
+        print("Averages saved")
+    except Exception as e:
+        print(f"Error: {e}")
+```
+
+**Problem 6**:
+```python
+# High averages
+def high_averages(students, threshold=90):
+    for name, grades in students.items():
+        avg = sum(grades) / len(grades) if grades else 0
+        if avg > threshold:
+            print(name)
+```
+
+**Problem 7**:
+```python
+# Handle empty file
+def load_from_file(filename):
+    students = {}
+    try:
+        with open(filename, "r") as file:
+            content = file.read().strip()
+            if not content:
+                print("File empty")
+                return students
+            for line in content.splitlines():
+                name, grades = line.split(":")
+                students[name] = [float(g) for g in grades.split(",")]
+        print("Data loaded")
+        return students
+    except Exception as e:
+        print(f"Error loading: {e}")
+        return students
+```
+
+**Problem 8**:
+```python
+# Update grade
+def update_grade(students, name, index, new_grade):
+    if name in students and 0 <= index < len(students[name]):
+        if 0 <= new_grade <= 100:
+            students[name][index] = new_grade
+            print("Grade updated")
+        else:
+            print("Invalid grade")
+    else:
+        print("Invalid name or index")
+```
+
+**Problem 9**:
+```python
+# Aligned output
+def display_students(students):
+    print(f"{'Name':<10} | {'Grades':<15} | {'Average':<10}")
+    for name, grades in students.items():
+        avg = sum(grades) / len(grades) if grades else 0
+        print(f"{name:<10} | {str(grades):<15} | {avg:<10.2f}")
+```
+
+**Problem 10**:
+```python
+# Clear students
+def clear_students(students):
+    students.clear()
+    print("All students cleared")
+# Add to main: if choice == "6": clear_students(students)
+```
