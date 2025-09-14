@@ -1,179 +1,185 @@
-# Week 1, Hour 9: Introduction to Dynamic Programming
+# Week 1, Hour 9: Advanced Data Structures and Collections
 
 ## Agenda
-This hour introduces dynamic programming (DP) in Python, a technique to optimize problems with overlapping subproblems and optimal substructure. DP is critical for coding interviews, especially for optimization and combinatorial problems.
+This hour explores advanced data structures in Python, focusing on the `collections` module (`Counter`, `deque`, `defaultdict`, `OrderedDict`, `namedtuple`) and implementing custom data structures. These tools are essential for writing efficient, Pythonic code in coding interviews and real-world applications.
 
 ## Outcome Expected
 By the end of this hour, you will be able to:
-- Understand DP concepts: memoization and tabulation.
-- Identify problems suitable for DP.
-- Implement DP solutions using top-down and bottom-up approaches.
-- Analyze time and space complexity of DP solutions.
-- Solve common DP problems (e.g., Fibonacci, knapsack).
-- Explain DP logic clearly in interviews.
+- Use `collections` module classes effectively.
+- Implement custom data structures (e.g., linked lists, stacks).
+- Optimize solutions using specialized data structures.
+- Analyze time and space complexity of operations.
+- Explain use cases for `collections` and custom structures in interviews.
+- Handle edge cases and errors in data structure operations.
 
 ## Topics Covered
-1. What is Dynamic Programming?
-2. Memoization (Top-Down DP)
-3. Tabulation (Bottom-Up DP)
-4. Identifying DP Problems
-5. Time and Space Complexity
-6. Interview Tips and Common Pitfalls
+1. Overview of `collections` Module
+2. `Counter` for Counting Elements
+3. `deque` for Efficient Queues and Stacks
+4. `defaultdict` and `OrderedDict`
+5. `namedtuple` for Lightweight Objects
+6. Custom Data Structures
+7. Interview Tips and Common Pitfalls
 
 ## Detailed Explanation of Topics
 
-### 1. What is Dynamic Programming?
-Dynamic programming solves problems by breaking them into smaller subproblems, storing results to avoid redundant computations. It applies to problems with:
-- **Overlapping Subproblems**: Subproblems recur multiple times.
-- **Optimal Substructure**: Solution can be built from optimal solutions of subproblems.
+### 1. Overview of `collections` Module
+The `collections` module provides specialized container datatypes that enhance Python’s built-in lists, dictionaries, and tuples. These are optimized for specific use cases, such as counting, queues, or ordered mappings.
 
-Example (Fibonacci):
+### 2. `Counter` for Counting Elements
+`Counter` counts hashable objects, ideal for frequency analysis.
+
+Example:
 ```python
-# Naive recursive Fibonacci (not DP)
-def fib_naive(n):
-    # Base cases
-    if n <= 1:
-        return n
-    # Recursive calls
-    return fib_naive(n - 1) + fib_naive(n - 2)
+from collections import Counter
 
-# Test the function
-print(fib_naive(6))  # Output: 8 (but slow due to redundant calls)
+# Create a Counter from a list
+freq = Counter(['apple', 'banana', 'apple', 'orange'])
+# Access counts
+print(freq)  # Output: Counter({'apple': 2, 'banana': 1, 'orange': 1})
+# Most common elements
+print(freq.most_common(2))  # Output: [('apple', 2), ('banana', 1)]
 ```
 
-### 2. Memoization (Top-Down DP)
-Memoization stores results of subproblems in a cache (e.g., dictionary) to avoid recomputation.
+### 3. `deque` for Efficient Queues and Stacks
+`deque` (double-ended queue) supports O(1) appends and pops from both ends, unlike lists (O(n) for left-end operations).
 
-Example (Memoized Fibonacci):
+Example:
 ```python
-# Memoized Fibonacci
-def fib_memo(n, memo={}):
-    # Check if result is cached
-    if n in memo:
-        return memo[n]
-    # Base cases
-    if n <= 1:
-        return n
-    # Recursive case with memoization
-    memo[n] = fib_memo(n - 1, memo) + fib_memo(n - 2, memo)
-    return memo[n]
+from collections import deque
 
-# Test the function
-print(fib_memo(6))  # Output: 8
+# Create a deque
+dq = deque([1, 2, 3])
+# Append and pop operations
+dq.append(4)  # Add to right
+dq.appendleft(0)  # Add to left
+print(dq)  # Output: deque([0, 1, 2, 3, 4])
+dq.pop()  # Remove from right
+dq.popleft()  # Remove from left
+print(dq)  # Output: deque([1, 2, 3])
 ```
 
-### 3. Tabulation (Bottom-Up DP)
-Tabulation builds a table iteratively, solving subproblems from smallest to largest.
+### 4. `defaultdict` and `OrderedDict`
+- `defaultdict`: Provides a default value for missing keys.
+- `OrderedDict`: Maintains insertion order of keys (pre-Python 3.7).
 
-Example (Tabulated Fibonacci):
+Example:
 ```python
-# Tabulated Fibonacci
-def fib_tab(n):
-    # Initialize table
-    dp = [0] * (n + 1)
-    # Base case
-    if n >= 1:
-        dp[1] = 1
-    # Fill table iteratively
-    for i in range(2, n + 1):
-        dp[i] = dp[i - 1] + dp[i - 2]
-    return dp[n]
+from collections import defaultdict, OrderedDict
 
-# Test the function
-print(fib_tab(6))  # Output: 8
+# defaultdict with list as default
+dd = defaultdict(list)
+dd['a'].append(1)
+print(dd)  # Output: defaultdict(<class 'list'>, {'a': [1]})
+
+# OrderedDict
+od = OrderedDict()
+od['x'] = 1
+od['y'] = 2
+print(od)  # Output: OrderedDict([('x', 1), ('y', 2)])
 ```
 
-### 4. Identifying DP Problems
-DP is suitable for:
-- Optimization problems (e.g., minimum cost, maximum profit).
-- Counting problems (e.g., number of ways to achieve a goal).
-- Problems with recursive structure (e.g., paths in a grid).
+### 5. `namedtuple` for Lightweight Objects
+`namedtuple` creates tuple-like objects with named fields, useful for readable data structures.
 
-Example (Climbing Stairs):
+Example:
 ```python
-# Number of ways to climb n stairs (1 or 2 steps)
-def climb_stairs(n):
-    # Initialize table
-    dp = [0] * (n + 1)
-    # Base cases
-    dp[0] = 1  # One way to climb 0 stairs
-    if n >= 1:
-        dp[1] = 1  # One way to climb 1 stair
-    # Fill table
-    for i in range(2, n + 1):
-        dp[i] = dp[i - 1] + dp[i - 2]  # Ways to climb i stairs
-    return dp[n]
+from collections import namedtuple
 
-# Test the function
-print(climb_stairs(3))  # Output: 3 (ways: 1+1+1, 1+2, 2+1)
+# Define namedtuple
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(1, 2)
+print(p)  # Output: Point(x=1, y=2)
+print(p.x, p.y)  # Output: 1 2
 ```
 
-### 5. Time and Space Complexity
-- **Time Complexity**: Typically O(n) or O(n*m) for DP, compared to O(2^n) for naive recursion.
-- **Space Complexity**: O(n) for 1D DP, O(n*m) for 2D DP. Can optimize to O(1) or O(m) in some cases.
-- **Memoization**: Trades memory for speed.
-- **Tabulation**: Often more space-efficient with iterative approach.
+### 6. Custom Data Structures
+Custom data structures (e.g., linked lists, stacks) can be implemented using classes for specific needs.
 
-Example (Space-Optimized Climbing Stairs):
+Example (Singly Linked List):
 ```python
-# Space-optimized climbing stairs
-def climb_stairs_opt(n):
-    # Handle base cases
-    if n <= 1:
-        return 1
-    # Use two variables instead of array
-    prev, curr = 1, 1
-    # Iterate to compute result
-    for _ in range(2, n + 1):
-        prev, curr = curr, prev + curr
-    return curr
+# Node class for linked list
+class Node:
+    def __init__(self, data):
+        # Store data and next pointer
+        self.data = data
+        self.next = None
 
-# Test the function
-print(climb_stairs_opt(3))  # Output: 3
+# LinkedList class
+class LinkedList:
+    def __init__(self):
+        # Initialize empty list
+        self.head = None
+    
+    # Append data
+    def append(self, data):
+        # Create new node
+        new_node = Node(data)
+        # If list is empty
+        if not self.head:
+            self.head = new_node
+            return
+        # Traverse to end
+        curr = self.head
+        while curr.next:
+            curr = curr.next
+        curr.next = new_node
+    
+    # Print list
+    def display(self):
+        result = []
+        curr = self.head
+        while curr:
+            result.append(curr.data)
+            curr = curr.next
+        return result
+
+# Test the linked list
+ll = LinkedList()
+ll.append(1)
+ll.append(2)
+print(ll.display())  # Output: [1, 2]
 ```
 
-### 6. Interview Tips and Common Pitfalls
+### 7. Interview Tips and Common Pitfalls
 - **Tips**:
-  - Identify overlapping subproblems to justify DP.
-  - Explain state transitions (e.g., “dp[i] is sum of dp[i-1] and dp[i-2]”).
-  - Prefer tabulation for interviews to avoid stack overhead.
+  - Use `Counter` for frequency-based problems.
+  - Prefer `deque` over lists for queue/stack operations.
+  - Explain why a specific collection is chosen (e.g., “`deque` for O(1) pops”).
+  - Implement custom structures only when necessary.
 - **Pitfalls**:
-  - Not initializing base cases correctly.
-  - Overcomplicating state definitions.
-  - Ignoring space optimization opportunities.
+  - Using lists for queue operations (slow left-end pops).
+  - Forgetting to handle empty data structures.
+  - Overcomplicating solutions with custom structures.
 
-Example (Safe DP):
+Example (Safe Counter):
 ```python
-# Safe climbing stairs with error handling
-def climb_stairs_safe(n):
-    # Check for invalid input
-    if n < 0:
-        raise ValueError("Input must be non-negative")
-    # Initialize variables
-    if n <= 1:
-        return 1
-    prev, curr = 1, 1
-    # Compute result
-    for _ in range(2, n + 1):
-        prev, curr = curr, prev + curr
-    return curr
+from collections import Counter
+
+# Safe Counter with error handling
+def safe_counter(items):
+    # Check for empty input
+    if not items:
+        return Counter()
+    # Create Counter
+    return Counter(items)
 
 # Test with try-except
 try:
-    print(climb_stairs_safe(3))  # Output: 3
-    print(climb_stairs_safe(-1))  # Raises ValueError
-except ValueError as e:
-    print(e)  # Output: Input must be non-negative
+    print(safe_counter(['a', 'b', 'a']))  # Output: Counter({'a': 2, 'b': 1})
+    print(safe_counter([]))  # Output: Counter()
+except Exception as e:
+    print(e)
 ```
 
 ## Points to Remember
-- DP optimizes problems with overlapping subproblems and optimal substructure.
-- Memoization uses recursion with caching; tabulation uses iteration.
-- Always initialize base cases correctly.
-- Explain DP table and transitions clearly in interviews.
-- Common error: Incorrect state transitions or missing base cases.
-- Test edge cases: n=0, n=1, negative inputs.
-- Optimize space by using variables instead of arrays when possible.
-- Visualize DP table for clarity (e.g., Fibonacci: [0, 1, 1, 2, 3]).
-- Use tabulation for large inputs to avoid stack overflow.
-- Practice verbalizing DP logic for interviews.
+- `collections` module optimizes common data structure tasks.
+- `Counter` is ideal for frequency counting.
+- `deque` provides O(1) operations for queues/stacks.
+- `defaultdict` avoids key errors; `OrderedDict` ensures order (pre-3.7).
+- `namedtuple` creates lightweight, readable objects.
+- Custom data structures offer flexibility but require careful implementation.
+- Common error: Using lists for inefficient operations.
+- Test edge cases: empty inputs, invalid data.
+- Explain complexity benefits (e.g., `deque` vs list).
+- Practice verbalizing use cases (e.g., “`Counter` for quick frequency analysis”).

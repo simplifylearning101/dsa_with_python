@@ -1,113 +1,173 @@
-# Solutions to Week 1, Hour 9 LeetCode Problems
+# Solutions to Week 1, Hour 9 LeetCode-Style Problems
 
-## 1. Climbing Stairs
-**Explanation**: Count ways to climb n stairs.
-
-**Solution**:
-```python
-# Function to count ways to climb stairs
-def climbStairs(n):
-    # Handle base cases
-    if n <= 1:
-        return 1
-    # Initialize variables
-    prev, curr = 1, 1
-    # Compute ways
-    for _ in range(2, n + 1):
-        prev, curr = curr, prev + curr
-    return curr
-
-# Test the function
-print(climbStairs(3))  # Output: 3
-```
-**Time**: O(n), **Space**: O(1). **Pros**: Space-efficient. **Cons**: None.
-
-## 2. Min Cost Climbing Stairs
-**Explanation**: Find minimum cost to reach top.
+## 1. Character Frequency
+**Explanation**: Count character frequency using `Counter`.
 
 **Solution**:
 ```python
-# Function to compute minimum cost
-def minCostClimbingStairs(cost):
-    # Initialize dp array
-    dp = [0] * (len(cost) + 1)
-    # Fill dp table
-    for i in range(2, len(cost) + 1):
-        # Min cost from i-1 or i-2
-        dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
-    return dp[len(cost)]
+from collections import Counter
+
+# Count character frequency
+def char_frequency(s):
+    # Create Counter
+    return dict(Counter(s))
 
 # Test the function
-print(minCostClimbingStairs([10, 15, 20]))  # Output: 15
+print(char_frequency("hello"))  # Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}
 ```
-**Time**: O(n), **Space**: O(n). **Pros**: Clear. **Cons**: Can optimize space.
+**Time**: O(n), **Space**: O(k). **Pros**: Simple. **Cons**: Limited to hashable items.
 
-## 3. Fibonacci Number
-**Explanation**: Compute nth Fibonacci number.
+## 2. Sliding Window Maximum
+**Explanation**: Find max in each k-sized window using `deque`.
 
 **Solution**:
 ```python
-# Tabulated Fibonacci
-def fib(n):
-    # Handle base cases
-    if n <= 1:
-        return n
-    # Initialize variables
-    prev, curr = 0, 1
-    # Compute Fibonacci
-    for _ in range(2, n + 1):
-        prev, curr = curr, prev + curr
-    return curr
+from collections import deque
+
+# Find max in sliding window
+def max_sliding_window(nums, k):
+    # Initialize deque
+    dq = deque()
+    result = []
+    # Process each element
+    for i in range(len(nums)):
+        # Remove indices outside window
+        while dq and dq[0] <= i - k:
+            dq.popleft()
+        # Remove smaller elements
+        while dq and nums[dq[-1]] < nums[i]:
+            dq.pop()
+        # Add current index
+        dq.append(i)
+        # Add max if window is full
+        if i >= k - 1:
+            result.append(nums[dq[0]])
+    return result
 
 # Test the function
-print(fib(6))  # Output: 8
+print(max_sliding_window([1, 3, -1, -3, 5, 3, 6, 7], 3))  # Output: [3, 3, 5, 5, 6, 7]
 ```
-**Time**: O(n), **Space**: O(1). **Pros**: Efficient. **Cons**: None.
+**Time**: O(n), **Space**: O(k). **Pros**: Efficient. **Cons**: Complex logic.
 
-## 4. House Robber
-**Explanation**: Max sum of non-adjacent elements.
+## 3. Group Anagrams
+**Explanation**: Group anagrams using `defaultdict`.
 
 **Solution**:
 ```python
-# Function to compute max sum
-def rob(nums):
-    # Handle base cases
-    if not nums:
-        return 0
-    if len(nums) == 1:
-        return nums[0]
-    # Initialize dp
-    dp = [0] * len(nums)
-    dp[0] = nums[0]
-    dp[1] = max(nums[0], nums[1])
-    # Fill dp
-    for i in range(2, len(nums)):
-        dp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
-    return dp[-1]
+from collections import defaultdict
+
+# Group anagrams
+def group_anagrams(strs):
+    # Initialize defaultdict
+    groups = defaultdict(list)
+    # Group by sorted string
+    for s in strs:
+        key = ''.join(sorted(s))
+        groups[key].append(s)
+    return list(groups.values())
 
 # Test the function
-print(rob([2, 7, 9, 3, 1]))  # Output: 12
+print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))  
+# Output: [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 ```
-**Time**: O(n), **Space**: O(n). **Pros**: Simple. **Cons**: Can optimize space.
+**Time**: O(n * k * log k), **Space**: O(n). **Pros**: Clean. **Cons**: Sorting cost.
 
-## 5. Longest Increasing Subsequence
-**Explanation**: Find length of longest increasing subsequence.
+## 4. LRU Cache
+**Explanation**: Implement LRU cache with `OrderedDict`.
 
 **Solution**:
 ```python
-# Function to compute LIS length
-def lengthOfLIS(nums):
-    # Initialize dp array
-    dp = [1] * len(nums)
-    # Compute LIS for each index
-    for i in range(1, len(nums)):
-        for j in range(i):
-            # If nums[i] extends subsequence
-            if nums[i] > nums[j]:
-                dp[i] = max(dp[i], dp[j] + 1)
-    return max(dp) if dp else 0
+from collections import OrderedDict
 
-# Test the function
-print(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))  # Output: 4
+# LRU Cache implementation
+class LRUCache:
+    def __init__(self, capacity):
+        # Initialize OrderedDict and capacity
+        self.cache = OrderedDict()
+        self.capacity = capacity
+    
+    # Get value by key
+    def get(self, key):
+        # If key exists, move to end (recent)
+        if key in self.cache:
+            value = self.cache.pop(key)
+            self.cache[key] = value
+            return value
+        return -1
+    
+    # Put key-value pair
+    def put(self, key, value):
+        # If key exists, update and move to end
+        if key in self.cache:
+            self.cache.pop(key)
+        # If at capacity, remove least recent
+        elif len(self.cache) >= self.capacity:
+            self.cache.popitem(last=False)
+        # Add new key-value
+        self.cache[key] = value
+
+# Test the cache
+cache = LRUCache(2)
+cache.put(1, 1)
+cache.put(2, 2)
+print(cache.get(1))  # Output: 1
+cache.put(3, 3)
+print(cache.get(2))  # Output: -1
 ```
-**Time**: O(n^2), **Space**: O(n). **Pros**: Clear. **Cons**: Can be optimized to O(n log n).
+**Time**: O(1) for get/put, **Space**: O(capacity). **Pros**: Efficient. **Cons**: OrderedDict-specific.
+
+## 5. Min Heap Push/Pop
+**Explanation**: Implement min heap operations.
+
+**Solution**:
+```python
+# MinHeap class
+class MinHeap:
+    def __init__(self):
+        # Initialize heap
+        self.heap = []
+    
+    # Push item
+    def push(self, val):
+        self.heap.append(val)
+        self._bubble_up(len(self.heap) - 1)
+    
+    # Bubble up
+    def _bubble_up(self, index):
+        parent = (index - 1) // 2
+        if index > 0 and self.heap[index] < self.heap[parent]:
+            self.heap[index], self.heap[parent] = self.heap[parent], self.heap[index]
+            self._bubble_up(parent)
+    
+    # Pop minimum
+    def pop(self):
+        if not self.heap:
+            return None
+        if len(self.heap) == 1:
+            return self.heap.pop()
+        min_val = self.heap[0]
+        self.heap[0] = self.heap.pop()
+        self._bubble_down(0)
+        return min_val
+    
+    # Bubble down
+    def _bubble_down(self, index):
+        smallest = index
+        left = 2 * index + 1
+        right = 2 * index + 2
+        if left < len(self.heap) and self.heap[left] < self.heap[smallest]:
+            smallest = left
+        if right < len(self.heap) and self.heap[right] < self.heap[smallest]:
+            smallest = right
+        if smallest != index:
+            self.heap[index], self.heap[smallest] = self.heap[smallest], self.heap[index]
+            self._bubble_down(smallest)
+
+# Test the heap
+heap = MinHeap()
+heap.push(3)
+heap.push(1)
+heap.push(2)
+print(heap.pop())  # Output: 1
+```
+**Time**: O(log n) for push/pop, **Space**: O(n). **Pros**: Flexible. **Cons**: Manual implementation.

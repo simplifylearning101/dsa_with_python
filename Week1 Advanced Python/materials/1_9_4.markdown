@@ -2,65 +2,65 @@
 
 Covers Hour 9 and some Week 0/Hour 1-8 concepts.
 
-1. What is dynamic programming?  
-2. Purpose of memoization?  
-3. Compute fib(4) with memoization. (Code)  
-4. Output of `climb_stairs(2)`?  
-5. What is tabulation?  
-6. True or False: DP always reduces time complexity.  
-7. Min cost for [1, 100, 1, 1]. (Code)  
-8. What is optimal substructure?  
-9. Compute factorial(3). (Code)  
-10. Why explain DP table in interviews?  
-11. Output of `fib_tab(5)`?  
-12. Common DP error?  
-13. Ways to make amount=3 with [1, 2]. (Code)  
-14. What is overlapping subproblems?  
-15. True or False: Memoization uses iteration.  
-16. Max sum for [1, 2, 3, 1]. (Code)  
-17. Why optimize space in DP?  
-18. Min path sum for [[1,2],[3,4]]. (Code)  
-19. Output of `lengthOfLIS([1, 3, 2])`?  
-20. Why test base cases in DP?  
-21. Longest common subsequence of "ABC", "AC". (Code)  
-22. What is a DP state?  
-23. Compute fib(3). (Code)  
-24. Why prefer tabulation in interviews?  
-25. Output of `rob([2, 7, 9, 3, 1])`?  
-26. Climb stairs for n=4. (Code)  
-27. Why handle edge cases in DP?  
-28. Compute factorial(4). (Code)  
-29. Output of `coin_change(10, [2, 5, 10])`?  
-30. When to use DP vs recursion?
+1. What is the `collections` module?  
+2. Purpose of `Counter`?  
+3. Count ['x', 'y', 'x'] using `Counter`. (Code)  
+4. Output of `Counter([1, 2, 1]).most_common(1)`?  
+5. What is `deque`?  
+6. True or False: `deque` has O(1) appends.  
+7. Implement stack pop using `deque`. (Code)  
+8. What is `defaultdict`?  
+9. Create `namedtuple` for Car. (Code)  
+10. Why use `collections` in interviews?  
+11. Output of `deque([1, 2]).popleft()`?  
+12. Common `deque` error?  
+13. Group ['a', 'bb'] by length. (Code)  
+14. What is `OrderedDict`?  
+15. True or False: Lists are efficient for queues.  
+16. Append 3 to linked list with [1, 2]. (Code)  
+17. Why use `namedtuple`?  
+18. Find most common in [1, 1, 2]. (Code)  
+19. Output of `defaultdict(int)['a']`?  
+20. Why test empty inputs?  
+21. Rotate [1, 2, 3] by -1. (Code)  
+22. What is a linked list?  
+23. Create queue with `deque`. (Code)  
+24. Why prefer `deque` over list?  
+25. Output of `OrderedDict([('a', 1), ('b', 2)])`?  
+26. Delete 2 from linked list [1, 2, 3]. (Code)  
+27. Why use custom data structures?  
+28. Create `Counter` from [1, 2]. (Code)  
+29. Output of `deque([1, 2]).rotate(1)`?  
+30. When to use `Counter` vs dictionary?
 
 ## Solutions for the Quiz
-1. Solves problems with overlapping subproblems and optimal substructure.  
-2. Caches results to avoid recomputation.  
-3. `def fib_memo(n, memo={}): if n in memo: return memo[n]; if n <= 1: return n; memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo); return memo[n]`  
-4. 2  
-5. Iterative DP with a table.  
-6. False  
-7. `def min_cost(cost): dp = [0]*(len(cost)+1); for i in range(2, len(cost)+1): dp[i] = min(dp[i-1]+cost[i-1], dp[i-2]+cost[i-2]); return dp[-1]`  
-8. Solution built from optimal subproblem solutions.  
-9. `def factorial(n): dp = [1]*(n+1); for i in range(1, n+1): dp[i] = i*dp[i-1]; return dp[n]`  
-10. Shows clarity, problem understanding.  
-11. 5  
-12. Incorrect base cases.  
-13. `def coin_change(amount, coins): dp = [0]*(amount+1); dp[0] = 1; for c in coins: for i in range(c, amount+1): dp[i] += dp[i-c]; return dp[amount]`  
-14. Subproblems solved multiple times.  
+1. Module with specialized container datatypes.  
+2. Counts hashable objects.  
+3. `from collections import Counter; Counter(['x', 'y', 'x'])`  
+4. [(1, 2)]  
+5. Double-ended queue with O(1) operations.  
+6. True  
+7. `from collections import deque; s = deque([1, 2]); s.pop()`  
+8. Dictionary with default value for missing keys.  
+9. `from collections import namedtuple; Car = namedtuple('Car', ['make', 'model'])`  
+10. Shows efficient, Pythonic solutions.  
+11. 1  
+12. Accessing empty deque.  
+13. `from collections import defaultdict; dd = defaultdict(list); for s in ['a', 'bb']: dd[len(s)].append(s); dict(dd)`  
+14. Dictionary that maintains insertion order.  
 15. False  
-16. `def rob(nums): if not nums: return 0; if len(nums) == 1: return nums[0]; dp = [0]*len(nums); dp[0] = nums[0]; dp[1] = max(nums[0], nums[1]); for i in range(2, len(nums)): dp[i] = max(dp[i-1], dp[i-2]+nums[i]); return dp[-1]`  
-17. Reduces memory usage.  
-18. `def minPathSum(grid): m, n = len(grid), len(grid[0]); dp = [[0]*n for _ in range(m)]; dp[0][0] = grid[0][0]; for j in range(1, n): dp[0][j] = dp[0][j-1]+grid[0][j]; for i in range(1, m): dp[i][0] = dp[i-1][0]+grid[i][0]; for i in range(1, m): for j in range(1, n): dp[i][j] = min(dp[i-1][j], dp[i][j-1])+grid[i][j]; return dp[-1][-1]`  
-19. 2  
-20. Ensures correct termination.  
-21. `def lcs(t1, t2): m, n = len(t1), len(t2); dp = [[0]*(n+1) for _ in range(m+1)]; for i in range(1, m+1): for j in range(1, n+1): if t1[i-1] == t2[j-1]: dp[i][j] = dp[i-1][j-1]+1; else: dp[i][j] = max(dp[i-1][j], dp[i][j-1]); return dp[m][n]`  
-22. Variable representing subproblem solution.  
-23. `def fib(n): if n <= 1: return n; dp = [0]*(n+1); dp[1] = 1; for i in range(2, n+1): dp[i] = dp[i-1]+dp[i-2]; return dp[n]`  
-24. Avoids stack overflow, clearer.  
-25. 12  
-26. `def climb_stairs(n): if n <= 1: return 1; prev, curr = 1, 1; for _ in range(2, n+1): prev, curr = curr, prev+curr; return curr`  
-27. Prevents incorrect results.  
-28. `def factorial(n): dp = [1]*(n+1); for i in range(1, n+1): dp[i] = i*dp[i-1]; return dp[n]`  
-29. 4  
-30. DP for overlapping subproblems; recursion for simpler problems.
+16. `class Node: def __init__(self, data): self.data = data; self.next = None; class LinkedList: def __init__(self): self.head = None; def append(self, data): new_node = Node(data); if not self.head: self.head = new_node; return; curr = self.head; while curr.next: curr = curr.next; curr.next = new_node; def display(self): result = []; curr = self.head; while curr: result.append(curr.data); curr = curr.next; return result; ll = LinkedList(); ll.append(1); ll.append(2); ll.append(3)`  
+17. Lightweight, readable objects.  
+18. `from collections import Counter; Counter([1, 1, 2]).most_common(1)[0]`  
+19. 0  
+20. Ensures robust code.  
+21. `from collections import deque; dq = deque([1, 2, 3]); dq.rotate(-1); list(dq)`  
+22. Data structure with nodes linked by pointers.  
+23. `from collections import deque; q = deque(); q.append(1); q.append(2)`  
+24. O(1) operations vs O(n) for list.  
+25. OrderedDict([('a', 1), ('b', 2)])  
+26. `class Node: def __init__(self, data): self.data = data; self.next = None; class LinkedList: def __init__(self): self.head = None; def append(self, data): new_node = Node(data); if not self.head: self.head = new_node; return; curr = self.head; while curr.next: curr = curr.next; curr.next = new_node; def delete(self, data): if not self.head: return; if self.head.data == data: self.head = self.head.next; return; curr = self.head; while curr.next and curr.next.data != data: curr = curr.next; if curr.next: curr.next = curr.next.next; def display(self): result = []; curr = self.head; while curr: result.append(curr.data); curr = curr.next; return result; ll = LinkedList(); ll.append(1); ll.append(2); ll.append(3); ll.delete(2)`  
+27. For specific performance needs.  
+28. `from collections import Counter; Counter([1, 2])`  
+29. [2, 1] (after list conversion)  
+30. `Counter` for frequency; dictionary for general mappings.

@@ -1,43 +1,43 @@
 # Week 1, Hour 9 Homework: Practice Problems
 
-Practice these 10 programs to master dynamic programming. Write each as a .py file and verify outputs.
+Practice these 10 programs to master advanced data structures. Write each as a .py file and verify outputs.
 
-1. **Problem**: Compute nth Fibonacci number using memoization.  
-   **Outcome**: Print Fibonacci number.  
-   **Example**: Input: 6 → Output: 8
+1. **Problem**: Count frequency of elements using `Counter`.  
+   **Outcome**: Print frequency dictionary.  
+   **Example**: Input: ['a', 'b', 'a'] → Output: {'a': 2, 'b': 1}
 
-2. **Problem**: Compute nth Fibonacci number using tabulation.  
-   **Outcome**: Print Fibonacci number.  
-   **Example**: Input: 6 → Output: 8
+2. **Problem**: Implement queue using `deque`.  
+   **Outcome**: Print queue after operations.  
+   **Example**: Enqueue 1, 2; Dequeue → Output: [2]
 
-3. **Problem**: Count ways to climb n stairs (1 or 2 steps).  
-   **Outcome**: Print number of ways.  
-   **Example**: Input: 3 → Output: 3
+3. **Problem**: Group strings by length using `defaultdict`.  
+   **Outcome**: Print grouped dictionary.  
+   **Example**: Input: ['cat', 'dog', 'rat'] → Output: {3: ['cat', 'dog', 'rat']}
 
-4. **Problem**: Find minimum cost to reach nth step (costs given).  
-   **Outcome**: Print minimum cost.  
-   **Example**: Input: [10, 15, 20] → Output: 15
+4. **Problem**: Create `namedtuple` for student data.  
+   **Outcome**: Print student attributes.  
+   **Example**: Input: name="Alice", age=20 → Output: Alice, 20
 
-5. **Problem**: Compute longest increasing subsequence length.  
-   **Outcome**: Print length.  
-   **Example**: Input: [10, 9, 2, 5, 3, 7, 101, 18] → Output: 4
+5. **Problem**: Implement stack using `deque`.  
+   **Outcome**: Print stack after push/pop.  
+   **Example**: Push 1, 2; Pop → Output: [1]
 
-6. **Problem**: Compute number of ways to make change for amount.  
-   **Outcome**: Print number of ways.  
-   **Example**: Input: amount=5, coins=[1, 2, 5] → Output: 4
+6. **Problem**: Create `OrderedDict` from key-value pairs.  
+   **Outcome**: Print ordered dictionary.  
+   **Example**: Input: [('x', 1), ('y', 2)] → Output: OrderedDict([('x', 1), ('y', 2)])
 
-7. **Problem**: Find max sum of non-adjacent elements.  
-   **Outcome**: Print max sum.  
-   **Example**: Input: [5, 5, 10, 100, 10, 5] → Output: 110
+7. **Problem**: Implement singly linked list append and delete.  
+   **Outcome**: Print list after operations.  
+   **Example**: Append 1, 2; Delete 1 → Output: [2]
 
-8. **Problem**: Compute min path sum in a grid (right/down moves).  
-   **Outcome**: Print min sum.  
-   **Example**: Input: [[1,3,1],[1,5,1],[4,2,1]] → Output: 7
+8. **Problem**: Find most common element using `Counter`.  
+   **Outcome**: Print most common.  
+   **Example**: Input: [1, 2, 1, 3] → Output: (1, 2)
 
-9. **Problem**: Compute factorial using tabulation.  
-   **Outcome**: Print factorial.  
-   **Example**: Input: 5 → Output: 120
+9. **Problem**: Rotate `deque` elements.  
+   **Outcome**: Print rotated deque.  
+   **Example**: Input: [1, 2, 3], rotate 1 → Output: [3, 1, 2]
 
-10. **Problem**: Find longest common subsequence length.  
-    **Outcome**: Print length.  
-    **Example**: Input: "ABCD", "ACFD" → Output: 3
+10. **Problem**: Create custom doubly linked list.  
+    **Outcome**: Print list after append.  
+    **Example**: Append 1, 2 → Output: [1, 2]
