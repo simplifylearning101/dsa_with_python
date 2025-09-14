@@ -1,0 +1,43 @@
+# Week 1, Hour 5 Homework: Practice Problems
+
+Practice these 10 programs to master two-pointer and sliding window techniques. Write each as a .py file and verify outputs.
+
+1. **Problem**: Reverse array using two-pointer.  
+   **Outcome**: Print reversed array.  
+   **Example**: Input: [1, 2, 3] → Output: [3, 2, 1]
+
+2. **Problem**: Find pair summing to target (sorted array).  
+   **Outcome**: Print indices.  
+   **Example**: Input: [1, 2, 3, 4], target=5 → Output: [0, 2]
+
+3. **Problem**: Max sum of 3 consecutive elements.  
+   **Outcome**: Print max sum.  
+   **Example**: Input: [1, 2, 3, 4] → Output: 9
+
+4. **Problem**: Remove duplicates from sorted array.  
+   **Outcome**: Print new length.  
+   **Example**: Input: [1, 1, 2] → Output: 2
+
+5. **Problem**: Find longest substring length without repeating chars.  
+   **Outcome**: Print length.  
+   **Example**: Input: "abcabcbb" → Output: 3
+
+6. **Problem**: Move zeros to end of array.  
+   **Outcome**: Print modified array.  
+   **Example**: Input: [0, 1, 0, 3] → Output: [1, 3, 0, 0]
+
+7. **Problem**: Check if two strings are equal after removing one char.  
+   **Outcome**: Print True/False.  
+   **Example**: Input: "hello", "helo" → Output: True
+
+8. **Problem**: Find min window size with sum >= target.  
+   **Outcome**: Print min length.  
+   **Example**: Input: [1, 2, 3, 4], target=6 → Output: 2
+
+9. **Problem**: Partition array around value (move <value to left).  
+   **Outcome**: Print partitioned array.  
+   **Example**: Input: [3, 1, 4, 2], value=3 → Output: [1, 2, 4, 3]
+
+10. **Problem**: Count pairs with difference k.  
+    **Outcome**: Print count.  
+    **Example**: Input: [1, 2, 3, 4], k=1 → Output: 3

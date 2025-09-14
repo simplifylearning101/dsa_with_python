@@ -1,0 +1,172 @@
+# Week 1, Hour 5: Introduction to Two-Pointer and Sliding Window Techniques
+
+## Agenda
+This hour introduces two-pointer and sliding window techniques, efficient algorithmic patterns for solving array and string problems in coding interviews. These methods reduce time complexity by avoiding nested loops, making them essential for optimizing solutions.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Understand and implement the two-pointer technique for array/string problems.
+- Apply sliding window techniques (fixed and variable windows).
+- Analyze time complexity of these approaches (e.g., O(n) vs O(n²)).
+- Solve common interview problems using these techniques.
+- Explain pointer/window logic clearly to interviewers.
+- Handle edge cases like empty inputs or invalid windows.
+
+## Topics Covered
+1. Introduction to Two-Pointer Technique
+2. Sliding Window Technique: Fixed and Variable Windows
+3. Common Use Cases and Examples
+4. Time Complexity Analysis
+5. Interview Tips for Two-Pointer and Sliding Window
+6. Common Pitfalls and Edge Cases
+
+## Detailed Explanation of Topics
+
+### 1. Introduction to Two-Pointer Technique
+The two-pointer technique uses two indices (pointers) to traverse an array or string, often from opposite ends or the same direction, to solve problems efficiently.
+- **Types**: Opposite ends (e.g., reverse array), same direction (e.g., pair sum).
+- **Use Cases**: Finding pairs, reversing, partitioning.
+
+Example:
+```python
+# Reverse array using two pointers
+def reverse_array(nums):
+    # Initialize left pointer at start
+    left = 0
+    # Initialize right pointer at end
+    right = len(nums) - 1
+    # Swap elements until pointers meet
+    while left < right:
+        nums[left], nums[right] = nums[right], nums[left]
+        left += 1
+        right -= 1
+    return nums
+# Example usage
+print(reverse_array([1, 2, 3]))  # Output: [3, 2, 1]
+```
+
+### 2. Sliding Window Technique: Fixed and Variable Windows
+The sliding window technique processes a subarray/substring (window) that slides over the input.
+- **Fixed Window**: Constant window size (e.g., max sum of k elements).
+- **Variable Window**: Window size changes based on conditions (e.g., longest substring).
+
+Example (Fixed Window):
+```python
+# Max sum of k consecutive elements
+def max_sum_k(nums, k):
+    # Initialize window sum
+    window_sum = sum(nums[:k])
+    # Store maximum sum
+    max_sum = window_sum
+    # Slide window from index k to end
+    for i in range(k, len(nums)):
+        # Add new element, remove oldest
+        window_sum += nums[i] - nums[i - k]
+        # Update max sum
+        max_sum = max(max_sum, window_sum)
+    return max_sum
+# Example usage
+print(max_sum_k([1, 2, 3, 4], 2))  # Output: 7 (3 + 4)
+```
+
+### 3. Common Use Cases and Examples
+- **Two-Pointer**: Pair sum, remove duplicates, partition arrays.
+- **Sliding Window**: Max/min subarray, longest substring without repeating chars.
+
+Example (Variable Window):
+```python
+# Longest substring without repeating characters
+def longest_unique_substring(s):
+    # Track character positions
+    seen = {}
+    # Initialize window start and max length
+    start = max_length = 0
+    # Iterate through string
+    for end in range(len(s)):
+        # If character seen and within window, move start
+        if s[end] in seen and seen[s[end]] >= start:
+            start = seen[s[end]] + 1
+        # Update max length
+        max_length = max(max_length, end - start + 1)
+        # Store current character position
+        seen[s[end]] = end
+    return max_length
+# Example usage
+print(longest_unique_substring("abcabcbb"))  # Output: 3 ("abc")
+```
+
+### 4. Time Complexity Analysis
+- **Two-Pointer**: O(n) as each pointer traverses array once.
+- **Sliding Window**: O(n) for single pass, O(n²) if window resizing is complex.
+- **Comparison**: Nested loops often O(n²); these are typically O(n).
+
+Example:
+```python
+# O(n) two-pointer vs O(n²) nested loop
+nums = [1, 2, 3, 4]
+target = 5
+# Two-pointer (sorted array)
+left, right = 0, len(nums) - 1
+while left < right:
+    if nums[left] + nums[right] == target:
+        print([left, right])
+        break
+    elif nums[left] + nums[right] < target:
+        left += 1
+    else:
+        right -= 1
+```
+
+### 5. Interview Tips for Two-Pointer and Sliding Window
+- **Tips**:
+  - Draw pointers/windows on whiteboard to explain logic.
+  - State time complexity (e.g., “O(n) single pass”).
+  - Test edge cases: empty arrays, single element, all duplicates.
+- **Visualization**: Use diagrams (e.g., arrows for pointers, brackets for windows).
+
+Example:
+```python
+# Two-pointer for pair sum
+nums = [1, 2, 3, 4]
+target = 7
+left, right = 0, len(nums) - 1
+while left < right:
+    print(f"Checking {nums[left]} + {nums[right]}")  # Visualize steps
+    if nums[left] + nums[right] == target:
+        print([left, right])
+        break
+    elif nums[left] + nums[right] < target:
+        left += 1
+    else:
+        right -= 1
+```
+
+### 6. Common Pitfalls and Edge Cases
+- **Pitfalls**:
+  - Off-by-one errors in pointer/window bounds.
+  - Modifying array while iterating.
+  - Forgetting to sort for two-pointer problems requiring sorted input.
+- **Edge Cases**: Empty arrays, single elements, invalid window sizes.
+
+Example:
+```python
+# Handle edge cases
+def safe_max_sum_k(nums, k):
+    # Check if array is too small
+    if len(nums) < k or k <= 0:
+        return 0
+    # Compute max sum
+    return max_sum_k(nums, k)
+```
+
+## Points to Remember
+- Two-pointer reduces time from O(n²) to O(n) for pair-based problems.
+- Sliding window is ideal for subarray/substring problems.
+- Always check if input needs sorting for two-pointer.
+- Use dictionaries for variable sliding windows (e.g., tracking characters).
+- Explain pointer/window movement in interviews.
+- Common error: Incorrect window resizing (e.g., missing start update).
+- Test edge cases: empty inputs, k=0, duplicates.
+- Use `if` checks to handle invalid inputs gracefully.
+- Visualize pointers/windows to clarify logic.
+- Practice verbalizing steps for whiteboard interviews.

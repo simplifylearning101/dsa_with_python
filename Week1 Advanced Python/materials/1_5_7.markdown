@@ -1,0 +1,221 @@
+# Solutions to Week 1, Hour 5 LeetCode Problems
+
+## 1. Two Sum II - Input Array Is Sorted
+**Explanation**: Find two numbers in sorted array summing to target.
+
+**Brute-Force**:
+```python
+# Function to find two numbers summing to target
+def twoSum(numbers, target):
+    # Iterate through all pairs
+    for i in range(len(numbers)):
+        # Check remaining elements
+        for j in range(i + 1, len(numbers)):
+            # If pair sums to target
+            if numbers[i] + numbers[j] == target:
+                # Return 1-based indices
+                return [i + 1, j + 1]
+    return []
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: Simple. **Cons**: Slow.
+
+**Optimized** (Two-pointer):
+```python
+# Function to find two numbers summing to target
+def twoSum(numbers, target):
+    # Initialize left pointer at start
+    left = 0
+    # Initialize right pointer at end
+    right = len(numbers) - 1
+    # Continue until pointers meet
+    while left < right:
+        # Calculate current sum
+        curr_sum = numbers[left] + numbers[right]
+        # If sum equals target, return 1-based indices
+        if curr_sum == target:
+            return [left + 1, right + 1]
+        # If sum too small, move left pointer
+        elif curr_sum < target:
+            left += 1
+        # If sum too large, move right pointer
+        else:
+            right -= 1
+    return []
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Fast. **Cons**: Requires sorted input.
+
+## 2. Container With Most Water
+**Explanation**: Find max area between two lines.
+
+**Brute-Force**:
+```python
+# Function to find max area
+def maxArea(height):
+    # Initialize max area
+    max_area = 0
+    # Check all pairs of lines
+    for i in range(len(height)):
+        for j in range(i + 1, len(height)):
+            # Calculate area (width * min height)
+            area = (j - i) * min(height[i], height[j])
+            # Update max area
+            max_area = max(max_area, area)
+    return max_area
+```
+**Time**: O(n²), **Space**: O(1). **Pros**: Simple. **Cons**: Inefficient.
+
+**Optimized** (Two-pointer):
+```python
+# Function to find max area
+def maxArea(height):
+    # Initialize max area
+    max_area = 0
+    # Initialize left pointer
+    left = 0
+    # Initialize right pointer
+    right = len(height) - 1
+    # Continue until pointers meet
+    while left < right:
+        # Calculate area (width * min height)
+        area = (right - left) * min(height[left], height[right])
+        # Update max area
+        max_area = max(max_area, area)
+        # Move pointer with smaller height
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    return max_area
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Efficient. **Cons**: Greedy logic.
+
+## 3. Longest Substring Without Repeating Characters
+**Explanation**: Find longest substring without repeating chars.
+
+**Brute-Force**:
+```python
+# Function to find longest substring
+def lengthOfLongestSubstring(s):
+    # Initialize max length
+    max_length = 0
+    # Check all possible substrings
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            # Get substring
+            substring = s[i:j + 1]
+            # Check if all chars are unique
+            if len(set(substring)) == len(substring):
+                # Update max length
+                max_length = max(max_length, len(substring))
+    return max_length
+```
+**Time**: O(n³), **Space**: O(n). **Pros**: Simple. **Cons**: Very slow.
+
+**Optimized** (Sliding Window):
+```python
+# Function to find longest substring
+def lengthOfLongestSubstring(s):
+    # Dictionary to store last position of each char
+    seen = {}
+    # Initialize window start and max length
+    start = max_length = 0
+    # Iterate through string
+    for end in range(len(s)):
+        # If char seen and within window
+        if s[end] in seen and seen[s[end]] >= start:
+            # Move start to after last occurrence
+            start = seen[s[end]] + 1
+        # Update max length
+        max_length = max(max_length, end - start + 1)
+        # Update char position
+        seen[s[end]] = end
+    return max_length
+```
+**Time**: O(n), **Space**: O(min(m, n)). **Pros**: Fast. **Cons**: Uses space.
+
+## 4. Minimum Window Substring
+**Explanation**: Find smallest substring containing all chars of t.
+
+**Brute-Force**: Check all substrings (O(n²)).
+
+**Optimized** (Sliding Window):
+```python
+# Function to find minimum window substring
+def minWindow(s, t):
+    # If t is empty or s is too short, return empty
+    if not t or len(s) < len(t):
+        return ""
+    # Create frequency map for t
+    t_count = {}
+    for char in t:
+        t_count[char] = t_count.get(char, 0) + 1
+    # Initialize required chars count
+    required = len(t_count)
+    # Initialize formed chars count
+    formed = 0
+    # Initialize window counters
+    window_counts = {}
+    # Initialize pointers and result
+    start = end = 0
+    min_len = float('inf')
+    min_window = ""
+    # Iterate through string
+    while end < len(s):
+        # Add current char to window
+        char = s[end]
+        window_counts[char] = window_counts.get(char, 0) + 1
+        # If char is in t and count matches
+        if char in t_count and window_counts[char] == t_count[char]:
+            formed += 1
+        # Shrink window if all chars found
+        while formed == required and start <= end:
+            # Update min window if smaller
+            if end - start + 1 < min_len:
+                min_len = end - start + 1
+                min_window = s[start:end + 1]
+            # Remove start char
+            char = s[start]
+            window_counts[char] -= 1
+            # If char is in t and count falls below
+            if char in t_count and window_counts[char] < t_count[char]:
+                formed -= 1
+            # Move start pointer
+            start += 1
+        # Move end pointer
+        end += 1
+    return min_window
+```
+**Time**: O(n + m), **Space**: O(n + m). **Pros**: Efficient. **Cons**: Complex logic.
+
+## 5. Max Consecutive Ones III
+**Explanation**: Max length of 1s with k flips.
+
+**Brute-Force**: Check all windows (O(n²)).
+
+**Optimized** (Sliding Window):
+```python
+# Function to find max length of 1s with k flips
+def longestOnes(nums, k):
+    # Initialize window start
+    start = 0
+    # Count zeros in window
+    zero_count = 0
+    # Initialize max length
+    max_length = 0
+    # Iterate through array
+    for end in range(len(nums)):
+        # Increment zero count if current is 0
+        if nums[end] == 0:
+            zero_count += 1
+        # Shrink window if too many zeros
+        while zero_count > k:
+            # If start is 0, reduce zero count
+            if nums[start] == 0:
+                zero_count -= 1
+            # Move start pointer
+            start += 1
+        # Update max length
+        max_length = max(max_length, end - start + 1)
+    return max_length
+```
+**Time**: O(n), **Space**: O(1). **Pros**: Simple, fast. **Cons**: Window logic.

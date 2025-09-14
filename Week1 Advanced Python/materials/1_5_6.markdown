@@ -1,0 +1,28 @@
+# Week 1, Hour 5 LeetCode/NeetCode Problems
+
+Practice these to apply two-pointer and sliding window techniques.
+
+1. **Two Sum II - Input Array Is Sorted** (LeetCode #167)  
+   **Problem**: Find two numbers in sorted array summing to target.  
+   **Outcome**: List of indices (1-based).  
+   **Example**: nums=[2,7,11,15], target=9 → [1,2]
+
+2. **Container With Most Water** (LeetCode #11)  
+   **Problem**: Find max area between two lines and x-axis.  
+   **Outcome**: Integer.  
+   **Example**: height=[1,8,6,2,5,4,8,3,7] → 49
+
+3. **Longest Substring Without Repeating Characters** (LeetCode #3)  
+   **Problem**: Find length of longest substring without repeating chars.  
+   **Outcome**: Integer.  
+   **Example**: s="abcabcbb" → 3
+
+4. **Minimum Window Substring** (LeetCode #76)  
+   **Problem**: Find smallest substring containing all chars of t.  
+   **Outcome**: String.  
+   **Example**: s="ADOBECODEBANC", t="ABC" → "BANC"
+
+5. **Max Consecutive Ones III** (LeetCode #1004)  
+   **Problem**: Max length of consecutive 1s with k flips.  
+   **Outcome**: Integer.  
+   **Example**: nums=[1,1,1,0,0,1,1,1], k=2 → 6

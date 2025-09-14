@@ -1,0 +1,132 @@
+# Week 1, Hour 5 Deep Dive: Mastering Two-Pointer and Sliding Window for Interviews
+
+This section explores advanced applications of two-pointer and sliding window techniques with heavily commented programs and interview scenarios.
+
+## Complex Topics and Programs
+- **Two-Pointer for Partitioning**: Rearrange array based on condition.
+
+Example: Partition Even/Odd
+```python
+# Function to partition array into evens and odds
+def partition_even_odd(nums):
+    # Initialize left pointer for evens
+    left = 0
+    # Initialize right pointer for odds
+    right = len(nums) - 1
+    # Continue until pointers meet
+    while left < right:
+        # Find first odd number from left
+        while left < right and nums[left] % 2 == 0:
+            left += 1
+        # Find first even number from right
+        while left < right and nums[right] % 2 != 0:
+            right -= 1
+        # Swap odd and even numbers
+        nums[left], nums[right] = nums[right], nums[left]
+    return nums
+# Test the function
+nums = [2, 1, 4, 3]
+print(partition_even_odd(nums))  # Output: [2, 4, 1, 3] (evens left, odds right)
+```
+
+- **Sliding Window for Max Frequency**: Find longest window with k changes.
+
+Example: Max Consecutive Ones with K Flips
+```python
+# Function to find max length of 1s with k flips
+def longest_ones(nums, k):
+    # Initialize window start
+    start = 0
+    # Count zeros in current window
+    zero_count = 0
+    # Initialize max length
+    max_length = 0
+    # Iterate through array
+    for end in range(len(nums)):
+        # Increment zero count if current element is 0
+        if nums[end] == 0:
+            zero_count += 1
+        # Shrink window if zero count exceeds k
+        while zero_count > k:
+            # If start element is 0, reduce zero count
+            if nums[start] == 0:
+                zero_count -= 1
+            # Move start pointer
+            start += 1
+        # Update max length
+        max_length = max(max_length, end - start + 1)
+    return max_length
+# Test the function
+nums = [1, 1, 0, 0, 1, 1]
+k = 1
+print(longest_ones(nums, k))  # Output: 4 (flip one 0 to get [1, 1, 1, 1])
+```
+
+## Interview Questions and Answers
+1. **When to use two-pointer vs sliding window?**  
+   **Answer**: Two-pointer for pair/partition problems; sliding window for subarray/substring. **Intent**: Algorithm choice.
+
+2. **Write function to find two numbers summing to target.**  
+   **Answer**:
+   ```python
+   # Function to find pair summing to target
+   def find_pair(nums, target):
+       # Sort array for two-pointer
+       nums.sort()
+       # Initialize pointers
+       left = 0
+       right = len(nums) - 1
+       # Continue until pointers meet
+       while left < right:
+           # Calculate current sum
+           curr_sum = nums[left] + nums[right]
+           # If sum equals target, return pair
+           if curr_sum == target:
+               return [nums[left], nums[right]]
+           # If sum too small, move left
+           elif curr_sum < target:
+               left += 1
+           # If sum too large, move right
+           else:
+               right -= 1
+       return []
+   # Test the function
+   print(find_pair([1, 2, 3, 4], 7))  # Output: [3, 4]
+   ```
+   **Intent**: Two-pointer logic.
+
+3. **Why is sliding window O(n)?**  
+   **Answer**: Each element is added/removed at most once. **Intent**: Time complexity.
+
+4. **Handle empty array in two-pointer.**  
+   **Answer**: Check `if not nums` and return appropriate value. **Intent**: Edge cases.
+
+5. **Write function for longest window with k distinct chars.**  
+   **Answer**:
+   ```python
+   # Function to find longest substring with k distinct characters
+   def longest_k_distinct(s, k):
+       # Initialize dictionary for character counts
+       char_count = {}
+       # Initialize window start and max length
+       start = max_length = 0
+       # Iterate through string
+       for end in range(len(s)):
+           # Add current character to count
+           char_count[s[end]] = char_count.get(s[end], 0) + 1
+           # Shrink window if too many distinct chars
+           while len(char_count) > k:
+               # Decrease count of start character
+               char_count[s[start]] -= 1
+               # Remove if count becomes 0
+               if char_count[s[start]] == 0:
+                   del char_count[s[start]]
+               # Move start pointer
+               start += 1
+           # Update max length
+           max_length = max(max_length, end - start + 1)
+       return max_length
+   # Test the function
+   print(longest_k_distinct("eceba", 2))  # Output: 3 ("ece")
+   ```
+   **Intent**: Sliding window with constraints.
