@@ -47,14 +47,14 @@ The course is structured as follows: Week 0 covers Python fundamentals to ensure
 | 0 | [Python Fundamentals](Week0%20Python%20Fundamentals/README.markdown) |
 | 1 | [Advanced Concepts in Python](Week1%20Advanced%20Python/README.markdown) |
 | 2 | [Arrays and Strings] |
-| 3 | [Linked Lists, Stacks, and Queues] |
-| 4 | [Trees and Binary Search Trees] |
-| 5 | [Graphs] |
-| 6 | [Sorting and Searching Algorithms] |
-| 7 | [Dynamic Programming] |
-| 8 | [Hashing and Heaps] |
-| 9 | [Advanced Topics, Review, and Mock Interviews] |
-| 10 | [Mock Interviews (PAID MEMBERS ONLY)] |
+| 3 | Coming soon [Linked Lists, Stacks, and Queues] |
+| 4 | Coming soon [Trees and Binary Search Trees] |
+| 5 | Coming soon [Graphs] |
+| 6 | Coming soon [Sorting and Searching Algorithms] |
+| 7 | Coming soon [Dynamic Programming] |
+| 8 | Coming soon [Hashing and Heaps] |
+| 9 | Coming soon [Advanced Topics, Review, and Mock Interviews] |
+| 10 | Coming soon [Mock Interviews (PAID MEMBERS ONLY)] |
 
 
 By following this roadmap, you'll gain the skills to ace coding interviews. Practice consistently, review your mistakes, and reach out if you need help—let's make you an expert!
