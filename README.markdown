@@ -46,7 +46,7 @@ The course is structured as follows: Week 0 covers Python fundamentals to ensure
 |---|---|
 | 0 | [Python Fundamentals](Week0%20Python%20Fundamentals/README.markdown) |
 | 1 | [Advanced Concepts in Python](Week1%20Advanced%20Python/README.markdown) |
-| 2 | [Arrays and Strings] |
+| 2 | [Arrays and Strings](week2%20Arrays%20and%20String/README.markdown)  |
 | 3 | Coming soon [Linked Lists, Stacks, and Queues] |
 | 4 | Coming soon [Trees and Binary Search Trees] |
 | 5 | Coming soon [Graphs] |
