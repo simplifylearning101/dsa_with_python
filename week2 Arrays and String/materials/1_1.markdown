@@ -1,4 +1,4 @@
-# 1_1.md
+# Python Arrays and Strings
 
 ## Agenda
 This hour introduces the fundamentals of arrays using Python's lists, focusing on their creation, access, and modification. We'll explore why arrays are critical for coding interviews and practice basic operations to build a strong foundation.

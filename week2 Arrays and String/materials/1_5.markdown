@@ -1,5 +1,3 @@
-# 1_5.md
-
 ## Deep Dive: Arrays in Python
 This section explores advanced array concepts using Python lists, focusing on multi-dimensional lists, pitfalls, and interview questions. Aimed at students seeking mastery.
 

@@ -1,5 +1,3 @@
-# 1_6.md
-
 ## LeetCode / NeetCode Problems
 Easy array problems to reinforce list operations.
 

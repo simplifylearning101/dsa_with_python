@@ -1,5 +1,3 @@
-# 1_3.md
-
 ## Solutions to Homework Problems
 
 1. ```python
