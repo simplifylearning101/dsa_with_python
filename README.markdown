@@ -46,15 +46,15 @@ The course is structured as follows: Week 0 covers Python fundamentals to ensure
 |---|---|
 | 0 | [Python Fundamentals](Week0%20Python%20Fundamentals/README.markdown) |
 | 1 | [Advanced Concepts in Python](Week1%20Advanced%20Python/README.markdown) |
-| 2 | [Arrays and Strings](/README.markdown) |
-| 3 | [Linked Lists, Stacks, and Queues](/README.markdown) |
-| 4 | [Trees and Binary Search Trees](/README.markdown) |
-| 5 | [Graphs](/README.markdown) |
-| 6 | [Sorting and Searching Algorithms](/README.markdown) |
-| 7 | [Dynamic Programming](/README.markdown) |
-| 8 | [Hashing and Heaps](/README.markdown) |
-| 9 | [Advanced Topics, Review, and Mock Interviews](/README.markdown) |
-| 10 | [Mock Interviews (PAID MEMBERS ONLY)](/README.markdown) |
+| 2 | [Arrays and Strings] |
+| 3 | [Linked Lists, Stacks, and Queues] |
+| 4 | [Trees and Binary Search Trees] |
+| 5 | [Graphs] |
+| 6 | [Sorting and Searching Algorithms] |
+| 7 | [Dynamic Programming] |
+| 8 | [Hashing and Heaps] |
+| 9 | [Advanced Topics, Review, and Mock Interviews] |
+| 10 | [Mock Interviews (PAID MEMBERS ONLY)] |
 
 
 By following this roadmap, you'll gain the skills to ace coding interviews. Practice consistently, review your mistakes, and reach out if you need help—let's make you an expert!
