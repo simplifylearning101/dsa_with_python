@@ -1,5 +1,3 @@
-# 1_7.md
-
 ## Solutions for LeetCode Problems
 Each problem includes explanation, brute-force solution, and optimized solution with time/space complexities.
 
