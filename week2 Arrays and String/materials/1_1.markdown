@@ -1,0 +1,176 @@
+# 1_1.md
+
+## Agenda
+This hour introduces the fundamentals of arrays using Python's lists, focusing on their creation, access, and modification. We'll explore why arrays are critical for coding interviews and practice basic operations to build a strong foundation.
+
+## Outcome Expected
+By the end of this hour, you will be able to:
+- Understand what arrays are and their role in programming and interviews.
+- Create, access, and modify Python lists confidently.
+- Write simple programs to perform array operations like appending, inserting, and slicing.
+- Recall key points like time complexities for interviews.
+
+## Topics Covered
+1. What is an Array?
+2. Python Lists as Arrays
+3. Creating Lists
+4. Accessing Elements in Lists
+5. Modifying Lists (Adding, Removing, Updating Elements)
+
+## Detailed Explanation of Topics Covered
+
+### 1. What is an Array?
+An array is a collection of items stored in contiguous memory locations, accessed by indices starting at 0. Think of it as a row of numbered boxes, each holding one item (e.g., numbers, strings). Arrays are fundamental in programming because they allow efficient storage and retrieval of data. In interviews, arrays are often used in problems involving sequences, like finding duplicates or sorting.
+
+In Python, we use **lists** as dynamic arrays, which can grow or shrink, unlike fixed-size arrays in languages like C++.
+
+**Example Program:**
+```python
+# Program to demonstrate an array using a list
+# Store exam scores in a list
+scores = [85, 92, 78, 90]  # Create a list (our array)
+print("All scores:", scores)  # Output: All scores: [85, 92, 78, 90]
+
+# Access first score (index 0)
+first_score = scores[0]
+print("First score:", first_score)  # Output: First score: 85
+
+# Update second score
+scores[1] = 95  # Change index 1 to 95
+print("Updated scores:", scores)  # Output: Updated scores: [85, 95, 78, 90]
+```
+
+**Explanation:**
+- `scores = [85, 92, 78, 90]` creates a list.
+- `scores[0]` accesses the first element (indexing starts at 0).
+- `scores[1] = 95` modifies an element at index 1.
+
+### 2. Python Lists as Arrays
+Python lists are flexible and act as dynamic arrays. They can store mixed data types, but for DSA, we typically use uniform types (e.g., all integers). Unlike fixed arrays, lists resize automatically.
+
+**Example Program:**
+```python
+# Program showing list flexibility
+mixed_list = [1, "apple", 3.14]  # Mixed types (avoid in DSA)
+print("Mixed list:", mixed_list)  # Output: Mixed list: [1, 'apple', 3.14]
+
+# DSA-friendly list (same type)
+numbers = [10, 20, 30]  # All integers
+print("Numbers:", numbers)  # Output: Numbers: [10, 20, 30]
+```
+
+**Note:** Stick to uniform types in interviews for clarity.
+
+### 3. Creating Lists
+Lists are created using square brackets `[]`. You can create empty lists, pre-filled lists, or use list comprehensions for patterns.
+
+**Methods:**
+- Empty: `my_list = []`
+- Pre-filled: `my_list = [1, 2, 3]`
+- List comprehension: `[x*2 for x in range(5)]` → `[0, 2, 4, 6, 8]`
+
+**Example Program:**
+```python
+# Program to create lists
+# Empty list
+empty = []
+print("Empty list:", empty)  # Output: Empty list: []
+
+# Pre-filled list
+fruits = ["apple", "banana", "cherry"]
+print("Fruits:", fruits)  # Output: Fruits: ['apple', 'banana', 'cherry']
+
+# Using range
+numbers = list(range(5))  # [0, 1, 2, 3, 4]
+print("Numbers:", numbers)  # Output: Numbers: [0, 1, 2, 3, 4]
+
+# List comprehension
+squares = [x**2 for x in range(1, 5)]  # [1, 4, 9, 16]
+print("Squares:", squares)  # Output: Squares: [1, 4, 9, 16]
+```
+
+### 4. Accessing Elements in Lists
+Use indices (`list[i]`) to access elements. Indices range from 0 to `len(list)-1`. Negative indices access from the end (-1 is last).
+
+**Slicing:** `list[start:end]` gets a sublist (end index excluded).
+
+**Example Program:**
+```python
+# Program to access list elements
+animals = ["cat", "dog", "bird", "fish"]
+
+# Positive index
+print("First animal:", animals[0])  # Output: First animal: cat
+
+# Negative index
+print("Last animal:", animals[-1])  # Output: Last animal: fish
+
+# Slicing
+subset = animals[1:3]  # [1:3] gets index 1, 2
+print("Subset:", subset)  # Output: Subset: ['dog', 'bird']
+
+# Copy whole list
+copy_list = animals[:]
+print("Copy:", copy_list)  # Output: Copy: ['cat', 'dog', 'bird', 'fish']
+```
+
+**Tip:** Check for `IndexError` by ensuring `0 <= index < len(list)`.
+
+### 5. Modifying Lists
+Lists are mutable. Common operations:
+- `append(x)`: Add x to end.
+- `insert(i, x)`: Add x at index i.
+- `remove(x)`: Remove first x.
+- `pop(i)`: Remove and return element at i (default last).
+
+**Example Program:**
+```python
+# Program to modify lists
+colors = ["red", "blue"]
+
+# Append
+colors.append("green")  # Add to end
+print("After append:", colors)  # Output: After append: ['red', 'blue', 'green']
+
+# Insert
+colors.insert(1, "yellow")  # Add at index 1
+print("After insert:", colors)  # Output: After insert: ['red', 'yellow', 'blue', 'green']
+
+# Remove
+colors.remove("blue")  # Remove first 'blue'
+print("After remove:", colors)  # Output: After remove: ['red', 'yellow', 'green']
+
+# Pop
+popped = colors.pop()  # Remove last, return it
+print("Popped:", popped)  # Output: Popped: green
+print("After pop:", colors)  # Output: After pop: ['red', 'yellow']
+
+# Update
+colors[0] = "orange"  # Change index 0
+print("After update:", colors)  # Output: After update: ['orange', 'yellow']
+```
+
+#### Cheatsheet: List Operations
+
+| Operation       | Code                  | Description                     | Time Complexity |
+|-----------------|-----------------------|---------------------------------|-----------------|
+| Create          | `lst = [1,2,3]`      | Create list                     | O(1)            |
+| Access          | `lst[i]`             | Get element at i                | O(1)            |
+| Update          | `lst[i] = x`         | Set element at i                | O(1)            |
+| Append          | `lst.append(x)`      | Add to end                      | O(1) amortized  |
+| Insert          | `lst.insert(i, x)`   | Add at index i                  | O(n)            |
+| Remove          | `lst.remove(x)`      | Remove first x                  | O(n)            |
+| Pop             | `lst.pop(i)`         | Remove at i (default last)      | O(1) for last   |
+| Length          | `len(lst)`           | Get number of elements          | O(1)            |
+| Slice           | `lst[start:end]`     | Get sublist                     | O(k) (k=length) |
+
+## Points to Remember
+- Arrays (lists) store ordered, indexed data; indices start at 0.
+- Python lists are dynamic, resizing automatically, but inserts/removes in middle are O(n).
+- Handle edge cases in interviews: empty lists, invalid indices.
+- Time complexities: Access O(1), append O(1) amortized, insert/remove O(n).
+- Slicing creates shallow copies; use carefully with nested lists.
+- Interview tip: Explain trade-offs, e.g., "Append is fast, but inserting at start shifts all elements."
+- Avoid modifying lists while iterating to prevent skips/errors.
+- Common question: "Why is append O(1) amortized?" Answer: List over-allocates memory, resizing rarely.
+- Arrays are the foundation for many DSA structures (stacks, queues).

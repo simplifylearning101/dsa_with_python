@@ -1,0 +1,64 @@
+# 1_2.md
+
+## Homework
+Solve these 10-15 problems to practice array operations. Start simple, then tackle complex ones. Test edge cases (empty lists, single elements).
+
+1. **Problem:** Create a list of 5 favorite books and print it.  
+   **Outcome:** Practice list creation.  
+   **Example:** Output: ['Book1', 'Book2', 'Book3', 'Book4', 'Book5']
+
+2. **Problem:** Access and print the second element of [10, 20, 30, 40, 50].  
+   **Outcome:** Understand indexing.  
+   **Example:** Output: 20
+
+3. **Problem:** Create an empty list, append 3 integers, and print it.  
+   **Outcome:** Practice append.  
+   **Example:** Output: [1, 2, 3]
+
+4. **Problem:** Update the third element of [5, 10, 15, 20] to 25.  
+   **Outcome:** Modify by index.  
+   **Example:** Output: [5, 10, 25, 20]
+
+5. **Problem:** Print the last two elements of ['x', 'y', 'z', 'w'] using negative indices.  
+   **Outcome:** Use negative indexing.  
+   **Example:** Output: 'z', 'w'
+
+6. **Problem:** Slice [1, 2, 3, 4, 5, 6, 7] to get elements from index 3 to 5.  
+   **Outcome:** Practice slicing.  
+   **Example:** Output: [4, 5, 6]
+
+7. **Problem:** Insert 'orange' at index 2 in ['apple', 'banana', 'grape'].  
+   **Outcome:** Use insert method.  
+   **Example:** Output: ['apple', 'banana', 'orange', 'grape']
+
+8. **Problem:** Remove the first 30 from [10, 30, 30, 40].  
+   **Outcome:** Practice remove.  
+   **Example:** Output: [10, 30, 40]
+
+9. **Problem:** Pop the second element from [100, 200, 300] and print popped value and list.  
+   **Outcome:** Use pop with index.  
+   **Example:** Popped: 200, List: [100, 300]
+
+10. **Problem:** Create a list of odd numbers from 1 to 9 using list comprehension.  
+    **Outcome:** Learn list comprehension.  
+    **Example:** Output: [1, 3, 5, 7, 9]
+
+11. **Problem:** Copy [1, 2, 3, 4], change copy's first element to 0, show original unchanged.  
+    **Outcome:** Understand shallow copy.  
+    **Example:** Original: [1, 2, 3, 4], Copy: [0, 2, 3, 4]
+
+12. **Problem:** Find length of ['cat', 'dog', 'bird'].  
+    **Outcome:** Use len().  
+    **Example:** Output: 3
+
+13. **Problem:** Append 3 user-input strings to a list and print concatenated string.  
+    **Outcome:** Combine input and operations.  
+    **Example:** Inputs: "a", "b", "c". Output: List: ['a', 'b', 'c'], Joined: 'abc'
+
+14. **Problem:** In ['code', 'python', 'learn'], append 'DSA', remove 'python'.  
+    **Outcome:** Chain operations.  
+    **Example:** Output: ['code', 'learn', 'DSA']
+
+15. **Problem:** Create a 3x2 matrix and access element at row 2, col 1.  
+    **Outcome:** Intro to 2D lists.  
+    **Example:** Matrix: [[1, 2], [3, 4], [5, 6]], Output: 5

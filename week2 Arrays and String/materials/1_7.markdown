@@ -1,0 +1,128 @@
+# 1_7.md
+
+## Solutions for LeetCode Problems
+Each problem includes explanation, brute-force solution, and optimized solution with time/space complexities.
+
+1. **Contains Duplicate**  
+   **Explanation:** Check if any number appears more than once. Example: `[1, 2, 3, 1]` → `true` (1 repeats). Edge cases: empty list (`false`), single element (`false`).  
+   **Brute-Force:**  
+   ```python
+   def containsDuplicate(nums):
+       for i in range(len(nums)):
+           for j in range(i + 1, len(nums)):
+               if nums[i] == nums[j]:
+                   return True
+       return False
+   ```  
+   **Pros:** O(1) space. **Cons:** O(n^2) time, slow for large arrays.  
+   **Optimized:** Use set for O(1) lookups.  
+   ```python
+   def containsDuplicate(nums):
+       return len(nums) != len(set(nums))  # Set removes duplicates
+   ```  
+   **Pros:** O(n) time, simple. **Cons:** O(n) space.  
+   **Complexity:** Brute: O(n^2) time, O(1) space. Optimized: O(n) time, O(n) space.
+
+2. **Best Time to Buy and Sell Stock**  
+   **Explanation:** Find max profit by buying low, selling high later. Example: `[7, 1, 5, 3, 6, 4]` → buy at 1, sell at 6 = 5. Edge: decreasing array → 0.  
+   **Brute-Force:**  
+   ```python
+   def maxProfit(prices):
+       max_profit = 0
+       for i in range(len(prices)):
+           for j in range(i + 1, len(prices)):
+               max_profit = max(max_profit, prices[j] - prices[i])
+       return max_profit
+   ```  
+   **Pros:** Straightforward. **Cons:** O(n^2) time.  
+   **Optimized:** Track min price and max profit in one pass.  
+   ```python
+   def maxProfit(prices):
+       if not prices:
+           return 0
+       min_price = float('inf')
+       max_profit = 0
+       for price in prices:
+           min_price = min(min_price, price)
+           max_profit = max(max_profit, price - min_price)
+       return max_profit
+   ```  
+   **Pros:** O(n) time, O(1) space. **Cons:** None.  
+   **Complexity:** Brute: O(n^2) time, O(1) space. Optimized: O(n) time, O(1) space.
+
+3. **Two Sum**  
+   **Explanation:** Find two numbers adding to target, return their indices. Example: `[2, 7, 11, 15], target=9` → `[0, 1]` (2+7=9).  
+   **Brute-Force:**  
+   ```python
+   def twoSum(nums, target):
+       for i in range(len(nums)):
+           for j in range(i + 1, len(nums)):
+               if nums[i] + nums[j] == target:
+                   return [i, j]
+       return []
+   ```  
+   **Pros:** O(1) space. **Cons:** O(n^2) time.  
+   **Optimized:** Use hashmap to store number:index.  
+   ```python
+   def twoSum(nums, target):
+       seen = {}
+       for i, num in enumerate(nums):
+           complement = target - num
+           if complement in seen:
+               return [seen[complement], i]
+           seen[num] = i
+       return []
+   ```  
+   **Pros:** O(n) time. **Cons:** O(n) space.  
+   **Complexity:** Brute: O(n^2) time, O(1) space. Optimized: O(n) time, O(n) space.
+
+4. **Remove Duplicates from Sorted Array**  
+   **Explanation:** Remove duplicates in-place from sorted array, return new length. Example: `[1, 1, 2]` → `[1, 2, ...]`, length=2.  
+   **Brute-Force:** Use extra space to store uniques.  
+   ```python
+   def removeDuplicates(nums):
+       unique = []
+       for num in nums:
+           if not unique or unique[-1] != num:
+               unique.append(num)
+       for i in range(len(unique)):
+           nums[i] = unique[i]
+       return len(unique)
+   ```  
+   **Pros:** Simple. **Cons:** O(n) space.  
+   **Optimized:** Two pointers, in-place.  
+   ```python
+   def removeDuplicates(nums):
+       if not nums:
+           return 0
+       write = 1
+       for read in range(1, len(nums)):
+           if nums[read] != nums[write - 1]:
+               nums[write] = nums[read]
+               write += 1
+       return write
+   ```  
+   **Pros:** O(n) time, O(1) space. **Cons:** Requires sorted input.  
+   **Complexity:** Brute: O(n) time, O(n) space. Optimized: O(n) time, O(1) space.
+
+5. **Plus One**  
+   **Explanation:** Increment array as number. Example: `[1, 2, 3]` → `[1, 2, 4]`, `[9, 9]` → `[1, 0, 0]`.  
+   **Brute-Force:** Convert to integer, increment, convert back.  
+   ```python
+   def plusOne(digits):
+       num = int(''.join(map(str, digits))) + 1
+       return [int(d) for d in str(num)]
+   ```  
+   **Pros:** Easy to understand. **Cons:** O(n) time, fails for very large numbers.  
+   **Optimized:** Process digits from right, handle carry.  
+   ```python
+   def plusOne(digits):
+       for i in range(len(digits) - 1, -1, -1):
+           if digits[i] < 9:
+               digits[i] += 1
+               return digits
+           digits[i] = 0
+       return [1] + digits
+   ```  
+   **Pros:** O(n) time, O(1) space (in-place). **Cons:** None.  
+   **Complexity:** Brute: O(n) time, O(n) space. Optimized: O(n) time, O(1) space.

@@ -1,0 +1,76 @@
+# 1_4.md
+
+## Quiz
+30 questions covering arrays/lists and Python basics from weeks 0/1 (variables, loops, functions).
+
+1. What is the index of the first element in a Python list?  
+   (a) 1 (b) 0 (c) -1  
+2. True/False: Python lists can store different data types.  
+3. Write code to create an empty list.  
+4. What does `list.append(x)` do?  
+   (a) Adds x to start (b) Adds x to end (c) Replaces first element  
+5. Output of `print([1, 2, 3, 4][2])`?  
+6. True/False: `len(list)` has O(n) time complexity.  
+7. How to access the second-to-last element using negative indexing?  
+8. What does `lst[1:4]` return for `lst = [0, 1, 2, 3, 4, 5]`?  
+9. Write code to change the first element of `nums` to 100.  
+10. True/False: Python lists are immutable.  
+11. (Week 0) Output of `print(type([1, 2]))`?  
+12. Which method removes the first occurrence of a value?  
+    (a) pop (b) remove (c) delete  
+13. How to copy a list without modifying the original?  
+14. True/False: `list.insert(0, x)` is O(1).  
+15. What is `[x*2 for x in range(4)]`?  
+16. (Week 1) How does list comprehension differ from a for loop?  
+17. Output of `nums = [10, 20, 30]; nums.pop(1); print(nums)`  
+18. True/False: Python lists are fixed-size arrays.  
+19. Write code for list of cubes from 1 to 3.  
+20. What error occurs if you access `lst[5]` when `len(lst) = 3`?  
+21. (Week 0) Difference between integer and float in Python?  
+22. Method to insert at a specific index?  
+23. Output of `['p', 'q', 'r'][-1]`  
+24. True/False: `list.append(x)` is O(1) amortized.  
+25. Write a loop to print each element of `[1, 2, 3]`.  
+26. (Week 1) Can a list be returned from a function? Explain briefly.  
+27. What does `lst[:]` do?  
+28. Number of elements in `list(range(1, 6))`?  
+29. True/False: `list.remove(x)` raises an error if x is not found.  
+30. (Week 1) Write a function to sum a list without using `sum()`.  
+
+## Solutions for the Quiz
+1. (b) 0  
+2. True  
+3. `my_list = []`  
+4. (b) Adds x to end  
+5. 3  
+6. False (O(1))  
+7. `lst[-2]`  
+8. `[1, 2, 3]`  
+9. `nums[0] = 100`  
+10. False  
+11. `<class 'list'>`  
+12. (b) remove  
+13. `copy = lst[:]`  
+14. False (O(n))  
+15. `[0, 2, 4, 6]`  
+16. List comprehension is a concise way to create lists, replacing explicit loops.  
+17. `[10, 30]`  
+18. False (dynamic size)  
+19. `[1, 8, 27]` or `[x**3 for x in range(1, 4)]`  
+20. `IndexError`  
+21. Integer: whole numbers (e.g., 5). Float: decimal numbers (e.g., 5.0).  
+22. `insert`  
+23. `'r'`  
+24. True  
+25. `for x in [1, 2, 3]: print(x)`  
+26. Yes, lists are mutable and can be returned, allowing further modification.  
+27. Creates a shallow copy of the list.  
+28. 5  
+29. True (raises `ValueError`)  
+30. ```python
+    def sum_list(lst):
+        total = 0
+        for x in lst:
+            total += x
+        return total
+    ```

@@ -1,0 +1,96 @@
+# 1_3.md
+
+## Solutions to Homework Problems
+
+1. ```python
+   books = ['Book1', 'Book2', 'Book3', 'Book4', 'Book5']  # Create list
+   print(books)
+   ```
+
+2. ```python
+   nums = [10, 20, 30, 40, 50]
+   print(nums[1])  # Second element (index 1)
+   ```
+
+3. ```python
+   numbers = []
+   numbers.append(1)  # Append three numbers
+   numbers.append(2)
+   numbers.append(3)
+   print(numbers)
+   ```
+
+4. ```python
+   nums = [5, 10, 15, 20]
+   nums[2] = 25  # Update third element
+   print(nums)
+   ```
+
+5. ```python
+   letters = ['x', 'y', 'z', 'w']
+   print(letters[-2])  # Output: z
+   print(letters[-1])  # Output: w
+   ```
+
+6. ```python
+   nums = [1, 2, 3, 4, 5, 6, 7]
+   subset = nums[3:6]  # Slice index 3 to 5
+   print(subset)
+   ```
+
+7. ```python
+   fruits = ['apple', 'banana', 'grape']
+   fruits.insert(2, 'orange')  # Insert at index 2
+   print(fruits)
+   ```
+
+8. ```python
+   nums = [10, 30, 30, 40]
+   nums.remove(30)  # Remove first 30
+   print(nums)
+   ```
+
+9. ```python
+   nums = [100, 200, 300]
+   popped = nums.pop(1)  # Pop second element
+   print("Popped:", popped)
+   print("List:", nums)
+   ```
+
+10. ```python
+    odds = [x for x in range(1, 10, 2)]  # Odd numbers 1 to 9
+    print(odds)
+    ```
+
+11. ```python
+    original = [1, 2, 3, 4]
+    copy_list = original[:]  # Shallow copy
+    copy_list[0] = 0
+    print("Original:", original)
+    print("Copy:", copy_list)
+    ```
+
+12. ```python
+    animals = ['cat', 'dog', 'bird']
+    print(len(animals))  # Output: 3
+    ```
+
+13. ```python
+    strings = []
+    for _ in range(3):
+        strings.append(input("Enter string: "))
+    print("List:", strings)
+    print("Joined:", ''.join(strings))
+    ```
+
+14. ```python
+    words = ['code', 'python', 'learn']
+    words.append('DSA')
+    words.remove('python')
+    print(words)
+    ```
+
+15. ```python
+    matrix = [[1, 2], [3, 4], [5, 6]]
+    print(matrix[2][0])  # Row 2 (index 2), col 1 (index 0)
+    ```

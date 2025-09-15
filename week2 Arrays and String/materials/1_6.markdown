@@ -1,0 +1,39 @@
+# 1_6.md
+
+## LeetCode / NeetCode Problems
+Easy array problems to reinforce list operations.
+
+1. **Problem:** Contains Duplicate (LeetCode 217)  
+   **Link:** https://leetcode.com/problems/contains-duplicate/  
+   **Statement:** Given an integer array `nums`, return `true` if any value appears at least twice, else `false`.  
+   **Outcome:** Return boolean. Constraints: `1 <= nums.length <= 10^5`, `-10^9 <= nums[i] <= 10^9`.  
+   **Example:** Input: `[1, 2, 3, 1]` Output: `true`  
+   **Example:** Input: `[1, 2, 3, 4]` Output: `false`
+
+2. **Problem:** Best Time to Buy and Sell Stock (LeetCode 121)  
+   **Link:** https://leetcode.com/problems/best-time-to-buy-and-sell-stock/  
+   **Statement:** Given array `prices` where `prices[i]` is stock price on day i, find max profit (buy then sell). Return 0 if no profit.  
+   **Outcome:** Return integer (max profit).  
+   **Example:** Input: `[7, 1, 5, 3, 6, 4]` Output: `5` (buy at 1, sell at 6)  
+   **Example:** Input: `[7, 6, 5, 4]` Output: `0`
+
+3. **Problem:** Two Sum (LeetCode 1)  
+   **Link:** https://leetcode.com/problems/two-sum/  
+   **Statement:** Given array `nums` and integer `target`, return indices of two numbers that add to `target`. Assume one solution.  
+   **Outcome:** Return list of two indices.  
+   **Example:** Input: `nums=[2, 7, 11, 15], target=9` Output: `[0, 1]`  
+   **Example:** Input: `nums=[3, 2, 4], target=6` Output: `[1, 2]`
+
+4. **Problem:** Remove Duplicates from Sorted Array (LeetCode 26)  
+   **Link:** https://leetcode.com/problems/remove-duplicates-from-sorted-array/  
+   **Statement:** Given sorted array `nums`, remove duplicates in-place, return new length. Use O(1) space.  
+   **Outcome:** Return integer (length), modify `nums`.  
+   **Example:** Input: `[1, 1, 2]` Output: `2`, `nums=[1, 2, ...]`  
+   **Example:** Input: `[0, 0, 1, 1, 2]` Output: `3`, `nums=[0, 1, 2, ...]`
+
+5. **Problem:** Plus One (LeetCode 66)  
+   **Link:** https://leetcode.com/problems/plus-one/  
+   **Statement:** Given array `digits` representing a non-negative integer, increment by 1, return resulting array.  
+   **Outcome:** Return list of integers.  
+   **Example:** Input: `[1, 2, 3]` Output: `[1, 2, 4]`  
+   **Example:** Input: `[9, 9]` Output: `[1, 0, 0]`
